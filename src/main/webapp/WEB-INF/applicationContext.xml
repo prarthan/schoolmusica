@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="true">
+
+    <!-- Activates scanning of @Autowired -->
+    <context:annotation-config/>
+    
+    
+    <bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost/musicschools"/>
+		<property name="username" value="root"/>
+		<property name="password" value=""/>
+	</bean>
+ 
+	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="musicschoolDataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.khatu.musicschool.model.MusicSchool</value>
+				<value>com.khatu.musicschool.model.Department</value>
+				<value>com.khatu.musicschool.model.Address</value>
+				<value>com.khatu.musicschool.model.Specialization</value>
+				<value>com.khatu.musicschool.model.Method</value>
+				<value>com.khatu.musicschool.model.Style</value>
+				<value>com.khatu.musicschool.model.Openinings</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+			<prop key="hibernate.show_sql">true</prop>
+			<prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
+			<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory"/>
+		</property>
+	</bean>
+
+    <!-- Activates scanning of @Repository and @Service -->
+    <context:component-scan base-package="com.khatu.musicschool"/>
+
+</beans>

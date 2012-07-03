@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+        <appender name="ROLL" class="org.apache.log4j.RollingFileAppender">
+                <param name="file" value="${catalina.home}/logs/musicschool.log" />
+				<param name="DatePattern" value="'.'yyyy-MM-dd" />
+				<param name="MaxBackupIndex" value="10" />
+
+                <layout class="org.apache.log4j.PatternLayout">
+					<param name="ConversionPattern" value="[%t] %d{HH:mm:ss,SSS} %-5p %l - %m%n" />
+				</layout>
+        </appender>
+
+        <!-- Debugging loggers -->
+        <root>
+                <priority value="ALL" />
+                <appender-ref ref="ROLL" />
+        </root>
+
+</log4j:configuration>
