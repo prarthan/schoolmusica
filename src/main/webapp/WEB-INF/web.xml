@@ -34,7 +34,7 @@
      </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file></welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     
     

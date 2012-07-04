@@ -13,9 +13,9 @@
     
     <bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost/musicschools"/>
-		<property name="username" value="root"/>
-		<property name="password" value=""/>
+		<property name="url" value="jdbc:mysql://schoolmusica.c9nlp4oasxjs.us-east-1.rds.amazonaws.com/musicschools"/>
+		<property name="username" value="schoolmusica"/>
+		<property name="password" value="schoolmusica"/>
 	</bean>
  
 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

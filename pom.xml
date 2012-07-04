@@ -7,8 +7,8 @@
     <artifactId>musicschool</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>Music Schools</name>
-    <url>http://www.mycompany.com</url>
+    <name>schoolmusica</name>
+    <url>http://www.schoolmusica.com</url>
 
    <build>
         <defaultGoal>install</defaultGoal>
