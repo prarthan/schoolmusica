@@ -28,7 +28,11 @@
 				<value>com.khatu.musicschool.model.Specialization</value>
 				<value>com.khatu.musicschool.model.Method</value>
 				<value>com.khatu.musicschool.model.Style</value>
-				<value>com.khatu.musicschool.model.Openinings</value>
+				<value>com.khatu.musicschool.model.Openings</value>
+				<value>com.khatu.musicschool.model.Faculty</value>
+				<value>com.khatu.musicschool.model.FacultyContact</value>
+				
+				
 			</list>
 		</property>
 		<property name="hibernateProperties">

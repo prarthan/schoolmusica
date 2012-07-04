@@ -1,8 +1,12 @@
 package com.khatu.musicschool.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -21,6 +25,9 @@ public class Method {
 	public void setMethodId(int methodId) {
 		this.methodId = methodId;
 	}
+	
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @JoinColumn(name="styleId")
 	public Style getStyle() {
 		return style;
 	}
