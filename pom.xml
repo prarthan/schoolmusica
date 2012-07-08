@@ -139,6 +139,20 @@
 		    <groupId>com.sun.jersey.contribs</groupId>
 		    <artifactId>jersey-spring</artifactId>
 		    <version>1.12</version>
+		    <exclusions>
+		    	<exclusion>
+		    		<groupId>org.springframework</groupId>
+		    		<artifactId>spring-core</artifactId>
+		    	</exclusion>
+		    	<exclusion>
+		    		<groupId>org.springframework</groupId>
+		    		<artifactId>spring</artifactId>
+		    	</exclusion>
+		    	<exclusion>
+		    		<groupId>org.springframework</groupId>
+		    		<artifactId>spring-webmvc</artifactId>
+		    	</exclusion>
+		    </exclusions>
 		</dependency>
 		
 		
@@ -187,6 +201,14 @@
 			<artifactId>cglib</artifactId>
 			<version>2.2.2</version>
 		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+            
 		
 		
 		<!-- hibernet -->

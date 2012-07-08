@@ -16,6 +16,7 @@ public class Faculty {
 	private String firstName;
 	private String middleName;
 	private String lastName;
+	private String title;
     private FacultyContact facultyContact;
     private Department department;
     
@@ -46,6 +47,13 @@ public class Faculty {
 		this.lastName = lastName;
 	}
 	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     @JoinColumn(name="facultyContactId")
 	public FacultyContact getFacultyContact() {
