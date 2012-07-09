@@ -1,6 +1,5 @@
 package com.khatu.musicschool.model;
 
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -21,11 +19,12 @@ public class Specialization {
 	private int specializationId;
 	private Department department;
 	private String name;
-	private SpecializationType specialization;
+	private SpecializationType specializationType;
 	private Style styles;
 	private Method method;
 	private boolean graduateProgramAvailable;
 	private boolean privateLessonAvailable;
+	private int numberOfOpenings;
 	
 	
 	
@@ -56,11 +55,11 @@ public class Specialization {
 	
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="specalizationTypeId")
-	public SpecializationType getInstrument() {
-		return specialization;
+	public SpecializationType getSpecializationType() {
+		return specializationType;
 	}
-	public void setInstrument(SpecializationType instrument) {
-		this.specialization = instrument;
+	public void setSpecializationType(SpecializationType instrument) {
+		this.specializationType = instrument;
 	}
 	
 	@OneToOne(fetch=FetchType.LAZY)
@@ -93,6 +92,13 @@ public class Specialization {
 	}
 	public void setPrivateLessonAvailable(boolean privateLessonAvailable) {
 		this.privateLessonAvailable = privateLessonAvailable;
+	}
+	
+	public int getNumberOfOpenings() {
+		return numberOfOpenings;
+	}
+	public void setNumberOfOpenings(int numberOfOpenings) {
+		this.numberOfOpenings = numberOfOpenings;
 	}
 
 }

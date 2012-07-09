@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -14,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Method {
 	
 	private int methodId;
-	private Style style;
+	private Specialization specialization;
 	private String name;
 	
 	@Id
@@ -26,13 +27,14 @@ public class Method {
 		this.methodId = methodId;
 	}
 	
+	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    @JoinColumn(name="styleId")
-	public Style getStyle() {
-		return style;
+	@PrimaryKeyJoinColumn
+	public Specialization getSpecialization() {
+		return specialization;
 	}
-	public void setStyle(Style style) {
-		this.style = style;
+	public void setSpecialization(Specialization specialization) {
+		this.specialization = specialization;
 	}
 	public String getName() {
 		return name;

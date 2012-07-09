@@ -36,7 +36,8 @@ public class SchoolResource {
 	@Produces({MediaType.APPLICATION_JSON })
 	public MusicSchool getMusicSchool(@PathParam("musicSchoolId")int musicSchoolId){
 		
-		return 	musicSchoolService.getMusicSchool(musicSchoolId);
+//		return 	musicSchoolService.getMusicSchool(musicSchoolId);
+	    return null;
 	}
 	
 	@GET
@@ -56,7 +57,8 @@ public class SchoolResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public MusicSchool addMusicSchool(MusicSchool musicSchool){
-		return musicSchoolService.addMusicSchool(musicSchool);
+		return null;
+		//		return musicSchoolService.addMusicSchool(musicSchool);
 	}
 
 }

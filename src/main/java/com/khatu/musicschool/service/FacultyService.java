@@ -8,18 +8,20 @@ import com.khatu.musicschool.model.Faculty;
 
 @Service
 public class FacultyService {
-	
-	@Autowired
-	private FacultyDao facultyDao;
-	
-	
-	public Faculty getFaculty(int facultyId){
-		return facultyDao.getFaculty(facultyId);
-	}
-	
-	public Faculty addFaculty(Faculty faculty){
-		 return facultyDao.addFaculty(faculty);
-	}
+//	
+//	@Autowired
+//	private FacultyDao facultyDao;
+//	
+//	
+//	public Faculty getFaculty(int facultyId){
+//		return new Faculty();
+////		return facultyDao.getFaculty(facultyId);
+//	}
+//	
+//	public Faculty addFaculty(Faculty faculty){
+//		return new Faculty();
+////		 return facultyDao.addFaculty(faculty);
+//	}
 	
 	
 	

@@ -11,23 +11,23 @@ import com.khatu.musicschool.model.MusicSchool;
 @Transactional(readOnly = true)
 public class MusicSchoolService {
 	
-	@Autowired
-	private MusicSchoolDao musicSchoolDao;
-	
-	
-	/**
-	 * get music school
-	 * @param musicSchoolId
-	 * @return
-	 */
-	public MusicSchool getMusicSchool(int musicSchoolId){
-		return musicSchoolDao.getMusicSchool(musicSchoolId);		
-	}
-	
-	public MusicSchool addMusicSchool(MusicSchool musicSchool){
-		return musicSchoolDao.addMusicSchool(musicSchool);
-	}
-	
+//	@Autowired
+//	private MusicSchoolDao musicSchoolDao;
+//	
+//	
+//	/**
+//	 * get music school
+//	 * @param musicSchoolId
+//	 * @return
+//	 */
+//	public MusicSchool getMusicSchool(int musicSchoolId){
+//		return musicSchoolDao.getMusicSchool(musicSchoolId);		
+//	}
+//	
+//	public MusicSchool addMusicSchool(MusicSchool musicSchool){
+//		return musicSchoolDao.addMusicSchool(musicSchool);
+//	}
+//	
 	
 	
 

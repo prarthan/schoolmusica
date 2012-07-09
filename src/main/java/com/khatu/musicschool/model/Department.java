@@ -20,18 +20,17 @@ public class Department {
 	private int deparmentId;
 	private MusicSchool musicSchool;
 	private String departmentName;
-	private String description;
 	private String keyword;
-	private Address address;
 	private int satMin;
-	private int satMax;
 	private int actMin;
-	private int actMax;
 	private int greMin;
-	private int greMax;
 	private List<Specialization> specialization;
 	private List<Faculty> faculty;
 	private boolean musicMinorAvailable;
+	private String address;
+	private String city;
+	private String state;
+	private String zip;
 	private String departmentUrl;
 	
 	public Department(){
@@ -66,15 +65,6 @@ public class Department {
 		this.departmentName = departmentName;
 	}
 	
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-
 	public String getKeyword() {
 		return keyword;
 	}
@@ -83,50 +73,28 @@ public class Department {
 		this.keyword = keyword;
 	}
 
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    @JoinColumn(name="addressid")
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+
 	public int getSatMin() {
 		return satMin;
 	}
 	public void setSatMin(int satMin) {
 		this.satMin = satMin;
 	}
-	public int getSatMax() {
-		return satMax;
-	}
-	public void setSatMax(int satMax) {
-		this.satMax = satMax;
-	}
+
 	public int getActMin() {
 		return actMin;
 	}
 	public void setActMin(int actMin) {
 		this.actMin = actMin;
 	}
-	public int getActMax() {
-		return actMax;
-	}
-	public void setActMax(int actMax) {
-		this.actMax = actMax;
-	}
+
 	public int getGreMin() {
 		return greMin;
 	}
 	public void setGreMin(int greMin) {
 		this.greMin = greMin;
 	}
-	public int getGreMax() {
-		return greMax;
-	}
-	public void setGreMax(int greMax) {
-		this.greMax = greMax;
-	}
+
 	
 	@OneToMany(fetch=FetchType.LAZY)
 	@JoinColumn(name="specializationId")
@@ -155,8 +123,40 @@ public class Department {
 	public void setMusicMinorAvailable(boolean musicMinorAvailable) {
 		this.musicMinorAvailable = musicMinorAvailable;
 	}
-
 	
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
 	public String getDepartmentUrl() {
 		return departmentUrl;
 	}
@@ -164,11 +164,5 @@ public class Department {
 	public void setDepartmentUrl(String departmentUrl) {
 		this.departmentUrl = departmentUrl;
 	}
-	
-	
-	
-	
-	
-	
 
 }

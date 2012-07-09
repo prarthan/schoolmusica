@@ -17,8 +17,9 @@ public class Faculty {
 	private String middleName;
 	private String lastName;
 	private String title;
-    private FacultyContact facultyContact;
     private Department department;
+    private String facultyUrl;
+  
     
     @Id
 	@GeneratedValue
@@ -47,21 +48,13 @@ public class Faculty {
 		this.lastName = lastName;
 	}
 	
-	
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    @JoinColumn(name="facultyContactId")
-	public FacultyContact getFacultyContact() {
-		return facultyContact;
-	}
-	public void setFacultyContact(FacultyContact facultyContact) {
-		this.facultyContact = facultyContact;
-	}
+
 	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     @JoinColumn(name="deparmentId")
@@ -71,6 +64,15 @@ public class Faculty {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-
+	
+	public String getFacultyUrl() {
+		return facultyUrl;
+	}
+	public void setFacultyUrl(String facultyUrl) {
+		this.facultyUrl = facultyUrl;
+	}
+	
+	
+    
 
 }
