@@ -51,7 +51,7 @@ public class MusicSchool {
 
 
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    @JoinColumn(name="musicSchoolId")
+    @JoinColumn(name="musicSchoolId",nullable=false)
 	public List<Department> getDepartment() {
 		return department;
 	}
@@ -66,11 +66,6 @@ public class MusicSchool {
 
 	public void setSponsorWeight(int sponsorWeight) {
 		this.sponsorWeight = sponsorWeight;
-	}
-	
-	
-
-	
-	
+	}	
 	
 }

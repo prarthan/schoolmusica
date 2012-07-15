@@ -11,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.khatu.musicschool.common.Filters;
@@ -20,18 +21,28 @@ import com.khatu.musicschool.model.Method;
 import com.khatu.musicschool.model.Specialization;
 import com.khatu.musicschool.model.SpecializationType;
 import com.khatu.musicschool.model.Style;
+import com.khatu.musicschool.service.DepartmentService;
 import com.khatu.musicschool.wsresource.response.DepartmentResponse;
 
 @Component
 @Path("/department")
 public class DepartmentResource {
 	
+	
+	@Autowired
+	private DepartmentService departmentService;
+	
+	
 	@POST
 	@Path("/search")
 	@Produces({MediaType.APPLICATION_JSON })
 	@Consumes({MediaType.APPLICATION_JSON })
 	public DepartmentResponse searchDepartment(final DepartmentSearchCriteria searchCriteria){
-		return getdummydata();		
+		
+		List<Department> departments = departmentService.searchDepartment(searchCriteria);
+		DepartmentResponse response = getdummydata();
+		response.setDepartment(departments);
+		return response;
 	}
 	
 	

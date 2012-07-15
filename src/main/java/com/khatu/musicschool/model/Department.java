@@ -2,6 +2,7 @@ package com.khatu.musicschool.model;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,7 +50,7 @@ public class Department {
 	
 	
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="musicSchoolId")
+    @JoinColumn(name="musicSchoolId",nullable=false,updatable=false,insertable=false)
 	public MusicSchool getMusicSchool() {
 		return musicSchool;
 	}
@@ -96,7 +97,7 @@ public class Department {
 	}
 
 	
-	@OneToMany(fetch=FetchType.LAZY)
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="specializationId")
 	public List<Specialization> getSpecialization() {
 		return specialization;
@@ -107,8 +108,8 @@ public class Department {
 	}
 	
 	
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="facultyId")
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="departmentId",nullable=false)
 	public List<Faculty> getFaculty() {
 		return faculty;
 	}

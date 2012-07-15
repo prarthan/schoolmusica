@@ -57,8 +57,7 @@ public class SchoolResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public MusicSchool addMusicSchool(MusicSchool musicSchool){
-		return null;
-		//		return musicSchoolService.addMusicSchool(musicSchool);
+		return musicSchoolService.addMusicSchool(musicSchool);
 	}
 
 }

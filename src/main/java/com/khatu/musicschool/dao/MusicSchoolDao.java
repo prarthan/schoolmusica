@@ -9,26 +9,27 @@ import com.khatu.musicschool.model.MusicSchool;
 @Repository
 public class MusicSchoolDao {
 	
-//	@Autowired
-//	private HibernateTemplate hibernateTemplate;
-//	
-//	
-//	public MusicSchool getMusicSchool(int musicSchoolId){
-//		
-//		MusicSchool musicSchool = (MusicSchool)hibernateTemplate.get(MusicSchool.class, musicSchoolId);
-//		return musicSchool;
-//	}
-//	
-//	
-//	/**
-//	 * add new musicSchool
-//	 * @param musicSchool
-//	 * @return
-//	 */
-//	public MusicSchool addMusicSchool(MusicSchool musicSchool){
-//		
-//		return (MusicSchool)hibernateTemplate.merge(musicSchool);
-//	}
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+	
+	
+	public MusicSchool getMusicSchool(int musicSchoolId){
+		
+		MusicSchool musicSchool = (MusicSchool)hibernateTemplate.get(MusicSchool.class, musicSchoolId);
+		return musicSchool;
+	}
+	
+	
+	/**
+	 * add new musicSchool
+	 * @param musicSchool
+	 * @return
+	 */
+	public MusicSchool addMusicSchool(MusicSchool musicSchool){
+		
+		
+		return (MusicSchool)hibernateTemplate.merge(musicSchool);
+	}
 	
 
 }
