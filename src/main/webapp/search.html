@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>School Musica</title>
+    <link rel="stylesheet" href="css/reset.min.css">    
+    <link rel="stylesheet" href="css/jquery-ui-1.8.21.custom.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/gradients.css">
+    <link rel="stylesheet" href="css/common.css">   
+    <link rel="stylesheet" href="css/index.css">   
+  </head>
+  <body>
+    <div class="hd blue-gradient">
+      <div class="logo">
+        <a href="index.html">
+          <img src="img/logo2.png" alt="Logo"></img>
+        </a>
+      </div>
+      <div class="searchfield">
+        <input type="text" id="searchinput" placeholder="Search for an academic program/specialization"></input>
+        <div id="searchbutton"><button></button></div>
+      </div>
+    </div>
+    <div class="bd container-fluid gray-gradient">
+      <div class="row-fluid ">
+        <div id="sidebar" class="span2"></div>
+        <div id="searchlist" class="span10"></div>
+      </div>
+    </div>
+    <div class="ft"></div>
+    <script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+       $(document).ready( function() {
+         var index = new Index();
+         index.init();
+       });
+    </script>
+  </body>
+</html>
+

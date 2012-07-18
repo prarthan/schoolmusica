@@ -1,0 +1,10 @@
+.item-image {
+  float: right;
+  margin-right: 10px;
+}
+
+.item-name {
+  vertical-align: middle;
+  display: table-cell;
+  height: 64px;
+}
