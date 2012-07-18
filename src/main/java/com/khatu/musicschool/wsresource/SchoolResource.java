@@ -40,17 +40,14 @@ public class SchoolResource {
 	    return null;
 	}
 	
-	@GET
+	@POST
 	@Path("/search")
 	@Produces({MediaType.APPLICATION_JSON })
-	public List<MusicSchool> searchMusicSchool(){
+	public List<MusicSchool> searchMusicSchool(SchoolSearchCriteria schoolSearchCriteria){
 		
 		List<MusicSchool> schools = new ArrayList<MusicSchool>();
-		
-		
-
+		schools = musicSchoolService.searchMusicSchool(schoolSearchCriteria);
 		return schools;
-		
 	}
 	
 	@POST

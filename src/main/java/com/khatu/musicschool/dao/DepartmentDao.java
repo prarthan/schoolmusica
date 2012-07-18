@@ -21,8 +21,9 @@ public class DepartmentDao {
 	
 	public List<Department> searchDepartment(DepartmentSearchCriteria departmentSearchCriteria){
 		DetachedCriteria query = DetachedCriteria.forClass(Department.class)
-				.add((Criterion) Property.forName("keyword").eq("guitar"));
+				.add((Criterion) Property.forName("keyword").like("%" + departmentSearchCriteria.getInstrument() +"%"));
 		List<Department> departments = this.hibernateTemplate.findByCriteria(query);
+
 		
 		return departments;
 	}

@@ -36,12 +36,17 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
-			<prop key="hibernate.show_sql">true</prop>
-			<prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
-			<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.search.default.directory_provider">filesystem</prop>
+				<prop key="hibernate.search.default.indexBase">/var/lucene/indexes</prop> 
 			</props>
 		</property>
+	
 	</bean>
+	
+	
 	
 	
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
@@ -57,6 +62,9 @@
 	         <ref local="mySessionFactory"/>
 	    </property>
   	</bean>
+  	
+  	
+
 	
 	
     <!-- Activates scanning of @Repository and @Service -->

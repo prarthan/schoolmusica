@@ -9,6 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Store;
+
 
 @Entity
 public class Faculty {
@@ -30,6 +35,8 @@ public class Faculty {
 	public void setFacultyId(int facultyId) {
 		this.facultyId = facultyId;
 	}
+	
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -42,6 +49,8 @@ public class Faculty {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+	
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	public String getLastName() {
 		return lastName;
 	}

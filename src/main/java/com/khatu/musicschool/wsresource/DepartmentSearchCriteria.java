@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class DepartmentSearchCriteria {
 	
+	private String instrument;
 	private String specialization;
 	private String method;
 	private String style;
@@ -18,6 +19,15 @@ public class DepartmentSearchCriteria {
 	private boolean positionsAvailable;
 	
 	
+	
+	public String getInstrument() {
+		return instrument;
+	}
+
+	public void setInstrument(String instrument) {
+		this.instrument = instrument;
+	}
+
 	public String getSpecialization() {
 		return specialization;
 	}
