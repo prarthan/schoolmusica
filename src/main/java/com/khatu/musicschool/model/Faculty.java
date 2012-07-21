@@ -23,7 +23,6 @@ public class Faculty {
 	private String middleName;
 	private String lastName;
 	private String title;
-    private Department department;
     private String facultyUrl;
   
     
@@ -65,15 +64,6 @@ public class Faculty {
 		this.title = title;
 	}
 
-	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    @JoinColumn(name="departmentId",nullable=false,updatable=false,insertable=false)
-	public Department getDepartment() {
-		return department;
-	}
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
 	
 	public String getFacultyUrl() {
 		return facultyUrl;

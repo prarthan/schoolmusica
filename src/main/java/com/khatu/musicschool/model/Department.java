@@ -43,7 +43,6 @@ filters = {
 })
 public class Department {
 	private int deparmentId;
-	private MusicSchool musicSchool;
 	private String departmentName;
 	private String keyword;
 	private int satMin;
@@ -72,16 +71,6 @@ public class Department {
 		this.deparmentId = deparmentId;
 	}
 	
-	
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="musicSchoolId",nullable=false,updatable=false,insertable=false)
-	public MusicSchool getMusicSchool() {
-		return musicSchool;
-	}
-
-	public void setMusicSchool(MusicSchool musicSchool) {
-		this.musicSchool = musicSchool;
-	}
 
 	public String getDepartmentName() {
 		return departmentName;
