@@ -48,7 +48,6 @@ public class Department {
 	private int satMin;
 	private int actMin;
 	private int greMin;
-	private List<Specialization> specialization;
 	private List<Faculty> faculty;
 	private boolean musicMinorAvailable;
 	private String address;
@@ -111,16 +110,6 @@ public class Department {
 		this.greMin = greMin;
 	}
 
-	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="specializationId")
-	public List<Specialization> getSpecialization() {
-		return specialization;
-	}
-
-	public void setSpecialization(List<Specialization> specialization) {
-		this.specialization = specialization;
-	}
 	
 	@IndexedEmbedded
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)

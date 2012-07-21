@@ -18,8 +18,7 @@ import com.khatu.musicschool.common.Filters;
 import com.khatu.musicschool.model.Department;
 import com.khatu.musicschool.model.Faculty;
 import com.khatu.musicschool.model.Method;
-import com.khatu.musicschool.model.Specialization;
-import com.khatu.musicschool.model.SpecializationType;
+import com.khatu.musicschool.model.Program;
 import com.khatu.musicschool.model.Style;
 import com.khatu.musicschool.service.DepartmentService;
 import com.khatu.musicschool.wsresource.response.DepartmentResponse;
@@ -60,42 +59,15 @@ public class DepartmentResource {
 		method.setName("French");
 		
 		
-		SpecializationType specializationType = new SpecializationType();
-		specializationType.setSpecalizationTypeId(1);
-		specializationType.setName("guitar");
-		
-		
-		SpecializationType specializationType2 = new SpecializationType();
-		specializationType2.setSpecalizationTypeId(2);
-		specializationType2.setName("harp");
-		
-		
-		//Specilization	
-		List<Specialization> specializationList = new ArrayList<Specialization>();
-		Specialization  specialization = new Specialization();
-		specialization.setSpecializationType(specializationType);
-		specialization.setMethod(method);
-		specialization.setStyles(style);
-		specialization.setNumberOfOpenings(2);
-		
-		Specialization  specialization2 = new Specialization();
-		specialization2.setSpecializationType(specializationType2);
-		specialization2.setMethod(method);
-		specialization2.setStyles(style);
-		specialization2.setNumberOfOpenings(3);
-		
-		
-		specializationList.add(specialization);
-		specializationList.add(specialization2);
-		
-		
+		Program program1 = new Program();
+		program1.setProgramId(1);
+		program1.setName("guitar");
 		
 		//list of department
 		List<Department> departments = new ArrayList<Department>();
 		Department dept1 = new Department();
 		dept1.setDepartmentName("String, Harp & Guitar");
 	    dept1.setDepartmentUrl("http://www.esm.rochester.edu/strings/");
-	    dept1.setSpecialization(specializationList);
 	    dept1.setGreMin(800);
 	    dept1.setAddress("26 Gibbs St.");
 	    dept1.setCity("Rochester");
@@ -133,7 +105,6 @@ public class DepartmentResource {
 		Department dept2 = new Department();
 		dept2.setDepartmentName("Voice & Opera");
 	    dept2.setDepartmentUrl("http://www.esm.rochester.edu/departments/voice/");
-	    dept2.setSpecialization(specializationList);
 	    dept2.setGreMin(800);
 	    dept2.setAddress("26 Gibbs St.");
 	    dept2.setCity("Rochester");

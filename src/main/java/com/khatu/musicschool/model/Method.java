@@ -1,13 +1,8 @@
 package com.khatu.musicschool.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -15,7 +10,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Method {
 	
 	private int methodId;
-	private Specialization specialization;
 	private String name;
 	
 	@Id
@@ -27,15 +21,6 @@ public class Method {
 		this.methodId = methodId;
 	}
 	
-	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@PrimaryKeyJoinColumn
-	public Specialization getSpecialization() {
-		return specialization;
-	}
-	public void setSpecialization(Specialization specialization) {
-		this.specialization = specialization;
-	}
 	public String getName() {
 		return name;
 	}

@@ -1,13 +1,10 @@
 package com.khatu.musicschool.model;
 
-import javax.persistence.CascadeType;
+
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import org.hibernate.search.annotations.Analyze;
 import org.hibernate.search.annotations.Field;
@@ -23,6 +20,8 @@ public class Faculty {
 	private String middleName;
 	private String lastName;
 	private String title;
+	private String styles;
+	private String methods;
     private String facultyUrl;
   
     
@@ -63,16 +62,25 @@ public class Faculty {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 	
+	
+	public String getStyles() {
+		return styles;
+	}
+	public void setStyles(String styles) {
+		this.styles = styles;
+	}
+	public String getMethods() {
+		return methods;
+	}
+	public void setMethods(String methods) {
+		this.methods = methods;
+	}
 	public String getFacultyUrl() {
 		return facultyUrl;
 	}
 	public void setFacultyUrl(String facultyUrl) {
 		this.facultyUrl = facultyUrl;
 	}
-	
-	
-    
 
 }
