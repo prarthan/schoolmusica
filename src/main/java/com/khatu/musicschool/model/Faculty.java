@@ -20,6 +20,7 @@ public class Faculty {
 	private String middleName;
 	private String lastName;
 	private String title;
+	private String keyword;
 	private String styles;
 	private String methods;
     private String facultyUrl;
@@ -63,7 +64,12 @@ public class Faculty {
 		this.title = title;
 	}
 	
-	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	public String getStyles() {
 		return styles;
 	}
