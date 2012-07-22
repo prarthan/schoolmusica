@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -50,6 +51,7 @@ public class Department {
 	private int greMin;
 	private List<Faculty> faculty;
 	private boolean musicMinorAvailable;
+	private boolean graduateProgramAvailable;
 	private String address;
 	private String city;
 	private String state;
@@ -89,6 +91,7 @@ public class Department {
 	}
 
 	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
+	@Column(nullable=false,columnDefinition="default '0'")
 	public int getSatMin() {
 		return satMin;
 	}
@@ -96,6 +99,7 @@ public class Department {
 		this.satMin = satMin;
 	}
 
+	@Column(nullable=false,columnDefinition="default 0")
 	public int getActMin() {
 		return actMin;
 	}
@@ -103,6 +107,7 @@ public class Department {
 		this.actMin = actMin;
 	}
 
+	@Column(nullable=false,columnDefinition="default 0")
 	public int getGreMin() {
 		return greMin;
 	}
@@ -122,6 +127,7 @@ public class Department {
 		this.faculty = faculty;
 	}
 
+	@Column(columnDefinition="default 0")
 	public boolean isMusicMinorAvailable() {
 		return musicMinorAvailable;
 	}
@@ -129,7 +135,15 @@ public class Department {
 		this.musicMinorAvailable = musicMinorAvailable;
 	}
 	
-	
+	@Column(columnDefinition="default 0")
+	public boolean isGraduateProgramAvailable() {
+		return graduateProgramAvailable;
+	}
+
+	public void setGraduateProgramAvailable(boolean graduateProgramAvailable) {
+		this.graduateProgramAvailable = graduateProgramAvailable;
+	}
+
 	public String getAddress() {
 		return address;
 	}

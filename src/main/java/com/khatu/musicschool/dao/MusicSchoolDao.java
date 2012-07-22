@@ -42,9 +42,38 @@ public class MusicSchoolDao {
 	public List<MusicSchool> searchMusicSchool(SchoolSearchCriteria schoolSearchCriteria){
 		
 		DetachedCriteria query = DetachedCriteria.forClass(MusicSchool.class,"school")
-				.createAlias("department", "dept")
-				.add(Restrictions.like("dept.keyword", "%" + schoolSearchCriteria.getInstrument() +"%"));
-
+			.createAlias("department", "dept")
+			.add(Restrictions.like("dept.keyword", "%" + schoolSearchCriteria.getInstrument() +"%"));
+		
+		if(schoolSearchCriteria.getState()!=null){
+			query.add(Restrictions.eq("dept.state", schoolSearchCriteria.getState()));
+		}
+		
+		if(schoolSearchCriteria.getSatMin()>0){
+			query.add(Restrictions.ge("dept.satMin", schoolSearchCriteria.getSatMin()));
+		}
+		
+		if(schoolSearchCriteria.getGreMin()>0){
+			query.add(Restrictions.ge("dept.greMin", schoolSearchCriteria.getGreMin()));
+		}
+		
+		if(schoolSearchCriteria.isGraduateProgramAvailable() ==true){
+			query.add(Restrictions.eq("dept.graduateProgramAvailable", schoolSearchCriteria.isGraduateProgramAvailable()));
+		}
+		
+		if(schoolSearchCriteria.isMusicMinorAvailable() ==  true){
+			query.add(Restrictions.eq("dept.musicMinorAvailable", schoolSearchCriteria.isMusicMinorAvailable()));
+		}
+			
+		
+		if(schoolSearchCriteria.getStyle()!=null){
+			query.add(Restrictions.eq("dept.faculty.styles", schoolSearchCriteria.getStyle()));
+		}
+		
+		if(schoolSearchCriteria.getMethod() != null){
+			query.add(Restrictions.eq("dept.faculty.methods", schoolSearchCriteria.getMethod()));
+		}
+			
 		List<MusicSchool> schools = this.hibernateTemplate.findByCriteria(query);
 		
 		return schools;

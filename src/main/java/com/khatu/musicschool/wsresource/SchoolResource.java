@@ -30,7 +30,7 @@ public class SchoolResource {
 	@Autowired
 	private MusicSchoolService musicSchoolService;
 	
-
+ 
 	@GET
 	@Path("/{musicSchoolId}")
 	@Produces({MediaType.APPLICATION_JSON })

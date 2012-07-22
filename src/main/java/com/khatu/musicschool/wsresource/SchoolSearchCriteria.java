@@ -5,7 +5,6 @@ public class SchoolSearchCriteria {
 	private String schoolName;
 	
 	private String instrument;
-	private String specialization;
 	private String method;
 	private String style;
 	private String state;
@@ -33,13 +32,6 @@ public class SchoolSearchCriteria {
 		this.instrument = instrument;
 	}
 
-	public String getSpecialization() {
-		return specialization;
-	}
-
-	public void setSpecialization(String specialization) {
-		this.specialization = specialization;
-	}
 
 	public String getMethod() {
 		return method;
