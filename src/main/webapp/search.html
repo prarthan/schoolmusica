@@ -3,13 +3,13 @@
   <head>
     <meta charset=utf-8>
     <title>School Musica</title>
-    <link rel="stylesheet" href="css/reset.min.css">    
-    <link rel="stylesheet" href="css/jquery-ui-1.8.21.custom.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="css/gradients.css">
-    <link rel="stylesheet" href="css/common.css">   
-    <link rel="stylesheet" href="css/index.css">   
+    <link rel="stylesheet" href="css/reset.min.css" type='text/css'>    
+    <link rel="stylesheet" href="css/jquery-ui-1.8.21.custom.css" type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type='text/css'>
+    <link rel="stylesheet" href="css/gradients.css" type='text/css'>
+    <link rel="stylesheet" href="css/common.css" type='text/css'>   
+    <link rel="stylesheet" href="css/index.css" type='text/css'>   
   </head>
   <body>
     <div class="hd blue-gradient">
@@ -26,7 +26,10 @@
     <div class="bd container-fluid gray-gradient">
       <div class="row-fluid ">
         <div id="sidebar" class="span2"></div>
-        <div id="searchlist" class="span10"></div>
+        <div id="searchlist" class="span10">
+           <div id="searchinfo"></div>
+           <div id="searchresults"></div>
+        </div>
       </div>
     </div>
     <div class="ft"></div>
@@ -39,6 +42,47 @@
          var index = new Index();
          index.init();
        });
+    </script>
+    <script id="searchResultTemplate" type="text/x-jquery-tmpl"> 
+      <div class='searchresult'>
+        <h3><a href="${departmentUrl}">${departmentName}</a></h3>
+        <div class='address'>
+          ${address} ${city} ${state}-${zip}
+        </div>
+        <div class='resultitem faculty_list'>
+          <h4>Faculty</h4>
+          {{each faculty}}
+          <div class='faculty resultiteminfo'>
+            <h5><a href="${$value.facultyUrl}">${$value.firstName} ${$value.lastName}</a></h5>
+            <div class='title'>${$value.title}</div>            
+          </div>
+          {{/each}}
+        </div>
+        <div class="resultitem scores">
+           <h4>Minimum Scores Required</h4>
+           <div class='resultiteminfo'>
+             <div class="score">
+               <div class="exam">SAT</div>
+               <div class="min">${satMin}</div>
+             </div>
+             <div class="score">
+               <div class="exam">GRE</div>
+               <div class="min">${greMin}</div>
+             </div>
+             <div class="score">
+               <div class="exam">ACT</div>
+               <div class="min">${actMin}</div>
+             </div>
+           </div>
+        </div>
+        <div class="resultitem">
+          <h4>Other Information</h4>
+          <div class='resultiteminfo'>
+            <u>Music Minor Available:</u> {{if musicMinorAvailable}}Yes{{else}}No{{/if}}
+          </div>
+        </div>        
+      </div>
+      <hr></h3>
     </script>
   </body>
 </html>

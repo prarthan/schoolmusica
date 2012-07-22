@@ -6,5 +6,111 @@
 .item-name {
   vertical-align: middle;
   display: table-cell;
-  height: 64px;
+  height: auto;
 }
+
+#searchinfo {
+  color: #999;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 57px;
+  border-bottom: 1px solid #DEDEDE;
+  display: table-cell;
+  vertical-align: middle;
+  width: 600px;
+  display: none;
+}
+
+#searchlist {
+  padding: 10px;
+  position: relative;
+}
+
+#searchresults {
+  margin-top: 10px;
+}
+
+#searchlist .searchresult {
+  margin-left: 10px;
+  width: 600px;
+  position: relative;
+}
+
+#searchlist .searchresult h3 {
+  line-height: 15px;
+  margin-top: 5px;
+  margin: 5px 0;
+}
+#searchlist .searchresult .faculty h5 {
+  line-height: 10px;
+  margin-top: 2px;
+}
+
+#searchlist .searchresult .resultitem {
+  clear: both;
+  margin-bottom: 5px;
+}
+
+#searchlist .searchresult .resultitem h4 {
+  line-height: 15px;
+  margin: 5px 0px;
+}
+
+#searchlist h1, h5   {
+  text-decoration: underline;
+}
+
+#searchlist .searchresult .address,
+#searchlist .searchresult .info {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.searchresult .resultiteminfo {
+  margin-left: 10px;
+}
+
+.searchresult .faculty {
+  margin-bottom: 8px;
+}
+
+#searchlist .searchresult .scores {
+  height: 65px;
+  width: 600px;
+}
+
+#searchlist .searchresult .scores .title {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+#searchlist hr {
+  width: 600px;
+  border-top-color: #CCC;
+  margin: 15px 0;
+}
+
+#searchlist .searchresult .score {
+  height: 40px;
+  width: 40px;
+  border: 1px solid black;
+  text-align: center;
+  border-radius: 5px;
+  float: left;
+  margin-left: 3px;
+}
+
+#searchlist .searchresult .score .exam {
+  background: black;
+  color: white;
+  font-weight: bold;
+}
+
+.searchresult .faculty .title {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.searchresult
