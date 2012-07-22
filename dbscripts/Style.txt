@@ -1,0 +1,54 @@
+-- MySQL dump 10.13  Distrib 5.5.22, for osx10.6 (i386)
+--
+-- Host: localhost    Database: schoolmusica
+-- ------------------------------------------------------
+-- Server version	5.5.22
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Style`
+--
+
+DROP TABLE IF EXISTS `Style`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Style` (
+  `styleId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `programId` int(11) NOT NULL,
+  PRIMARY KEY (`styleId`),
+  KEY `FK4C82D91EEE0AEF3` (`programId`),
+  CONSTRAINT `FK4C82D91EEE0AEF3` FOREIGN KEY (`programId`) REFERENCES `Program` (`programId`)
+) ENGINE=InnoDB AUTO_INCREMENT=477 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Style`
+--
+
+LOCK TABLES `Style` WRITE;
+/*!40000 ALTER TABLE `Style` DISABLE KEYS */;
+INSERT INTO `Style` VALUES (128,'Classical',1),(256,'Orchestral',1),(257,'Orchestral',1),(258,'Jazz',1),(259,'Pedagogy',1),(260,'Classical',2),(261,'Orchestral',2),(262,'Jazz',2),(263,'Pedagogy',2),(264,'Classical',3),(265,'Orchestral',3),(266,'Jazz',3),(267,'Pedagogy',3),(268,'Classical',4),(269,'Orchestral',4),(270,'Jazz',4),(271,'Pedagogy',4),(272,'Classical',5),(273,'Orchestral',5),(274,'Piccolo',5),(275,'Jazz',5),(276,'Pedagogy',5),(277,'Classical',6),(278,'Orchestral',6),(279,'Jazz',6),(280,'Pedagogy',6),(281,'Classical',7),(282,'Orchestral',7),(283,'Jazz',7),(284,'Pedagogy',7),(285,'Classical',8),(286,'Orchestral',8),(287,'Jazz',8),(288,'Pedagogy',8),(289,'Classical',9),(290,'Orchestral',9),(291,'Jazz',9),(292,'Pedagogy',9),(293,'Classical',10),(294,'Orchestral',10),(295,'Jazz',10),(296,'Pedagogy',10),(297,'Classical',11),(298,'Orchestral',11),(299,'Jazz',11),(300,'Pedagogy',11),(301,'Classical',12),(302,'Orchestral',12),(303,'Jazz',12),(304,'Pedagogy',12),(305,'Classical',13),(306,'Orchestral',13),(307,'Jazz',13),(308,'Pedagogy',13),(309,'Classical',14),(310,'Orchestral',14),(311,'Classical',15),(312,'Jazz',15),(313,'Pop',15),(314,'Set',15),(315,'Orchestral',15),(316,'Pedagogy',15),(414,'Classical',16),(415,'Jazz',16),(416,'Rock',16),(417,'Blues',16),(418,'Early Music(Lute family)',16),(419,'Pedagogy',16),(420,'Opera',17),(421,'Classical',17),(422,'Rock',17),(423,'Jazz',17),(424,'Choral',17),(425,'Sacred',17),(426,'Musical Theater',17),(427,'Pedagogy',17),(428,'Classical',18),(429,'Jazz',18),(430,'Rock',18),(431,'Early Keyboard',18),(432,'Pedagogy',18),(433,'Chamber Music',18),(434,'Accompaniment',18),(435,'Classical',19),(436,'Pedagogy',19),(437,'Accompaniment',19),(438,'Orchestral',20),(439,'Wind Ensemble',20),(440,'Film Conducting',20),(441,'Orchestration',21),(442,'Scoring',21),(443,'General Composition',21),(444,'Counterpoint',21),(445,'Standard',22),(446,'schenkerian theory',22),(447,'Form and Analysis',22),(448,'Ear Training',22),(449,'Eurythmics',22),(450,'General Musicianship',22),(451,'Acoustics',22),(452,'Computer Application',22),(453,'Counterpoint',22),(454,'Ethnomusicology',23),(455,'Classical',23),(456,'Contemporary Music History',23),(457,'Jazz History',23),(458,'World Music',23),(459,'Early Music',23),(460,'Jazz',24),(461,'Classical',24),(462,'Orchestral',24),(463,'FolkHarp',24),(464,'Pedgagoy',24),(465,'String',27),(466,'Vocal',27),(467,'Wind/Brass',27),(468,'Conducting',27),(469,'Early-child',27),(470,'k-12',27),(471,'post-secondary',27);
+/*!40000 ALTER TABLE `Style` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2012-07-21 19:52:42
