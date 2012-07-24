@@ -52,11 +52,13 @@ public class Department {
 	private List<Faculty> faculty;
 	private boolean musicMinorAvailable;
 	private boolean graduateProgramAvailable;
+	private boolean schoolershipAvailable;
 	private String address;
 	private String city;
 	private String state;
 	private String zip;
 	private String departmentUrl;
+
 	
 	public Department(){
 		
@@ -91,7 +93,6 @@ public class Department {
 	}
 
 	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
-	@Column(nullable=false,columnDefinition="default '0'")
 	public int getSatMin() {
 		return satMin;
 	}
@@ -99,7 +100,6 @@ public class Department {
 		this.satMin = satMin;
 	}
 
-	@Column(nullable=false,columnDefinition="default 0")
 	public int getActMin() {
 		return actMin;
 	}
@@ -107,7 +107,6 @@ public class Department {
 		this.actMin = actMin;
 	}
 
-	@Column(nullable=false,columnDefinition="default 0")
 	public int getGreMin() {
 		return greMin;
 	}
@@ -127,7 +126,6 @@ public class Department {
 		this.faculty = faculty;
 	}
 
-	@Column(columnDefinition="default 0")
 	public boolean isMusicMinorAvailable() {
 		return musicMinorAvailable;
 	}
@@ -135,13 +133,20 @@ public class Department {
 		this.musicMinorAvailable = musicMinorAvailable;
 	}
 	
-	@Column(columnDefinition="default 0")
 	public boolean isGraduateProgramAvailable() {
 		return graduateProgramAvailable;
 	}
 
 	public void setGraduateProgramAvailable(boolean graduateProgramAvailable) {
 		this.graduateProgramAvailable = graduateProgramAvailable;
+	}
+	
+	public boolean isSchoolershipAvailable() {
+		return schoolershipAvailable;
+	}
+
+	public void setSchoolershipAvailable(boolean schoolershipAvailable) {
+		this.schoolershipAvailable = schoolershipAvailable;
 	}
 
 	public String getAddress() {

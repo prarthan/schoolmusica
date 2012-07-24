@@ -14,7 +14,7 @@ public class SchoolSearchCriteria {
 	private int greMin;
 	private boolean musicMinorAvailable;
 	private boolean graduateProgramAvailable;
-	private boolean positionsAvailable;
+	private boolean schoolershipAvailable;
 
 	public String getSchoolName() {
 		return schoolName;
@@ -105,19 +105,12 @@ public class SchoolSearchCriteria {
 		this.graduateProgramAvailable = graduateProgramAvailable;
 	}
 
-	public boolean isPositionsAvailable() {
-		return positionsAvailable;
+	public boolean isSchoolershipAvailable() {
+		return schoolershipAvailable;
 	}
 
-	public void setPositionsAvailable(boolean positionsAvailable) {
-		this.positionsAvailable = positionsAvailable;
+	public void setSchoolershipAvailable(boolean schoolershipAvailable) {
+		this.schoolershipAvailable = schoolershipAvailable;
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }

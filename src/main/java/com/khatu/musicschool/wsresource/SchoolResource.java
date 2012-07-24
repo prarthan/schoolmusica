@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import com.khatu.musicschool.model.MusicSchool;
 import com.khatu.musicschool.service.MusicSchoolService;
+import com.khatu.musicschool.wsresource.response.MusicSearchResponse;
 
 
 
@@ -43,11 +44,10 @@ public class SchoolResource {
 	@POST
 	@Path("/search")
 	@Produces({MediaType.APPLICATION_JSON })
-	public List<MusicSchool> searchMusicSchool(SchoolSearchCriteria schoolSearchCriteria){
-		
-		List<MusicSchool> schools = new ArrayList<MusicSchool>();
-		schools = musicSchoolService.searchMusicSchool(schoolSearchCriteria);
-		return schools;
+	public MusicSearchResponse searchMusicSchool(SchoolSearchCriteria schoolSearchCriteria){
+
+		return musicSchoolService.searchMusicSchool(schoolSearchCriteria);
+
 	}
 	
 	@POST
