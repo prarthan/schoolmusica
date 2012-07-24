@@ -19,8 +19,7 @@ public class MusicSchoolDao {
 	
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
-	
-	
+		
 	public MusicSchool getMusicSchool(int musicSchoolId){
 		
 		MusicSchool musicSchool = (MusicSchool)hibernateTemplate.get(MusicSchool.class, musicSchoolId);
@@ -56,18 +55,10 @@ public class MusicSchoolDao {
 		if(schoolSearchCriteria.getGreMin()>0){
 			query.add(Restrictions.ge("dept.greMin", schoolSearchCriteria.getGreMin()));
 		}
-		
-		if(schoolSearchCriteria.isGraduateProgramAvailable() ==true){
-			query.add(Restrictions.eq("dept.graduateProgramAvailable", schoolSearchCriteria.isGraduateProgramAvailable()));
-		}
-		
-		if(schoolSearchCriteria.isMusicMinorAvailable() ==  true){
-			query.add(Restrictions.eq("dept.musicMinorAvailable", schoolSearchCriteria.isMusicMinorAvailable()));
-		}
-			
-		if(schoolSearchCriteria.isSchoolershipAvailable() ==  true){
-			query.add(Restrictions.eq("dept.schoolershipAvailable", schoolSearchCriteria.isSchoolershipAvailable()));
-		}
+
+		query.add(Restrictions.eq("dept.graduateProgramAvailable", schoolSearchCriteria.isGraduateProgramAvailable()));
+		query.add(Restrictions.eq("dept.musicMinorAvailable", schoolSearchCriteria.isMusicMinorAvailable()));
+		query.add(Restrictions.eq("dept.schoolershipAvailable", schoolSearchCriteria.isSchoolershipAvailable()));
 		
 		if(schoolSearchCriteria.getStyle()!=null){
 			query.add(Restrictions.eq("dept.faculty.styles", schoolSearchCriteria.getStyle()));

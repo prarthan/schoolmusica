@@ -36,15 +36,15 @@
     <script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/jquery/jquery-ui-1.8.21.custom.min.js"></script>
     <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-       $(document).ready( function() {
-         var index = new Index();
-         index.init();
-       });
+    <script type="text/javascript" src="js/search.js"></script>
+    <script id="searchResultSchoolTemplate" type="text/x-jquery-tmpl"> 
+      <div class='searchresult' id=${domId} >
+        <h2>${name}</h2>
+        <div class='department_list'></div>
+      </div>
     </script>
-    <script id="searchResultTemplate" type="text/x-jquery-tmpl"> 
-      <div class='searchresult'>
+    <script id="searchResultDepartmentTemplate" type="text/x-jquery-tmpl"> 
+      <div class='department'>
         <h3><a href="${departmentUrl}">${departmentName}</a></h3>
         <div class='address'>
           ${address} ${city} ${state}-${zip}
@@ -78,11 +78,19 @@
         <div class="resultitem">
           <h4>Other Information</h4>
           <div class='resultiteminfo'>
-            <u>Music Minor Available:</u> {{if musicMinorAvailable}}Yes{{else}}No{{/if}}
+            <div><u>Music Minor Available:</u> {{if musicMinorAvailable}}Yes{{else}}No{{/if}}</div>
+            <div><u>Graduate Program Available:</u> {{if graduateProgramAvailable}}Yes{{else}}No{{/if}}</div>
+            <div><u>Scholarship Available:</u> {{if schoolershipAvailable}}Yes{{else}}No{{/if}}</div>
           </div>
         </div>        
       </div>
       <hr></h3>
+    </script>
+    <script type="text/javascript">
+       $(document).ready( function() {
+         var search = new Search();
+         search.init();
+       });
     </script>
   </body>
 </html>
