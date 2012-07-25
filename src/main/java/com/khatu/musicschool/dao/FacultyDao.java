@@ -10,20 +10,16 @@ import com.khatu.musicschool.model.Faculty;
 @Repository
 public class FacultyDao {
 	
-//	@Autowired
-//	private HibernateTemplate hibernateTemplate;
-//	
-//	public Faculty getFaculty(int facultyId){
-//		
-//		  return (Faculty) hibernateTemplate.get(Faculty.class, facultyId);
-//		
-//	}
-//	
-//	
-//	public Faculty addFaculty(Faculty faculty){
-//		return (Faculty) hibernateTemplate.merge(faculty);
-//	}
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+	
+	public Faculty getFaculty(int facultyId){
+		  return (Faculty) hibernateTemplate.get(Faculty.class, facultyId);
+	}
 	
 	
+	public Faculty addFaculty(Faculty faculty){
+		return (Faculty) hibernateTemplate.merge(faculty);
+	}
 
 }

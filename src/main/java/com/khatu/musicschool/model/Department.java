@@ -45,14 +45,15 @@ filters = {
 public class Department {
 	private int deparmentId;
 	private String departmentName;
+	private int musicSchoolId;
 	private String keyword;
-	private int satMin;
-	private int actMin;
-	private int greMin;
+	private int satMin=0;
+	private int actMin=0;
+	private int greMin=0;
 	private List<Faculty> faculty;
-	private boolean musicMinorAvailable;
-	private boolean graduateProgramAvailable;
-	private boolean schoolershipAvailable;
+	private boolean musicMinorAvailable=false;
+	private boolean graduateProgramAvailable=false;
+	private boolean schoolershipAvailable=false;
 	private String address;
 	private String city;
 	private String state;
@@ -82,6 +83,16 @@ public class Department {
 		this.departmentName = departmentName;
 	}
 	
+	
+	
+	public int getMusicSchoolId() {
+		return musicSchoolId;
+	}
+
+	public void setMusicSchoolId(int musicSchoolId) {
+		this.musicSchoolId = musicSchoolId;
+	}
+
 	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	@Analyzer(definition = "customanalyzer")
 	public String getKeyword() {
@@ -117,7 +128,7 @@ public class Department {
 	
 	@IndexedEmbedded
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="departmentId",nullable=false)
+	@JoinColumn(name="departmentId")
 	public List<Faculty> getFaculty() {
 		return faculty;
 	}
@@ -126,6 +137,7 @@ public class Department {
 		this.faculty = faculty;
 	}
 
+	@Column(columnDefinition="boolean default false")
 	public boolean isMusicMinorAvailable() {
 		return musicMinorAvailable;
 	}
@@ -133,6 +145,7 @@ public class Department {
 		this.musicMinorAvailable = musicMinorAvailable;
 	}
 	
+	@Column(columnDefinition="boolean default false")
 	public boolean isGraduateProgramAvailable() {
 		return graduateProgramAvailable;
 	}
@@ -141,6 +154,7 @@ public class Department {
 		this.graduateProgramAvailable = graduateProgramAvailable;
 	}
 	
+	@Column(columnDefinition="boolean default false")
 	public boolean isSchoolershipAvailable() {
 		return schoolershipAvailable;
 	}

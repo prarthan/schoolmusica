@@ -18,9 +18,9 @@ import com.khatu.musicschool.service.FacultyService;
 @Component
 @Path("/faculty")
 public class FacultyResource {
-//	
-//	@Autowired
-//	private FacultyService facultyService;
+	
+	@Autowired
+	private FacultyService facultyService;
 //	
 //	
 //	@GET
@@ -32,11 +32,11 @@ public class FacultyResource {
 //	}
 //	
 //	
-//	@POST
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Faculty addFaculy(Faculty faculty){
-//		return facultyService.addFaculty(faculty);
-//	}
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Faculty addFaculy(Faculty faculty){
+		return facultyService.addFaculty(faculty);
+	}
 	
 }

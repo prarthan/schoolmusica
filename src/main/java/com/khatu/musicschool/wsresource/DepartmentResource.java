@@ -44,6 +44,13 @@ public class DepartmentResource {
 		return response;
 	}
 	
+	@POST
+	@Produces({MediaType.APPLICATION_JSON })
+	@Consumes({MediaType.APPLICATION_JSON })
+	public Department addDepartment(Department department){
+		return departmentService.addDepartment(department);
+	}
+	
 	
 	private DepartmentResponse getdummydata(){
 		//Style

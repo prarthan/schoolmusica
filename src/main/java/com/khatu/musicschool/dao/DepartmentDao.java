@@ -31,6 +31,10 @@ public class DepartmentDao {
 	}
 	
 	
+	public Department addDepartment(Department department){
+		return (Department)hibernateTemplate.merge(department);
+	}
+	
 	
 
 }

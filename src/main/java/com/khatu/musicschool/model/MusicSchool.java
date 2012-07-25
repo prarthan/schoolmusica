@@ -49,7 +49,7 @@ public class MusicSchool {
 
 
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    @JoinColumn(name="musicSchoolId",nullable=false)
+    @JoinColumn(name="musicSchoolId")
 	public List<Department> getDepartment() {
 		return department;
 	}

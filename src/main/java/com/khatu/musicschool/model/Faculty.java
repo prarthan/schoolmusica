@@ -2,16 +2,18 @@ package com.khatu.musicschool.model;
 
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.search.annotations.Analyze;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Index;
 import org.hibernate.search.annotations.Store;
 
-
+@XmlRootElement
 @Entity
 public class Faculty {
 	
@@ -19,6 +21,7 @@ public class Faculty {
 	private String firstName;
 	private String middleName;
 	private String lastName;
+	private int deparmentId;
 	private String title;
 	private String keyword;
 	private String styles;
@@ -57,6 +60,13 @@ public class Faculty {
 		this.lastName = lastName;
 	}
 	
+	@Column(nullable = false)
+	public int getDeparmentId() {
+		return deparmentId;
+	}
+	public void setDeparmentId(int deparmentId) {
+		this.deparmentId = deparmentId;
+	}
 	public String getTitle() {
 		return title;
 	}

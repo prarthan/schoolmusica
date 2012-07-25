@@ -39,7 +39,7 @@ public class Program {
 	}
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="programId",nullable=false)
+	@JoinColumn(name="programId")
 	public List<Style> getStyles() {
 		return styles;
 	}
@@ -50,7 +50,7 @@ public class Program {
 	
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="programId",nullable=false)
+	@JoinColumn(name="programId")
 	public List<Method> getMethod() {
 		return method;
 	}

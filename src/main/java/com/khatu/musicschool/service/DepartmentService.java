@@ -23,6 +23,11 @@ public class DepartmentService {
 		   
 		  return  departmentDao.searchDepartment(searchCriteria);
 	   }
+		
+		@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
+		public Department addDepartment(Department department){
+			return departmentDao.addDepartment(department);
+		}
 	
 	
 	
