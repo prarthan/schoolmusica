@@ -13,21 +13,21 @@
     <!-- Activates scanning of @Autowired -->
     <context:annotation-config/>
     
-    <!-- 
+    
     <bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://schoolmusica.c9nlp4oasxjs.us-east-1.rds.amazonaws.com/schoolmusica"/>
 		<property name="username" value="schoolmusica"/>
 		<property name="password" value="schoolmusica"/>
-	</bean> -->
+	</bean>
 	
 	
-	<bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+<!-- 	<bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost/schoolmusica"/>
 		<property name="username" value="root"/>
 		<property name="password" value=""/>
-	</bean>
+	</bean> -->
  
 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="musicschoolDataSource" />

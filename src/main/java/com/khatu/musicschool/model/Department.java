@@ -16,32 +16,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.apache.solr.analysis.LowerCaseFilterFactory;
-import org.apache.solr.analysis.SnowballPorterFilterFactory;
-import org.apache.solr.analysis.StandardTokenizerFactory;
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Analyzer;
-import org.hibernate.search.annotations.AnalyzerDef;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.IndexedEmbedded;
-import org.hibernate.search.annotations.Parameter;
-import org.hibernate.search.annotations.Store;
-import org.hibernate.search.annotations.TokenFilterDef;
-import org.hibernate.search.annotations.TokenizerDef;
 
 @XmlRootElement
 @Entity
-@Indexed
-@AnalyzerDef(name = "customanalyzer",
-tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
-filters = {
-		@TokenFilterDef(factory = LowerCaseFilterFactory.class),
-		@TokenFilterDef(factory = SnowballPorterFilterFactory.class, params = {
-				@Parameter(name = "language", value = "English")
-		})
-})
 public class Department {
 	private int deparmentId;
 	private String departmentName;
@@ -93,8 +70,6 @@ public class Department {
 		this.musicSchoolId = musicSchoolId;
 	}
 
-	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
-	@Analyzer(definition = "customanalyzer")
 	public String getKeyword() {
 		return keyword;
 	}
@@ -103,7 +78,6 @@ public class Department {
 		this.keyword = keyword;
 	}
 
-	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	public int getSatMin() {
 		return satMin;
 	}
@@ -126,7 +100,6 @@ public class Department {
 	}
 
 	
-	@IndexedEmbedded
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="departmentId")
 	public List<Faculty> getFaculty() {

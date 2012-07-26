@@ -8,11 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Store;
-
 @XmlRootElement
 @Entity
 public class Faculty {
@@ -38,7 +33,6 @@ public class Faculty {
 		this.facultyId = facultyId;
 	}
 	
-	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -52,7 +46,6 @@ public class Faculty {
 		this.middleName = middleName;
 	}
 	
-	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	public String getLastName() {
 		return lastName;
 	}
