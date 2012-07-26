@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type='text/css'>
     <link rel="stylesheet" href="css/gradients.css" type='text/css'>
     <link rel="stylesheet" href="css/common.css" type='text/css'>   
-    <link rel="stylesheet" href="css/index.css" type='text/css'>   
+    <link rel="stylesheet" href="css/search.css" type='text/css'>   
   </head>
   <body>
     <div class="hd blue-gradient">
@@ -27,37 +27,52 @@
       <div class="row-fluid ">
         <div id="filters" class="span2">
           <form>
-            <div id="states">
-              <span>State</span>
-              <input id="stateAC" name="stateAC"></input>
-              <input type="hidden" class="filterInput" id="state" name="state"></input>
-
-            </div>
-            <div id="scores">
-              <div id="sat_score">
-                <span>SAT</span>
-                <input id="satMin" class="filterInput" type="number" name="satMin"></sat>
+            <div id="states" class='filter'>
+              <div class='hd blue-gradient'>
+                <span>State</span>
               </div>
-              <div id="gre_score">
-                <span>GRE</span>
-                <input id="greMin" class="filterInput" type="number" name="greMin"></sat>
+              <div class='bd'>
+                <input id="stateAC" name="stateAC" type="text" ></input>
+                <input type="hidden" class="filterInput" id="state" name="state"></input>
               </div>
-              <div id="act_score">
-                <span>ACT</span>
-                <input id="actMin" class="filterInput" type="number" name="actMin"></sat>
-              </div>                  
             </div>
-            <div id="musicMinor">
-              <input type="checkbox" class="filterInput" id="musicMinorAvailable" name="musicMinorAvailable"></input>
-              <span>Music Minor</span>
+            <div id="scores" class='filter'>
+              <div class='hd blue-gradient'>
+                <span>Minimum Scores</span>
+              </div>
+              <div class='bd'>
+                <div id="sat_score" class='label unchecked'>
+                  <span>SAT</span>
+                  <input id="satMin" class="filterInput" type="number" name="satMin" value="0" min="0" max="800"></input>
+                </div>
+                <div id="gre_score" class='label unchecked'>
+                  <span>GRE</span>
+                  <input id="greMin" class="filterInput" type="number" name="greMin" value="0"  min="0" max="1600"></input>
+                </div>
+                <div id="act_score" class='label unchecked'>
+                  <span>ACT</span>
+                  <input id="actMin" class="filterInput" type="number" name="actMin" value="0"  min="0" max="2000"></input>
+                </div>  
+              </div>                
             </div>
-            <div id="graduateProgram">
-              <input type="checkbox" id="graduateProgramAvailable" name="graduateProgramAvailable" class="filterInput"></input>
-              <span>Graduate Program</span>
-            </div>
-            <div id="schoolershipAvailable">
-              <input type="checkbox" class="filterInput" id="schoolershipAvailable" name="schoolershipAvailable"></input>
-              <span>Graduate Program</span>
+            <div id="others" class='filter'>
+              <div class='hd blue-gradient'>
+                <span>Other</span>
+              </div>
+              <div class='bd'>
+                <div id="musicMinor" class='label unchecked'>
+                  <input type="checkbox" class="filterInput" id="musicMinorAvailable" name="musicMinorAvailable"></input>
+                  <span>Music Minor</span>
+                </div>
+                <div id="graduateProgram" class='label unchecked'>
+                  <input type="checkbox" id="graduateProgramAvailable" name="graduateProgramAvailable" class="filterInput"></input>
+                  <span>Graduate Program</span>
+                </div>
+                <div id="schoolershipAvailable" class='label unchecked'>
+                  <input type="checkbox" class="filterInput" id="schoolershipAvailable" name="schoolershipAvailable"></input>
+                  <span>Graduate Program</span>
+                </div>
+              </div>
             </div>
           </form>
         </div>

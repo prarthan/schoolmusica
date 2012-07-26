@@ -301,7 +301,13 @@ FilterPane.prototype = {
       }
     });
     this.$el.find( "input.filterInput" ).on( "change", function() {
-      _this.refreshSearch() } ); 
+     if( this.type == "checkbox" ) 
+      if( this.checked )
+        $(this).parent().removeClass("unchecked")
+      else 
+        $(this).parent().addClass("unchecked")
+      _this.refreshSearch() 
+    } ); 
   },
   refreshSearch : function() {
     this.searchPane.search( this.searchPane.query );
