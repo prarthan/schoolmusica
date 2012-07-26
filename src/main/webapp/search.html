@@ -25,7 +25,42 @@
     </div>
     <div class="bd container-fluid gray-gradient">
       <div class="row-fluid ">
-        <div id="sidebar" class="span2"></div>
+        <div id="filters" class="span2">
+          <form>
+            <div id="states">
+              <span>State</span>
+              <input id="stateAC" name="stateAC"></input>
+              <input type="hidden" class="filterInput" id="state" name="state"></input>
+
+            </div>
+            <div id="scores">
+              <div id="sat_score">
+                <span>SAT</span>
+                <input id="satMin" class="filterInput" type="number" name="satMin"></sat>
+              </div>
+              <div id="gre_score">
+                <span>GRE</span>
+                <input id="greMin" class="filterInput" type="number" name="greMin"></sat>
+              </div>
+              <div id="act_score">
+                <span>ACT</span>
+                <input id="actMin" class="filterInput" type="number" name="actMin"></sat>
+              </div>                  
+            </div>
+            <div id="musicMinor">
+              <input type="checkbox" class="filterInput" id="musicMinorAvailable" name="musicMinorAvailable"></input>
+              <span>Music Minor</span>
+            </div>
+            <div id="graduateProgram">
+              <input type="checkbox" id="graduateProgramAvailable" name="graduateProgramAvailable" class="filterInput"></input>
+              <span>Graduate Program</span>
+            </div>
+            <div id="schoolershipAvailable">
+              <input type="checkbox" class="filterInput" id="schoolershipAvailable" name="schoolershipAvailable"></input>
+              <span>Graduate Program</span>
+            </div>
+          </form>
+        </div>
         <div id="searchlist" class="span10">
            <div id="searchinfo"></div>
            <div id="searchresults"></div>
@@ -48,15 +83,6 @@
         <h3><a href="${departmentUrl}">${departmentName}</a></h3>
         <div class='address'>
           ${address} ${city} ${state}-${zip}
-        </div>
-        <div class='resultitem faculty_list'>
-          <h4>Faculty</h4>
-          {{each faculty}}
-          <div class='faculty resultiteminfo'>
-            <h5><a href="${$value.facultyUrl}">${$value.firstName} ${$value.lastName}</a></h5>
-            <div class='title'>${$value.title}</div>            
-          </div>
-          {{/each}}
         </div>
         <div class="resultitem scores">
            <h4>Minimum Scores Required</h4>
