@@ -69,11 +69,7 @@
 	         <ref local="mySessionFactory"/>
 	    </property>
   	</bean>
-  	
-  	
-
-	
-	
+ 	
     <!-- Activates scanning of @Repository and @Service -->
     <context:component-scan base-package="com.khatu.musicschool"/>
 
