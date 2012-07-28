@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 public class Department {
-	private int deparmentId;
+	private int departmentId;
 	private String departmentName;
 	private int musicSchoolId;
 	private String keyword;
@@ -48,22 +48,22 @@ public class Department {
 	
 	@Id
 	@GeneratedValue
-	public int getDeparmentId() {
-		return deparmentId;
+	public int getDepartmentId() {
+		return departmentId;
 	}
-	public void setDeparmentId(int deparmentId) {
-		this.deparmentId = deparmentId;
+
+	public void setDepartmentId(int departmentId) {
+		this.departmentId = departmentId;
 	}
 	
-
+	
 	public String getDepartmentName() {
 		return departmentName;
 	}
+
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
-	
-	
 	
 	public int getMusicSchoolId() {
 		return musicSchoolId;
@@ -131,16 +131,16 @@ public class Department {
 	}
 	
 	@Column(columnDefinition="boolean default false")
-	public String getAddress() {
-		return address;
-	}
-
 	public boolean isScholarshipsAvailable() {
 		return scholarshipsAvailable;
 	}
 
 	public void setScholarshipsAvailable(boolean scholarshipsAvailable) {
 		this.scholarshipsAvailable = scholarshipsAvailable;
+	}
+	
+	public String getAddress() {
+		return address;
 	}
 
 	public void setAddress(String address) {

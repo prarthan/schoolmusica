@@ -16,7 +16,7 @@ public class Faculty {
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	private int deparmentId;
+	private int departmentId;
 	private String title;
 	private String keyword;
 	private String studiedWith;
@@ -55,15 +55,19 @@ public class Faculty {
 	}
 	
 	@Column(nullable = false)
-	public int getDeparmentId() {
-		return deparmentId;
+	public int getDepartmentId() {
+		return departmentId;
 	}
-	public void setDeparmentId(int deparmentId) {
-		this.deparmentId = deparmentId;
+	
+	public void setDepartmentId(int departmentId) {
+		this.departmentId = departmentId;
 	}
+	
+	
 	public String getTitle() {
 		return title;
 	}
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
