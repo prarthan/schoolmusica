@@ -14,7 +14,7 @@ public class SchoolSearchCriteria {
 	private int greMin;
 	private boolean musicMinorAvailable;
 	private boolean graduateProgramAvailable;
-	private boolean schoolershipAvailable;
+	private boolean scholarshipsAvailable;
 	private int firstResult;
 	private int maxResult;
 
@@ -107,12 +107,14 @@ public class SchoolSearchCriteria {
 		this.graduateProgramAvailable = graduateProgramAvailable;
 	}
 
-	public boolean isSchoolershipAvailable() {
-		return schoolershipAvailable;
+	
+
+	public boolean isScholarshipsAvailable() {
+		return scholarshipsAvailable;
 	}
 
-	public void setSchoolershipAvailable(boolean schoolershipAvailable) {
-		this.schoolershipAvailable = schoolershipAvailable;
+	public void setScholarshipsAvailable(boolean scholarshipsAvailable) {
+		this.scholarshipsAvailable = scholarshipsAvailable;
 	}
 
 	public int getFirstResult() {

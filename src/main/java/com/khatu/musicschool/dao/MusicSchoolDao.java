@@ -60,7 +60,7 @@ public class MusicSchoolDao {
 
 		query.add(Restrictions.eq("dept.graduateProgramAvailable", schoolSearchCriteria.isGraduateProgramAvailable()));
 		query.add(Restrictions.eq("dept.musicMinorAvailable", schoolSearchCriteria.isMusicMinorAvailable()));
-		query.add(Restrictions.eq("dept.schoolershipAvailable", schoolSearchCriteria.isSchoolershipAvailable()));
+		query.add(Restrictions.eq("dept.scholarshipsAvailable", schoolSearchCriteria.isScholarshipsAvailable()));
 		
 		if(schoolSearchCriteria.getStyle()!=null){
 			query.add(Restrictions.eq("dept.faculty.styles", schoolSearchCriteria.getStyle()));
