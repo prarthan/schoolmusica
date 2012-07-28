@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,7 @@ public class MusicSchoolDao {
 			.createAlias("department", "dept")
 			.add(Restrictions.like("dept.keyword", "%" + schoolSearchCriteria.getInstrument() +"%"));
 		
+		
 		if(schoolSearchCriteria.getState()!=null){
 			query.add(Restrictions.eq("dept.state", schoolSearchCriteria.getState()));
 		}
@@ -67,7 +69,7 @@ public class MusicSchoolDao {
 		if(schoolSearchCriteria.getMethod() != null){
 			query.add(Restrictions.eq("dept.faculty.methods", schoolSearchCriteria.getMethod()));
 		}
-			
+		
 		List<MusicSchool> schools = this.hibernateTemplate.findByCriteria(query);
 		
 		return schools;

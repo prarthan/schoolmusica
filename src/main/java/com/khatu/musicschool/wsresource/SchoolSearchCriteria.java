@@ -15,6 +15,8 @@ public class SchoolSearchCriteria {
 	private boolean musicMinorAvailable;
 	private boolean graduateProgramAvailable;
 	private boolean schoolershipAvailable;
+	private int firstResult;
+	private int maxResult;
 
 	public String getSchoolName() {
 		return schoolName;
@@ -111,6 +113,22 @@ public class SchoolSearchCriteria {
 
 	public void setSchoolershipAvailable(boolean schoolershipAvailable) {
 		this.schoolershipAvailable = schoolershipAvailable;
+	}
+
+	public int getFirstResult() {
+		return firstResult;
+	}
+
+	public void setFirstResult(int firstResult) {
+		this.firstResult = firstResult;
+	}
+
+	public int getMaxResult() {
+		return maxResult;
+	}
+
+	public void setMaxResult(int maxResult) {
+		this.maxResult = maxResult;
 	}
 
 }

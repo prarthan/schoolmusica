@@ -19,6 +19,7 @@ public class Faculty {
 	private int deparmentId;
 	private String title;
 	private String keyword;
+	private String studiedWith;
 	private String styles;
 	private String methods;
     private String facultyUrl;
@@ -72,6 +73,13 @@ public class Faculty {
 	}
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
+	}
+	
+	public String getStudiedWith() {
+		return studiedWith;
+	}
+	public void setStudiedWith(String studiedWith) {
+		this.studiedWith = studiedWith;
 	}
 	public String getStyles() {
 		return styles;

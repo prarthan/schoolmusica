@@ -30,12 +30,15 @@ public class Department {
 	private List<Faculty> faculty;
 	private boolean musicMinorAvailable=false;
 	private boolean graduateProgramAvailable=false;
-	private boolean schoolershipAvailable=false;
+	private boolean scholarshipsAvailable=false;
 	private String address;
 	private String city;
 	private String state;
 	private String zip;
+	private String country;
 	private String departmentUrl;
+	private String announcement;
+	
 
 	
 	public Department(){
@@ -128,16 +131,16 @@ public class Department {
 	}
 	
 	@Column(columnDefinition="boolean default false")
-	public boolean isSchoolershipAvailable() {
-		return schoolershipAvailable;
-	}
-
-	public void setSchoolershipAvailable(boolean schoolershipAvailable) {
-		this.schoolershipAvailable = schoolershipAvailable;
-	}
-
 	public String getAddress() {
 		return address;
+	}
+
+	public boolean isScholarshipsAvailable() {
+		return scholarshipsAvailable;
+	}
+
+	public void setScholarshipsAvailable(boolean scholarshipsAvailable) {
+		this.scholarshipsAvailable = scholarshipsAvailable;
 	}
 
 	public void setAddress(String address) {
@@ -167,6 +170,14 @@ public class Department {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
+	
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
 
 	public String getDepartmentUrl() {
 		return departmentUrl;
@@ -175,5 +186,14 @@ public class Department {
 	public void setDepartmentUrl(String departmentUrl) {
 		this.departmentUrl = departmentUrl;
 	}
+
+	public String getAnnouncement() {
+		return announcement;
+	}
+
+	public void setAnnouncement(String announcement) {
+		this.announcement = announcement;
+	}
+	
 
 }
