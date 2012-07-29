@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/search.css" type='text/css'>   
   </head>
   <body>
-    <div class="hd blue-gradient">
+    <div class="hd blue-gradient navbar navbar-fixed-top">
       <div class="logo">
         <a href="index.html">
           <img src="img/logo2.png" alt="Logo"></img>
@@ -55,26 +55,35 @@
                 </div>  
               </div>                
             </div>
-            <div id="others" class='filter'>
-              <div class='hd blue-gradient'>
-                <span>Other</span>
-              </div>
-              <div class='bd'>
-                <div id="musicMinor" class='label unchecked'>
-                  <input type="checkbox" class="filterInput" id="musicMinorAvailable" name="musicMinorAvailable"></input>
-                  <span>Music Minor</span>
-                </div>
-                <div id="graduateProgram" class='label unchecked'>
-                  <input type="checkbox" id="graduateProgramAvailable" name="graduateProgramAvailable" class="filterInput"></input>
-                  <span>Graduate Program</span>
-                </div>
-                <div id="scholarshipsAvailable" class='label unchecked'>
-                  <input type="checkbox" class="filterInput" id="scholarshipsAvailable" name="scholarshipsAvailable"></input>
-                  <span>Scholarships</span>
-                </div>
-              </div>
-              </div>
           </form>
+          <div id="others" class='filter'>
+            <div class='hd blue-gradient'>
+              <span>Other</span>
+            </div>
+            <div class='bd'>
+              <div id="musicMinor" class='label unchecked'>
+                <div>Music Minor</div>
+                <div class="btn-group" data-toggle="buttons-radio">
+                  <button class="btn btn-mini">Yes</button>
+                  <button class="btn btn-mini">No</button>
+                </div>
+              </div>
+              <div id="graduateProgram" class='label unchecked'>
+                <div>Graduate Program</div>
+                <div class="btn-group" data-toggle="buttons-radio">
+                  <button class="btn btn-mini">Yes</button>
+                  <button class="btn btn-mini">No</button>
+                </div>
+              </div>
+              <div id="scholarships" class='label unchecked'>
+                <div>Scholarships</div>
+                <div class="btn-group" data-toggle="buttons-radio">
+                  <button class="btn btn-mini">Yes</button>
+                  <button class="btn btn-mini">No</button>
+                </div>
+              </div>
+            </div>
+              </div>
         </div>
         <div id="searchlist" class="span10">
            <div id="searchinfo"></div>

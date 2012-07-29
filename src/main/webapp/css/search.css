@@ -1,3 +1,7 @@
+body {
+  padding-top: 105px;
+}
+
 .item-image {
   float: right;
   margin-right: 10px;
@@ -31,10 +35,14 @@
 #searchlist {
   padding: 10px;
   position: relative;
+  overflow: hidden;
+  float: right;
 }
 
 #searchresults {
   margin-top: 10px;
+  height: 100%;
+  overflow: auto;
 }
 
 #searchlist .searchresult {
@@ -120,6 +128,7 @@
 
 #filters {
   padding: 5px;
+  position: fixed;
 }
 
 #filters .filter {
@@ -169,5 +178,30 @@
 #others span {
   position: relative;
   top: 2px;
+}
 
+.label {
+  margin: 3px 0;
+}
+
+.label .btn.active {
+  background-color: #0074CC;
+  background-image: -ms-linear-gradient(top, #08C, #05C);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#08C), to(#05C));
+  background-image: -webkit-linear-gradient(top, #08C, #05C);
+  background-image: -o-linear-gradient(top, #08C, #05C);
+  background-image: -moz-linear-gradient(top, #08C, #05C);
+  background-image: linear-gradient(top, #08C, #05C);
+  background-repeat: repeat-x;
+  border-color: #05C #05C #003580;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.label div:first-child {
+  position: relative;
+  top: 4px;
+  width: 110px;
+  float: left;
 }

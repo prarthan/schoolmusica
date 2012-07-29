@@ -301,13 +301,20 @@ FilterPane.prototype = {
       }
     });
     this.$el.find( "input.filterInput" ).on( "change", function() {
-     if( this.type == "checkbox" ) 
-      if( this.checked )
-        $(this).parent().removeClass("unchecked")
-      else 
-        $(this).parent().addClass("unchecked")
       _this.refreshSearch() 
     } ); 
+
+    this.$el.find( ".btn" ).click( function( event ) {
+      if( $(this).hasClass('active') ) {
+        $(this).removeClass('active');
+      }
+      else {
+        $(this).parent().children().removeClass("active");
+        $(this).addClass('active');
+      }
+      _this.refreshSearch();
+      return false;
+    });
   },
   refreshSearch : function() {
     this.searchPane.search( this.searchPane.query );
@@ -322,6 +329,16 @@ FilterPane.prototype = {
       }
       if( item.value == "on" ) {
         result[ item.name ] = true;
+      }
+    }
+    var buttons = this.$el.find(".btn-group .active" );
+    for( var i = 0; i < buttons.length; i++ ) {
+      var item = $(buttons[i]).parent().parent().attr('id') + "Available";
+      if( $(buttons[i]).html().toLowerCase() == "yes" ) {
+        result[item ] = true;
+      }
+      else {
+        result[ item ] = false;
       }
     }
     return result  
@@ -394,7 +411,7 @@ SearchResult.prototype = {
     $("#searchResultSchoolTemplate").tmpl( school ).appendTo( "#searchresults")
     for( var j in school.department ) {
       $( "#searchResultDepartmentTemplate" ).tmpl( school.department[j] ).appendTo( "#searchresults #" + school.domId + " .department_list" );
-    }    
+    }
   }
 };
 

@@ -1,5 +1,5 @@
 html, body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .hd {
@@ -58,7 +58,7 @@ html, body {
   background: #50B217;
 }
 
-d.hd .searchfield div:hover button {
+.hd .searchfield div:hover button {
     border: 1px solid #96c56f;
 
 }
