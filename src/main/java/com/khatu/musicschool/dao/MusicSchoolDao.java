@@ -1,7 +1,9 @@
 package com.khatu.musicschool.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.khatu.musicschool.model.Department;
 import com.khatu.musicschool.model.MusicSchool;
 import com.khatu.musicschool.wsresource.SchoolSearchCriteria;
+import com.khatu.musicschool.wsresource.response.MusicSchoolResponse;
 
 @Repository
 public class MusicSchoolDao {
@@ -39,38 +42,75 @@ public class MusicSchoolDao {
 		return (MusicSchool)hibernateTemplate.merge(musicSchool);
 	}
 	
-	public List<MusicSchool> searchMusicSchool(SchoolSearchCriteria schoolSearchCriteria){
+	public List<MusicSchoolResponse> searchMusicSchool(SchoolSearchCriteria schoolSearchCriteria){
 		
-		DetachedCriteria query = DetachedCriteria.forClass(MusicSchool.class,"school")
-			.createAlias("department", "dept")
-			.add(Restrictions.like("dept.keyword", "%" + schoolSearchCriteria.getInstrument() +"%"));
+		List<Department> departments = new ArrayList<Department>();
+		
+		Conjunction conjuctionCriteria = Restrictions.conjunction();
+		
+		DetachedCriteria query = DetachedCriteria.forClass(Department.class,"Department");
+//			.createAlias("department", "dept");
+		if(schoolSearchCriteria.getInstrument()!=null && !schoolSearchCriteria.getInstrument().isEmpty())
+			conjuctionCriteria.add(Restrictions.like("keyword", "%" + schoolSearchCriteria.getInstrument() +"%"));
 		
 		
 		if(schoolSearchCriteria.getState()!=null){
-			query.add(Restrictions.eq("dept.state", schoolSearchCriteria.getState()));
+			conjuctionCriteria.add(Restrictions.eq("state", schoolSearchCriteria.getState()));
 		}
 		
 		if(schoolSearchCriteria.getSatMin()>0){
-			query.add(Restrictions.ge("dept.satMin", schoolSearchCriteria.getSatMin()));
+			conjuctionCriteria.add(Restrictions.ge("satMin", schoolSearchCriteria.getSatMin()));
+
 		}
 		
 		if(schoolSearchCriteria.getGreMin()>0){
-			query.add(Restrictions.ge("dept.greMin", schoolSearchCriteria.getGreMin()));
+			conjuctionCriteria.add(Restrictions.ge("greMin", schoolSearchCriteria.getGreMin()));
 		}
-
-		query.add(Restrictions.eq("dept.graduateProgramAvailable", schoolSearchCriteria.isGraduateProgramAvailable()));
-		query.add(Restrictions.eq("dept.musicMinorAvailable", schoolSearchCriteria.isMusicMinorAvailable()));
-		query.add(Restrictions.eq("dept.scholarshipsAvailable", schoolSearchCriteria.isScholarshipsAvailable()));
+		
+		if(schoolSearchCriteria.getActMin()>0){
+			conjuctionCriteria.add(Restrictions.ge("actMin", schoolSearchCriteria.getActMin()));
+		}
+		
+		if(schoolSearchCriteria.getGraduateProgramAvailable()!=null){
+			conjuctionCriteria.add(Restrictions.eq("graduateProgramAvailable", (schoolSearchCriteria.getGraduateProgramAvailable().equalsIgnoreCase("true"))?true:false));
+		}
+		
+		if(schoolSearchCriteria.getMusicMinorAvailable()!=null){
+			conjuctionCriteria.add(Restrictions.eq("musicMinorAvailable", (schoolSearchCriteria.getMusicMinorAvailable().equalsIgnoreCase("true"))?true:false));
+		}
+		
+		if(schoolSearchCriteria.getScholarshipsAvailable()!=null){
+			conjuctionCriteria.add(Restrictions.eq("scholarshipsAvailable", (schoolSearchCriteria.getScholarshipsAvailable().equalsIgnoreCase("true"))?true:false));
+		}
 		
 		if(schoolSearchCriteria.getStyle()!=null){
-			query.add(Restrictions.eq("dept.faculty.styles", schoolSearchCriteria.getStyle()));
+			conjuctionCriteria.add(Restrictions.eq("faculty.styles", schoolSearchCriteria.getStyle()));
 		}
 		
 		if(schoolSearchCriteria.getMethod() != null){
-			query.add(Restrictions.eq("dept.faculty.methods", schoolSearchCriteria.getMethod()));
+			conjuctionCriteria.add(Restrictions.eq("faculty.methods", schoolSearchCriteria.getMethod()));
 		}
 		
-		List<MusicSchool> schools = this.hibernateTemplate.findByCriteria(query);
+		
+		if(schoolSearchCriteria.getInstrument()!=null && !schoolSearchCriteria.getInstrument().isEmpty()){
+			query.add(conjuctionCriteria);
+			departments = this.hibernateTemplate.findByCriteria(query);
+		}
+		
+		List<MusicSchoolResponse> schools = new ArrayList<MusicSchoolResponse>();
+		
+		MusicSchool currentSchool = null;
+		MusicSchoolResponse schoolResponse = null;
+		
+		for(Department currentDept: departments){
+			currentSchool = this.getMusicSchool(currentDept.getMusicSchoolId());
+			schoolResponse = new MusicSchoolResponse();
+			schoolResponse.setMusicSchoolId(currentSchool.getMusicSchoolId());
+			schoolResponse.setName(currentSchool.getName());
+			schoolResponse.addDepartment(currentDept);
+			schools.add(schoolResponse);			
+		}
+		
 		
 		return schools;
 	}

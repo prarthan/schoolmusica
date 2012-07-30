@@ -12,9 +12,9 @@ public class SchoolSearchCriteria {
 	private int satMin;
 	private int actMin;
 	private int greMin;
-	private boolean musicMinorAvailable;
-	private boolean graduateProgramAvailable;
-	private boolean scholarshipsAvailable;
+	private String musicMinorAvailable;
+	private String graduateProgramAvailable;
+	private String scholarshipsAvailable;
 	private int firstResult;
 	private int maxResult;
 
@@ -91,29 +91,28 @@ public class SchoolSearchCriteria {
 		this.greMin = greMin;
 	}
 
-	public boolean isMusicMinorAvailable() {
+
+	public String getMusicMinorAvailable() {
 		return musicMinorAvailable;
 	}
 
-	public void setMusicMinorAvailable(boolean musicMinorAvailable) {
+	public void setMusicMinorAvailable(String musicMinorAvailable) {
 		this.musicMinorAvailable = musicMinorAvailable;
 	}
 
-	public boolean isGraduateProgramAvailable() {
+	public String getGraduateProgramAvailable() {
 		return graduateProgramAvailable;
 	}
 
-	public void setGraduateProgramAvailable(boolean graduateProgramAvailable) {
+	public void setGraduateProgramAvailable(String graduateProgramAvailable) {
 		this.graduateProgramAvailable = graduateProgramAvailable;
 	}
 
-	
-
-	public boolean isScholarshipsAvailable() {
+	public String getScholarshipsAvailable() {
 		return scholarshipsAvailable;
 	}
 
-	public void setScholarshipsAvailable(boolean scholarshipsAvailable) {
+	public void setScholarshipsAvailable(String scholarshipsAvailable) {
 		this.scholarshipsAvailable = scholarshipsAvailable;
 	}
 

@@ -14,15 +14,15 @@
     <context:annotation-config/>
     
     
-<!-- <bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+<!-- 	<bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://schoolmusica.c9nlp4oasxjs.us-east-1.rds.amazonaws.com/schoolmusica"/>
 		<property name="username" value="schoolmusica"/>
 		<property name="password" value="schoolmusica"/>
 		<property name="maxActive" value="30"/>
 		<property name="minIdle" value="5"/>
-	</bean> -->
-	
+	</bean>
+ -->	
 	
 	<bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>

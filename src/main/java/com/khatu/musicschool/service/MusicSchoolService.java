@@ -14,6 +14,7 @@ import com.khatu.musicschool.common.Filters;
 import com.khatu.musicschool.dao.MusicSchoolDao;
 import com.khatu.musicschool.model.MusicSchool;
 import com.khatu.musicschool.wsresource.SchoolSearchCriteria;
+import com.khatu.musicschool.wsresource.response.MusicSchoolResponse;
 import com.khatu.musicschool.wsresource.response.MusicSearchResponse;
 
 @Service
@@ -41,7 +42,7 @@ public class MusicSchoolService {
 	
 	@Transactional(readOnly = true, propagation = Propagation.REQUIRES_NEW)
 	public MusicSearchResponse searchMusicSchool(SchoolSearchCriteria schoolSearchCriteria){
-		List<MusicSchool> schools = musicSchoolDao.searchMusicSchool(schoolSearchCriteria);
+		List<MusicSchoolResponse> schools = musicSchoolDao.searchMusicSchool(schoolSearchCriteria);
 		MusicSearchResponse response = new MusicSearchResponse();
 		response.setSchools(schools);
 		response.setFilters(getFilters());

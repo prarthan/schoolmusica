@@ -7,14 +7,14 @@ import com.khatu.musicschool.model.MusicSchool;
 
 public class MusicSearchResponse {
 	
-	private List<MusicSchool> schools;
+	private List<MusicSchoolResponse> schools;
 	private Map<String,List<String>> filters;
 	
-	public List<MusicSchool> getSchools() {
+	public List<MusicSchoolResponse> getSchools() {
 		return schools;
 	}
 	
-	public void setSchools(List<MusicSchool> schools) {
+	public void setSchools(List<MusicSchoolResponse> schools) {
 		this.schools = schools;
 	}
 	
