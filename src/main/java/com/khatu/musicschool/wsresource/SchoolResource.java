@@ -36,9 +36,7 @@ public class SchoolResource {
 	@Path("/{musicSchoolId}")
 	@Produces({MediaType.APPLICATION_JSON })
 	public MusicSchool getMusicSchool(@PathParam("musicSchoolId")int musicSchoolId){
-		
-//		return 	musicSchoolService.getMusicSchool(musicSchoolId);
-	    return null;
+		return 	musicSchoolService.getMusicSchool(musicSchoolId);
 	}
 	
 	@POST
