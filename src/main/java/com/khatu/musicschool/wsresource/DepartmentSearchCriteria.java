@@ -17,6 +17,7 @@ public class DepartmentSearchCriteria {
 	private boolean musicMinorAvailable;
 	private boolean graduateProgramAvailable;
 	private boolean positionsAvailable;
+	private int musicSchoolId;
 	
 	
 	
