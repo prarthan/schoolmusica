@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -15,9 +20,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.khatu.musicschool.common.Filters;
+import com.khatu.musicschool.exception.InvalidParameterException;
 import com.khatu.musicschool.model.Department;
 import com.khatu.musicschool.model.Faculty;
 import com.khatu.musicschool.model.Method;
+import com.khatu.musicschool.model.MusicSchool;
 import com.khatu.musicschool.model.Program;
 import com.khatu.musicschool.model.Style;
 import com.khatu.musicschool.service.DepartmentService;
@@ -48,7 +55,28 @@ public class DepartmentResource {
 	@Produces({MediaType.APPLICATION_JSON })
 	@Consumes({MediaType.APPLICATION_JSON })
 	public Department addDepartment(Department department){
+		validateDepartment(department);
 		return departmentService.addDepartment(department);
+	}
+	
+	private void validateDepartment(Department department){
+		 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+	     Validator  validator = factory.getValidator();
+		 Set<ConstraintViolation<Department>> constraintViolations =
+		            validator.validate(department);
+
+		 StringBuffer errorMessage = new StringBuffer();
+		 if(constraintViolations.size() !=0){
+			for(ConstraintViolation violation: constraintViolations){
+				errorMessage.append(violation.getMessage());
+				errorMessage.append("<br>");
+			}
+			
+			if(errorMessage.length()!=0){
+				throw new InvalidParameterException(errorMessage.toString());
+			}
+		 }
+		
 	}
 	
 	

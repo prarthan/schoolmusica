@@ -13,9 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.Index;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
 
 
 @XmlRootElement
@@ -59,6 +63,7 @@ public class Department {
 	}
 	
 	
+	@NotEmpty(message="You must provide Department name.")
 	public String getDepartmentName() {
 		return departmentName;
 	}
@@ -67,6 +72,7 @@ public class Department {
 		this.departmentName = departmentName;
 	}
 	
+
 	@Index(name = "musicschoolindex")
 	public int getMusicSchoolId() {
 		return musicSchoolId;
@@ -76,6 +82,7 @@ public class Department {
 		this.musicSchoolId = musicSchoolId;
 	}
 
+	@NotEmpty(message="You must provide instrument/program.")
 	@Index(name = "departmentkeywordindex")
 	public String getKeyword() {
 		return keyword;
@@ -149,6 +156,7 @@ public class Department {
 		this.scholarshipsAvailable = scholarshipsAvailable;
 	}
 	
+	@NotEmpty(message="You must provide department address.")
 	public String getAddress() {
 		return address;
 	}
@@ -157,6 +165,7 @@ public class Department {
 		this.address = address;
 	}
 
+	@NotEmpty(message="You must provide city.")
 	@Column(length=20)
 	public String getCity() {
 		return city;
@@ -166,6 +175,7 @@ public class Department {
 		this.city = city;
 	}
 
+	@NotEmpty(message="You must provide state.")
 	@Column(length=20)
 	@Index(name = "deptstateindex")
 	public String getState() {
@@ -176,6 +186,7 @@ public class Department {
 		this.state = state;
 	}
 
+	@NotEmpty(message="You must provide zip.")
 	public String getZip() {
 		return zip;
 	}
@@ -184,6 +195,7 @@ public class Department {
 		this.zip = zip;
 	}
 	
+	@NotEmpty(message="you must provide country.")
 	@Column(length=30)
 	public String getCountry() {
 		return country;
@@ -193,6 +205,8 @@ public class Department {
 		this.country = country;
 	}
 
+	@URL
+	@NotEmpty(message="You must provide department url.")
 	public String getDepartmentUrl() {
 		return departmentUrl;
 	}
@@ -209,6 +223,8 @@ public class Department {
 		this.announcement = announcement;
 	}
 
+	@NotEmpty(message="You must provide email.")
+	@Email(message="Invalid email format.")
 	@Column(length=30)
 	public String getEmail() {
 		return email;

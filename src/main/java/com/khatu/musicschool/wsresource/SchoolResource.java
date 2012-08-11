@@ -2,7 +2,12 @@ package com.khatu.musicschool.wsresource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.khatu.musicschool.exception.InvalidParameterException;
 import com.khatu.musicschool.model.MusicSchool;
 import com.khatu.musicschool.service.MusicSchoolService;
 import com.khatu.musicschool.wsresource.response.MusicSearchResponse;
@@ -53,7 +59,28 @@ public class SchoolResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public MusicSchool addMusicSchool(MusicSchool musicSchool){
+		validateSchool(musicSchool);
 		return musicSchoolService.addMusicSchool(musicSchool);
+	}
+	
+	private void validateSchool(MusicSchool musicSchool){
+		 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+	     Validator  validator = factory.getValidator();
+		 Set<ConstraintViolation<MusicSchool>> constraintViolations =
+		            validator.validate(musicSchool);
+
+		 StringBuffer errorMessage = new StringBuffer();
+		 if(constraintViolations.size() !=0){
+			for(ConstraintViolation violation: constraintViolations){
+				errorMessage.append(violation.getMessage());
+				errorMessage.append("<br>");
+			}
+			
+			if(errorMessage.length()!=0){
+				throw new InvalidParameterException(errorMessage.toString());
+			}
+		 }
+		
 	}
 
 }

@@ -10,7 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @XmlRootElement
@@ -37,7 +40,7 @@ public class MusicSchool {
 		this.musicSchoolId = musicSchoolId;
 	}
 
-
+	@NotEmpty(message="You must provide school name.")
 	public String getName() {
 		return name;
 	}

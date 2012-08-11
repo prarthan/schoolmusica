@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
+
 @XmlRootElement
 @Entity
 public class Faculty {
@@ -34,6 +37,7 @@ public class Faculty {
 		this.facultyId = facultyId;
 	}
 	
+	@NotEmpty
 	@Column(length=20)
 	public String getFirstName() {
 		return firstName;
@@ -50,6 +54,7 @@ public class Faculty {
 		this.middleName = middleName;
 	}
 	
+	@NotEmpty
 	@Column(length=20)
 	public String getLastName() {
 		return lastName;
@@ -76,6 +81,7 @@ public class Faculty {
 		this.title = title;
 	}
 	
+	@NotEmpty
 	public String getKeyword() {
 		return keyword;
 	}
@@ -104,7 +110,8 @@ public class Faculty {
 		this.methods = methods;
 	}
 	
-	
+	@NotEmpty
+	@URL
 	public String getFacultyUrl() {
 		return facultyUrl;
 	}

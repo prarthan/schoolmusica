@@ -251,7 +251,12 @@
 			<artifactId>spring-hibernate3</artifactId>
 			<version>2.0.8</version>
 	 	</dependency>
-		
+	 	
+	 	<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>5.0.0.Alpha1</version>
+		</dependency>
 		
 		<dependency>
 			<groupId>commons-dbcp</groupId>
