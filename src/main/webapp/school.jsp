@@ -1,7 +1,7 @@
 <%@ page import = " java.util.* " %>
 <%
     String id= "-1";
-    if (request.getParameter("id") == null) {
+    if (request.getParameter("id") != null) {
       id = request.getParameter("id");
     } 
 %>
