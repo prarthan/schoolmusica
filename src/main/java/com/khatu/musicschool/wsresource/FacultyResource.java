@@ -44,6 +44,7 @@ public class FacultyResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Faculty addFaculy(Faculty faculty){
+		validateFaculty(faculty);
 		return facultyService.addFaculty(faculty);
 	}
 	
