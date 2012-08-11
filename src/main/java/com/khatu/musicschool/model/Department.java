@@ -1,7 +1,6 @@
 package com.khatu.musicschool.model;
 
-import java.util.List;
-
+import java.util.List;   
 import javax.annotation.Nonnull;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.hibernate.annotations.Index;
 
 
 @XmlRootElement
@@ -66,6 +67,7 @@ public class Department {
 		this.departmentName = departmentName;
 	}
 	
+	@Index(name = "musicschoolindex")
 	public int getMusicSchoolId() {
 		return musicSchoolId;
 	}
@@ -74,6 +76,7 @@ public class Department {
 		this.musicSchoolId = musicSchoolId;
 	}
 
+	@Index(name = "departmentkeywordindex")
 	public String getKeyword() {
 		return keyword;
 	}
@@ -82,6 +85,8 @@ public class Department {
 		this.keyword = keyword;
 	}
 
+	@Column(length=5)
+	@Index(name = "deptsatminindex")
 	public int getSatMin() {
 		return satMin;
 	}
@@ -89,6 +94,8 @@ public class Department {
 		this.satMin = satMin;
 	}
 
+	@Column(length=5)
+	@Index(name = "deptactminindex")
 	public int getActMin() {
 		return actMin;
 	}
@@ -96,6 +103,8 @@ public class Department {
 		this.actMin = actMin;
 	}
 
+	@Column(length=5)
+	@Index(name = "deptgreminindex")
 	public int getGreMin() {
 		return greMin;
 	}
@@ -148,6 +157,7 @@ public class Department {
 		this.address = address;
 	}
 
+	@Column(length=20)
 	public String getCity() {
 		return city;
 	}
@@ -156,6 +166,8 @@ public class Department {
 		this.city = city;
 	}
 
+	@Column(length=20)
+	@Index(name = "deptstateindex")
 	public String getState() {
 		return state;
 	}
@@ -172,6 +184,7 @@ public class Department {
 		this.zip = zip;
 	}
 	
+	@Column(length=30)
 	public String getCountry() {
 		return country;
 	}
@@ -196,6 +209,7 @@ public class Department {
 		this.announcement = announcement;
 	}
 
+	@Column(length=30)
 	public String getEmail() {
 		return email;
 	}

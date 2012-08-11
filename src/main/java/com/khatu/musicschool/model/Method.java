@@ -1,5 +1,6 @@
 package com.khatu.musicschool.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,6 +22,7 @@ public class Method {
 		this.methodId = methodId;
 	}
 	
+	@Column(length=30)
 	public String getName() {
 		return name;
 	}

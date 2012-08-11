@@ -34,12 +34,15 @@ public class Faculty {
 		this.facultyId = facultyId;
 	}
 	
+	@Column(length=20)
 	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
+	@Column(length=20)
 	public String getMiddleName() {
 		return middleName;
 	}
@@ -47,6 +50,7 @@ public class Faculty {
 		this.middleName = middleName;
 	}
 	
+	@Column(length=20)
 	public String getLastName() {
 		return lastName;
 	}
@@ -79,12 +83,14 @@ public class Faculty {
 		this.keyword = keyword;
 	}
 	
+	@Column(length=100)
 	public String getStudiedWith() {
 		return studiedWith;
 	}
 	public void setStudiedWith(String studiedWith) {
 		this.studiedWith = studiedWith;
 	}
+	
 	public String getStyles() {
 		return styles;
 	}
@@ -97,6 +103,8 @@ public class Faculty {
 	public void setMethods(String methods) {
 		this.methods = methods;
 	}
+	
+	
 	public String getFacultyUrl() {
 		return facultyUrl;
 	}
