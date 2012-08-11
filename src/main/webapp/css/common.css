@@ -59,6 +59,9 @@ html, body {
 }
 
 .hd .searchfield div:hover button {
-    border: 1px solid #96c56f;
+  border: 1px solid #96c56f;
+}
 
+body > .bd {
+  margin-top: 106px;
 }
