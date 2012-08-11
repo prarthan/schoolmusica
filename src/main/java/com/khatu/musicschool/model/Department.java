@@ -38,6 +38,7 @@ public class Department {
 	private String country;
 	private String departmentUrl;
 	private String announcement;
+	private String email;
 	
 
 	
@@ -194,6 +195,13 @@ public class Department {
 	public void setAnnouncement(String announcement) {
 		this.announcement = announcement;
 	}
-	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 }
