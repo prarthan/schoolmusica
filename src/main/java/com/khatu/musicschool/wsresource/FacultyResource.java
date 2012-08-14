@@ -7,12 +7,14 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -43,9 +45,17 @@ public class FacultyResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Faculty addFaculy(Faculty faculty){
+	public Faculty addFaculty(Faculty faculty){
 		validateFaculty(faculty);
 		return facultyService.addFaculty(faculty);
+	}
+	
+	@DELETE
+	@Path("/{facultyId}")
+	@Produces({MediaType.APPLICATION_JSON })
+	public Response deleteFaculty(@PathParam("facultyId") int facultyId){
+		facultyService.deleteFaculty(facultyId);
+		return Response.ok().build();
 	}
 	
 	private void validateFaculty(Faculty faculty){

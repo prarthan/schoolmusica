@@ -9,12 +9,14 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +45,14 @@ public class SchoolResource {
 	@Produces({MediaType.APPLICATION_JSON })
 	public MusicSchool getMusicSchool(@PathParam("musicSchoolId")int musicSchoolId){
 		return 	musicSchoolService.getMusicSchool(musicSchoolId);
+	}
+	
+	@DELETE
+	@Path("/{musicSchoolId}")
+	@Produces({MediaType.APPLICATION_JSON })
+	public Response deleteMusicSchool(@PathParam("musicSchoolId")int musicSchoolId){
+		musicSchoolService.deleteMusicSchool(musicSchoolId);
+		return Response.ok().build();
 	}
 	
 	@POST

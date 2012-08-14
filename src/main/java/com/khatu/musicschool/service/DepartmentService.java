@@ -15,20 +15,22 @@ import com.khatu.musicschool.wsresource.DepartmentSearchCriteria;
 @Transactional(readOnly = true)
 public class DepartmentService {
 	
-	@Autowired
+    @Autowired
 	private DepartmentDao departmentDao;
 
-		@Transactional(readOnly = true,propagation = Propagation.REQUIRES_NEW)
-	   public List<Department> searchDepartment(DepartmentSearchCriteria searchCriteria){
-		   
-		  return  departmentDao.searchDepartment(searchCriteria);
-	   }
-		
-		@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
-		public Department addDepartment(Department department){
-			return departmentDao.addDepartment(department);
-		}
+    @Transactional(readOnly = true,propagation = Propagation.REQUIRES_NEW)
+    public List<Department> searchDepartment(DepartmentSearchCriteria searchCriteria){
+	   
+	  return  departmentDao.searchDepartment(searchCriteria);
+    }
 	
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
+	public Department addDepartment(Department department){
+		return departmentDao.addDepartment(department);
+	}
 	
-	
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
+	public void deleteDepartment(final int departmentId){
+		departmentDao.deleteDepartment(departmentId); 
+	}
 }

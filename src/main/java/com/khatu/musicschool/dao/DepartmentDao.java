@@ -35,6 +35,18 @@ public class DepartmentDao {
 		return (Department)hibernateTemplate.merge(department);
 	}
 	
+	public Department getDepartment(final int departmentId){
+		return (Department) hibernateTemplate.get(Department.class, departmentId);
+	}
+	
+	public void deleteDepartment(int departmentId){
+		Department dept = getDepartment(departmentId);
+		if(dept!=null){
+			hibernateTemplate.delete(dept);
+			hibernateTemplate.flush();
+		}
+	}
+	
 	
 
 }

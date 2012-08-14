@@ -39,6 +39,11 @@ public class MusicSchoolService {
 		return musicSchoolDao.addMusicSchool(musicSchool);
 	}
 	
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
+	public void deleteMusicSchool(final int musicSchoolId){
+		musicSchoolDao.deleteMusicSchool(musicSchoolId);
+	}
+	
 	
 	@Transactional(readOnly = true, propagation = Propagation.REQUIRES_NEW)
 	public MusicSearchResponse searchMusicSchool(SchoolSearchCriteria schoolSearchCriteria){

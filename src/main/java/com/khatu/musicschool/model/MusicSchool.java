@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -52,6 +53,7 @@ public class MusicSchool {
 
 
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     @JoinColumn(name="musicSchoolId")
 	public List<Department> getDepartment() {
 		return department;

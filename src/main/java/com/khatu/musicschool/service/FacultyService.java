@@ -25,5 +25,10 @@ public class FacultyService {
 		 return facultyDao.addFaculty(faculty);
 	}
 	
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
+	public void deleteFaculty(final int facultyId){
+		facultyDao.deleteFaculty(facultyId);
+	}
+	
 	
 }

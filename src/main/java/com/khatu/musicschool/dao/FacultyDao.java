@@ -21,5 +21,11 @@ public class FacultyDao {
 	public Faculty addFaculty(Faculty faculty){
 		return (Faculty) hibernateTemplate.merge(faculty);
 	}
+	
+	public void deleteFaculty(final int facultyId){
+		Faculty faculty = getFaculty(facultyId);
+		if(faculty!=null)
+			hibernateTemplate.delete(faculty);
+	}
 
 }

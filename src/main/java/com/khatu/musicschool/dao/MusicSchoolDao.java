@@ -30,6 +30,12 @@ public class MusicSchoolDao {
 		return musicSchool;
 	}
 	
+	public void deleteMusicSchool(final int musicSchoolId){
+		MusicSchool school = getMusicSchool(musicSchoolId);
+		if(school !=null)
+			hibernateTemplate.delete(school);
+	}
+	
 	
 	/**
 	 * add new musicSchool
@@ -37,8 +43,6 @@ public class MusicSchoolDao {
 	 * @return
 	 */
 	public MusicSchool addMusicSchool(MusicSchool musicSchool){
-		
-		
 		return (MusicSchool)hibernateTemplate.merge(musicSchool);
 	}
 	
