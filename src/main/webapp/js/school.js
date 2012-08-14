@@ -113,9 +113,6 @@ SchoolInformation.prototype = {
     this.$el.find(".school_information .btn.cancel-school").click( function() {
       _this.hideForm()
     });
-    this.$el.find(".btn.addDepartment").click( function() {
-      _this.addDepartment( null, true );
-    });
   },
   getData : function() {
     data = {};
@@ -151,9 +148,13 @@ SchoolInformation.prototype = {
       contentType: "application/json",
       data: JSON.stringify( data ),
       success: function( response, jqXHR, textStatus) {
-        _this.newSchool = false;
         _this.setData( response );
         _this.hideForm();
+        if( _this.newSchool ) {
+          _this.newSchool = false;
+          _this.$el.find(".department_list").parent().show();
+          _this.addDepartmentButton();
+        }
       }, 
       error: function( response, jqXHR, textStatus ) {
         console.log("error");
@@ -165,8 +166,12 @@ SchoolInformation.prototype = {
     this.newSchool = true;
   },
   addDepartmentButton: function() {
-    if( this.$el.find(".addDepartment").length == 0 ) {
+    if( this.$el.find(".addDepartment").length == 0 && ! this.newSchool ) {
+      var _this = this;
       this.$el.find(".department_list").parent().append("<div class='btn addDepartment'>Add Department</div>" );
+      this.$el.find(".btn.addDepartment").click( function() {
+        _this.addDepartment( null, true );
+      });    
     }
   },
   addEditButtons: function() {
@@ -386,7 +391,7 @@ DepartmentInformation.prototype = {
       data.musicMinorAvailable = ( musicMinorAvailable.text() == "Yes" ) ? true: false;
     }   
 
-    data.keyword = $.trim( this.$el.find(".keyword"));
+    data.keyword = $.trim( this.$el.find(".keyword").val() );
     if( ! this.newDepartment ) {
       data.departmentId = this.data.departmentId;
     }
@@ -407,9 +412,14 @@ DepartmentInformation.prototype = {
       contentType: "application/json",
       data: JSON.stringify( data ),
       success: function( response, jqXHR, textStatus) {
-        _this.newDepartment = false;
         _this.setData( response );
         _this.hideForm();
+        if( _this.newDepartment ) {
+          _this.editable = true;
+          _this.newDepartment = false;
+          _this.$el.find(".faculty_list").parent().show();
+          _this.addFacultyButton();
+        }
       }, 
       error: function( response, jqXHR, textStatus ) {
         console.log("error");
@@ -418,10 +428,15 @@ DepartmentInformation.prototype = {
   },
   setNew: function() {
     this.newDepartment = true;
+    this.editable = true;
   },
   addFacultyButton: function() {
-    if( this.$el.find(".addFaculty").length == 0 ) {
+    if( this.$el.find(".addFaculty").length == 0 && ! this.newDepartment) {
+      var _this = this;
       this.$el.find(".faculty_list").parent().append("<div class='btn addFaculty'>Add Faculty</div>" );
+      this.$el.find(".btn.addFaculty").click( function() {
+        _this.addFaculty( null, true );
+      });
     }
   },
   addEditButton: function() {
@@ -439,7 +454,7 @@ DepartmentInformation.prototype = {
   showForm: function() {
     this.$el.find( ".department_information").html( this.formTemplate.tmpl( this.data ) );
     this.$el.find(".faculty_list").parent().show();
-    if( ! this.newSchool ) {
+    if( ! this.newDepartment ) {
       this.addEditButtons();
       this.addFacultyButton();
     }
@@ -550,6 +565,12 @@ FacultyInformation.prototype = {
     data.title = $.trim ( this.$el.find(".title").val() );
     data.facultyUrl = $.trim ( this.$el.find(".url").val() );
     data.keyword = $.trim ( this.$el.find(".keyword").val() );
+    
+    if( ! this.newFaculty ) {
+      data.departmentId = this.data.facultyId;
+    }
+    data.departmentId = this.department.getId();
+
     return data;
   },
   save: function() {
@@ -566,9 +587,12 @@ FacultyInformation.prototype = {
       contentType: "application/json",
       data: JSON.stringify( data ),
       success: function( response, jqXHR, textStatus) {
-        _this.newDepartment = false;
+        if( _this.newFaculty )
+          _this.editable = true;
         _this.setData( response );
         _this.hideForm();
+        _this.newFaculty = false;
+
       }, 
       error: function( response, jqXHR, textStatus ) {
         console.log("error");

@@ -68,7 +68,7 @@
     <script id="schoolFormTemplate" type="text/x-jquery-tmpl"> 
       <div class='name'>
         <label>School Name</label>
-        <input type="text" id="schoolName" value=${name} required></input>
+        <input required type="text" id="schoolName" value=${name} ></input>
       </div>
       <div class='btn save save-school'>Save</div>
       <div class='btn cancel cancel-school'>Cancel</div>
