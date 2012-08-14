@@ -27,12 +27,14 @@ School.prototype = {
   showForm : function() {
     this.editMode = true;
     this.school.setEditable( true );
+    this.$el.addClass("form").removeClass("information");
     this.$el.find("#edit").hide();
     this.$el.find("#done").show();
   },
   hideForm: function() {
     this.editMode = false;
     this.school.setEditable( false );
+    this.$el.removeClass("form").addClass("information");
     this.$el.find("#done").hide();
     this.$el.find("#edit").show();
   },
@@ -42,6 +44,7 @@ School.prototype = {
   },
   fetchData : function() {
     if( this.id == null || this.id == -1 ) {
+      $("#school h3").html( "Add New School" );
       this.newSchool = true;
       this.school.setNew()
       this.showForm();

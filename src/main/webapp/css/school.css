@@ -1,0 +1,130 @@
+#school {
+  width: 500px;
+  margin-top: 109px;
+}
+
+#school .form h3 {
+  margin: 10px;
+}
+
+#edit {
+  float: right;
+}
+
+#school .form  {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  width: 768px;
+}
+
+.information {
+  margin: 10px;
+  padding: 5px;
+}
+
+label {
+  float: left;
+  font-size: 13px;
+  font-weight: bold;
+  margin-right: 30px;
+  width: 120px;
+  position: relative;
+  top: 5px;
+  text-align: right;
+}
+
+.button-group {
+  margin-left: 100px;
+}
+
+#school input.error {
+  border-color: red;
+  -webkit-box-shadow:  0 0 3px red;
+  -moz-box-shadow:  0 0 3px red;
+  box-shadow:  0 0 3px red;
+  -moz-transition: border linear .2s,box-shadow linear .2s;
+  -ms-transition: border linear .2s,box-shadow linear .2s;
+  -o-transition: border linear .2s,box-shadow linear .2s;
+  transition: border linear .2s,box-shadow linear .2s;
+}
+
+.school .sublist {
+  margin-left: 15px;
+}
+
+.school .sublist_title {
+  font-size: 15px;
+  margin: 5px;
+  font-weight: bold;
+  text-decoration: underline
+}
+
+.department .scores {
+  height: 65px;
+  width: 600px;
+}
+
+.department  .scores .title {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.department  .score {
+  height: 40px;
+  width: 40px;
+  border: 1px solid black;
+  text-align: center;
+  border-radius: 5px;
+  float: left;
+  margin-left: 3px;
+}
+
+.department .score .exam {
+  background: black;
+  color: white;
+  font-weight: bold;
+}
+
+.faculty .title {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.btn.active {
+  background-color: #0074CC;
+  background-image: -ms-linear-gradient(top, #08C, #05C);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#08C), to(#05C));
+  background-image: -webkit-linear-gradient(top, #08C, #05C);
+  background-image: -o-linear-gradient(top, #08C, #05C);
+  background-image: -moz-linear-gradient(top, #08C, #05C);
+  background-image: linear-gradient(top, #08C, #05C);
+  background-repeat: repeat-x;
+  border-color: #05C #05C #003580;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.input_score {
+  clear: both;
+}
+
+.address_information input {
+  float: left;
+}
+
+.other label {
+  width: 200px;
+}
+
+.other  {
+  margin-bottom: 20px;
+}
+
+.faculty_form .name input {
+  width: 200px;
+}
