@@ -204,8 +204,10 @@
           <label>Keywords</label>
           <input type="text" class="keyword" value="${keyword}" required></input>
         </div>
-        <div class='btn save save-department'>Save</div>
-        <div class='btn cancel cancel-department'>Cancel</div>
+        <div class="button-group">
+          <div class='btn save save-department'>Save</div>
+          <div class='btn cancel cancel-department'>Cancel</div>
+        </div>
       </div>
     </script>
     <script id="facultyTemplate" type="text/x-jquery-tmpl"> 
@@ -231,7 +233,7 @@
       </div>
     </script>
     <script id="facultyFormTemplate" type="text/x-jquery-tmpl"> 
-      <div class="faculty_form">
+      <div class="faculty_form form">
         <div class='name'>
           <label>Name</label>
           <input type="text" class="firstName" value="${firstName}" required></input>
@@ -250,8 +252,10 @@
           <label>Keywords</label>
           <input type="text" class="keyword" value="${keyword}" required></input>
         </div>
-        <div class='btn save-faculty'>Save</div>
-        <div class='btn cancel-faculty'>Cancel</div>
+        <div class='button-group'>
+          <div class='btn save-faculty'>Save</div>
+          <div class='btn cancel-faculty'>Cancel</div>
+        </div>
       </div>
     </script>
     <script type="text/javascript">
