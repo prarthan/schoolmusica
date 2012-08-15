@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/jquery-ui-1.8.21.custom.css" type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.min.css" type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type='text/css'>
+    <link rel="stylesheet" href="css/jquery.tagedit.css" type='text/css'>   
     <link rel="stylesheet" href="css/gradients.css" type='text/css'>
     <link rel="stylesheet" href="css/common.css" type='text/css'>   
     <link rel="stylesheet" href="css/school.css" type='text/css'>   
@@ -45,6 +46,7 @@
     <script type="text/javascript" src="js/jquery/jquery-ui-1.8.21.custom.min.js"></script>
     <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.tagedit.js"></script>
     <script type="text/javascript" src="js/constants.js"></script>
     <script type="text/javascript" src="js/school.js"></script>
     <script id="schoolTemplate" type="text/x-jquery-tmpl"> 
@@ -202,7 +204,7 @@
         </div>
         <div class="keywords">
           <label>Keywords</label>
-          <input type="text" class="keyword" value="${keyword}" required></input>
+          <input type="text" name='keyword[]' class="keyword" value="${keyword}" required></input>
         </div>
         <div class="button-group">
           <div class='btn save save-department'>Save</div>
