@@ -69,6 +69,7 @@
     </script>
     <script id="schoolFormTemplate" type="text/x-jquery-tmpl"> 
       <div class="form">
+        <div class="alert alert-error" style="display:none">Please fix the fields shown in red below</div>
         <div class='name'>
           <label>School Name</label>
           <input required type="text" id="schoolName" value=${name} ></input>
@@ -135,6 +136,8 @@
     </script>
     <script id="departmentFormTemplate" type="text/x-jquery-tmpl">
       <div class="form">
+        <div class='form_title'>Edit Department Information</div>
+        <div class="alert alert-error" style="display:none">Please fix the fields shown in red below</div>
         <div class='name'>
           <label>Name</label>
           <input type="text" class="departmentName" value="${departmentName}" required></input>
@@ -236,6 +239,8 @@
     </script>
     <script id="facultyFormTemplate" type="text/x-jquery-tmpl"> 
       <div class="faculty_form form">
+        <div class='form_title'>Edit Faculty Information</div>
+        <div class="alert alert-error" style="display:none">Please fix the fields shown in red below</div>
         <div class='name'>
           <label>Name</label>
           <input type="text" class="firstName" value="${firstName}" required></input>

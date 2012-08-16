@@ -135,6 +135,7 @@ label {
 
 .other  {
   margin-bottom: 20px;
+  clear: both;
 }
 
 .faculty_form .name input {
@@ -161,6 +162,20 @@ ul.tagedit-list {
 
 .form .tagedit-list li.tagedit-listelement-new input {
   margin-bottom: 0;
+}
+
+.input_score input {
+  width: 40px;
+}
+
+.input_score div {
+  float: left;
+}
+
+.form_title {
+  font-weight: bold;
+  font-size: 150%;
+  margin-bottom: 10px;
 }
 
 

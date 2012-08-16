@@ -128,7 +128,13 @@ SchoolInformation.prototype = {
       _this.save()
     });
     this.$el.find(".school_information .btn.cancel-school").click( function() {
-      _this.hideForm()
+      if( _this.newSchool ) {
+        _this.$el.find(".form input").removeClass("error").val("");
+        _this.$el.find(".form .alert").hide();
+      }
+      else {
+        _this.hideForm()
+      }
     });
   },
   getData : function() {
@@ -152,7 +158,9 @@ SchoolInformation.prototype = {
   },
   save: function() {
     this.$el.find("input").removeClass("error");
+    this.$el.find(".form .alert").hide();
     if( ! this.validate() ) {
+      this.$el.find(".form .alert").fadeIn();
       return;
     }
     var data = this.getData();
@@ -421,7 +429,9 @@ DepartmentInformation.prototype = {
   save: function() {
     var _this = this;
     this.$el.find(".error").removeClass(".error");
+    this.$el.find(".form .alert").hide();
     if( ! this.validate() ) {
+      this.$el.find(".form .alert").fadeIn();
       return;
     }
     var data = this.getData();
@@ -519,6 +529,9 @@ DepartmentInformation.prototype = {
         }
       }
     });
+    if( this.newDepartment ) {
+      this.$el.find(".form .form_title").html("Add Faculty");
+    }   
     this.updateOtherInfo();
     this.initEventListeners();
   },
@@ -641,7 +654,9 @@ FacultyInformation.prototype = {
   save: function() {
     var _this = this;
     this.$el.find(".error").removeClass(".error");
+    this.$el.find(".form .alert").hide();
     if( ! this.validate() ) {
+      this.$el.find(".form .alert").fadeIn();
       return;
     }
     var data = this.getData();
@@ -666,7 +681,6 @@ FacultyInformation.prototype = {
   },
   showForm: function() {
     this.$el.find( ".faculty_information").html( this.formTemplate.tmpl( this.data ) );
-    console.log("tagedit")
     this.$el.find('.form input.keyword').tagedit({
       allowEdit: false,
       autocompleteOptions: {
@@ -677,7 +691,10 @@ FacultyInformation.prototype = {
           return false;
         }
       }
-    });    
+    }); 
+    if( this.newFaculty ) {
+      this.$el.find(".form .form_title").html("Add Faculty");
+    }   
     this.initEventListeners();  
   },
   hideForm: function() {
