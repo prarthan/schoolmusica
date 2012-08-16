@@ -457,8 +457,9 @@ DepartmentInformation.prototype = {
     }
   },
   addEditButton: function() {
-    if( this.$el.find(".department_information .name .edit-department").length == 0 ) {
-      this.$el.find(".department_information .name").append("<div class='btn edit edit-department'>Edit</div>" );
+    if( this.$el.find(".department_information .edit-department").length == 0 ) {
+      this.$el.find(".department_information").prepend("<div class='btn btn-inverse edit edit-department'><span class='icon-edit icon-white'></span></div>" );
+      this.$el.find(".department_information").prepend("<div class='btn btn-danger delete delete-department'><span class='icon-remove icon-white'></span></div>" );    
     }
     this.editable = true;
     this.initEventListeners();
@@ -466,6 +467,32 @@ DepartmentInformation.prototype = {
   addEditButtons: function() {
     for( var i in this.faculty ) {
       this.faculty[i].addEditButton();
+    }
+  },
+  updateOtherInfo: function() {
+   if( this.data.musicMinorAvailable ) {
+      this.$el.find(".musicMinorAvailable .yes").addClass("active")
+      this.$el.find(".musicMinorAvailable .no").removeClass("active")
+    }
+    else {
+      this.$el.find(".musicMinorAvailable .no").addClass("active")
+      this.$el.find(".musicMinorAvailable .yes").removeClass("active")
+    }
+    if( this.data.graduateProgramAvailable ) {
+      this.$el.find(".graduateProgramAvailable .yes").addClass("active")
+      this.$el.find(".graduateProgramAvailable .no").removeClass("active")
+    }
+    else {
+      this.$el.find(".graduateProgramAvailable .no").addClass("active")
+      this.$el.find(".graduateProgramAvailable .yes").removeClass("active")
+    }
+    if( this.data.scholarshipsAvailable ) {
+      this.$el.find(".scholarshipsAvailable .yes").addClass("active")
+      this.$el.find(".scholarshipsAvailable .no").removeClass("active")
+    }
+    else {
+      this.$el.find(".scholarshipsAvailable .no").addClass("active")
+      this.$el.find(".scholarshipsAvailable .yes").removeClass("active")
     }
   },
   showForm: function() {
@@ -489,6 +516,7 @@ DepartmentInformation.prototype = {
         }
       }
     });
+    this.updateOtherInfo();
     this.initEventListeners();
   },
   hideForm: function() {
@@ -629,6 +657,18 @@ FacultyInformation.prototype = {
   },
   showForm: function() {
     this.$el.find( ".faculty_information").html( this.formTemplate.tmpl( this.data ) );
+    console.log("tagedit")
+    this.$el.find('.form input.keyword').tagedit({
+      allowEdit: false,
+      autocompleteOptions: {
+        source: Constants.Instruments,
+        minLength: 1,
+        select: function( event, ui ) {
+          $(this).val(ui.item.value).trigger('transformToTag', [ui.item.id]);
+          return false;
+        }
+      }
+    });    
     this.initEventListeners();  
   },
   hideForm: function() {
@@ -639,8 +679,9 @@ FacultyInformation.prototype = {
     }
   },
   addEditButton: function() {
-    if( this.$el.find(".faculty_information .name .edit-faculty").length == 0 ) {
-      this.$el.find(".faculty_information .name").append("<div class='btn edit edit-faculty'>Edit</div>" );
+    if( this.$el.find(".faculty_information .edit-faculty").length == 0 ) {
+      this.$el.find(".faculty_information").prepend("<div class='btn btn-inverse edit edit-faculty'><span class='icon-edit icon-white'></span></div>" );
+      this.$el.find(".faculty_information").prepend("<div class='btn btn-danger delete delete-faculty'><span class='icon-remove icon-white'></span></div>" );       
     }
     this.editable = true;
     this.initEventListeners();

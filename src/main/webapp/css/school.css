@@ -1,3 +1,7 @@
+body {
+  margin-left: 0px;
+}
+
 #school {
   width: 500px;
   margin-top: 109px;
@@ -40,6 +44,7 @@ label {
 
 .button-group {
   margin-left: 100px;
+  margin-top: 10px;
 }
 
 #school input.error {
@@ -140,3 +145,22 @@ label {
   font-size: 13px;
   font-style: normal;
 }
+
+.form .edit {
+  float: right;
+  margin-right: 10px;
+}
+
+.form .delete {
+  float: right;
+}
+
+ul.tagedit-list {
+  background: white;
+}
+
+.form .tagedit-list li.tagedit-listelement-new input {
+  margin-bottom: 0;
+}
+
+

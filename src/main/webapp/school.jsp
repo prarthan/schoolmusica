@@ -74,7 +74,7 @@
           <input required type="text" id="schoolName" value=${name} ></input>
         </div>
         <div class='button-group'>
-          <div class='btn save save-school'>Save</div>
+          <div class='btn save save-school'>Save Changes</div>
           <div class='btn cancel cancel-school'>Cancel</div>
         </div>
       </div>
@@ -129,7 +129,7 @@
         </div>
       </div>
       <div class='keywords'>
-        <b>Keywords: </b>
+        <b>Instruments: </b>
         <span>${keyword}</span>
       </div>
     </script>
@@ -181,33 +181,33 @@
           <div class=''>
             <div class="item">
               <label>Music Minor Available</label> 
-              <div class="btn-group" data-toggle="buttons-radio">
-                  <button class="btn btn-mini">Yes</button>
-                  <button class="btn btn-mini">No</button>
+              <div class="btn-group musicMinorAvailable" data-toggle="buttons-radio">
+                  <button class="btn btn-mini yes">Yes</button>
+                  <button class="btn btn-mini no">No</button>
                 </div>
               </div>
             <div class="item">
               <label>Graduate Program Available</label>
-              <div class="btn-group" data-toggle="buttons-radio">
-                  <button class="btn btn-mini">Yes</button>
-                  <button class="btn btn-mini">No</button>
+              <div class="btn-group graduateProgramAvailable" data-toggle="buttons-radio">
+                  <button class="btn btn-mini yes">Yes</button>
+                  <button class="btn btn-mini no">No</button>
                 </div>              
             </div>
             <div class="item">
               <label>Scholarships Available</label>
-              <div class="btn-group" data-toggle="buttons-radio">
-                  <button class="btn btn-mini">Yes</button>
-                  <button class="btn btn-mini">No</button>
+              <div class="btn-group scholarshipsAvailable" data-toggle="buttons-radio">
+                  <button class="btn btn-mini yes">Yes</button>
+                  <button class="btn btn-mini no">No</button>
                 </div>
             </div>
           </div>
         </div>
         <div class="keywords">
-          <label>Keywords</label>
+          <label>Instruments</label>
           <input type="text" name='keyword[]' class="keyword" value="${keyword}" required></input>
         </div>
         <div class="button-group">
-          <div class='btn save save-department'>Save</div>
+          <div class='btn save save-department'>Save Changes</div>
           <div class='btn cancel cancel-department'>Cancel</div>
         </div>
       </div>
@@ -229,7 +229,7 @@
           <a href="${facultyUrl}" target="_blank">${facultyUrl}</a>
         </div>
         <div class='keywords'>
-          <b>Keywords: </b>
+          <b>Instruments: </b>
           <span>${keyword}</span>
         </div>
       </div>
@@ -251,11 +251,11 @@
           <input type="url" class="facultyUrl" value="${facultyUrl}" required></input>
         </div>
         <div class="keywords">
-          <label>Keywords</label>
-          <input type="text" class="keyword" value="${keyword}" required></input>
+          <label>Instruments</label>
+          <input type="text" name='keyword[]' class="keyword" value="${keyword}" required></input>
         </div>
         <div class='button-group'>
-          <div class='btn save-faculty'>Save</div>
+          <div class='btn save-faculty'>Save Changes</div>
           <div class='btn cancel-faculty'>Cancel</div>
         </div>
       </div>
