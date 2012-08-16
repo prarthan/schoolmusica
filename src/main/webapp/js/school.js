@@ -277,6 +277,9 @@ DepartmentInformation.prototype = {
     this.$el.find(".edit-department").click( function() {
       _this.showForm();
     } );
+    this.$el.find(".delete-department").click( function() {
+      _this.deleteDepartment();
+    } );
     this.$el.find(".btn.save-department").click( function() {
       _this.save();
     });
@@ -532,6 +535,9 @@ DepartmentInformation.prototype = {
       this.$el.find(".faculty_list").parent().hide();
     }
   },
+  deleteDepartment: function() {
+    console.log("Put code for delete department");
+  },
   getId: function() {
     return ( this.newDepartment ) ? -1 : this.data.departmentId;
   }
@@ -571,6 +577,9 @@ FacultyInformation.prototype = {
     var _this = this;
     this.$el.find(".edit-faculty").click( function() {
       _this.showForm();
+    } );
+    this.$el.find(".delete-faculty").click( function() {
+      _this.deleteFaculty();
     } );
     this.$el.find(".btn.save-faculty").click( function() {
       _this.save();
@@ -686,6 +695,9 @@ FacultyInformation.prototype = {
     this.editable = true;
     this.initEventListeners();
   },
+  deleteFaculty: function() {
+    console.log("Put code for delete faculty");
+  }
 }
 
 
