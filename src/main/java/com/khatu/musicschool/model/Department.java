@@ -121,8 +121,9 @@ public class Department {
 	}
 
 	
-	@OneToMany(fetch=FetchType.LAZY)
+	@OneToMany(cascade=CascadeType.REMOVE,fetch=FetchType.LAZY)
 	@JoinColumn(name="departmentId")
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	public List<Faculty> getFaculty() {
 		return faculty;
 	}

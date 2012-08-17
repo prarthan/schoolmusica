@@ -33,6 +33,7 @@ public class MusicSchoolDao {
 	public void deleteMusicSchool(final int musicSchoolId){
 		MusicSchool school = getMusicSchool(musicSchoolId);
 		if(school !=null)
+			school.setDepartment(null);
 			hibernateTemplate.delete(school);
 	}
 	
