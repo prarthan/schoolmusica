@@ -605,7 +605,18 @@ DepartmentInformation.prototype = {
     }
   },
   deleteDepartment: function() {
-    console.log("Put code for delete department");
+    var _this = this;
+    if( confirm("Are you sure you want to delete this department?") ) {
+      $.ajax( {
+        url: "rest/department/" + this.getId(),
+        method: "POST",
+        success: function( response, jqXHR, textStatus) {
+        }, 
+        error: function( response, jqXHR, textStatus ) {
+          console.log("error");
+        }
+      });
+    }
   },
   getId: function() {
     return ( this.newDepartment ) ? -1 : this.data.departmentId;
@@ -793,8 +804,24 @@ FacultyInformation.prototype = {
     this.editable = true;
     this.initEventListeners();
   },
+  getId: function() {
+    return ( this.newFaculty ) ? -1 : this.data.facultyId;
+  },
   deleteFaculty: function() {
-    console.log("Put code for delete faculty");
+    var _this = this;
+
+    if( confirm("Are you sure you want to delete this faculty?") ) {
+      $.ajax( {
+        url: "rest/faculty/" + this.getId(),
+        method: "POST",
+        success: function( response, jqXHR, textStatus) {
+          this.$el.remove();
+        }, 
+        error: function( response, jqXHR, textStatus ) {
+          console.log("error");
+        }
+      });
+    }  
   }
 }
 

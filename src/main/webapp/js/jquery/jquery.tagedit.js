@@ -188,12 +188,15 @@ $.fn.autoGrowInput = function(o) {
                 if(element_name && element_name.length == 4 && (options.deleteEmptyItems == false || $(this).val().length > 0)) {
                     if(element_name[1].length > 0) {
                         var elementId = typeof element_name[2] != 'undefined'? element_name[2]: '';
-
-                        html += '<li class="tagedit-listelement tagedit-listelement-old">';
-                        html += '<span dir="'+options.direction+'">' + $(this).val() + '</span>';
-                        html += '<input type="hidden" name="'+baseName+'['+elementId+']" value="'+$(this).val()+'" />';
-                        html += '<a class="tagedit-close" title="'+options.texts.removeLinkTitle+'">x</a>';
-                        html += '</li>';
+                        var values = $.trim( $(this).val() ).split(",");
+                        for( var i in values ) {
+                            if( $.trim( values[i] ).length == 0 ) continue; 
+                            html += '<li class="tagedit-listelement tagedit-listelement-old">';
+                            html += '<span dir="'+options.direction+'">' + $.trim( values[i] ) + '</span>';
+                            html += '<input type="hidden" name="'+baseName+'['+elementId+']" value="'+$.trim( values[i] ) +'" />';
+                            html += '<a class="tagedit-close" title="'+options.texts.removeLinkTitle+'">x</a>';
+                            html += '</li>';
+                        }
                     }
                 }
             });
