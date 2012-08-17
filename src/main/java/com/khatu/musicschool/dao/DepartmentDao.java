@@ -42,6 +42,7 @@ public class DepartmentDao {
 	public void deleteDepartment(int departmentId){
 		Department dept = getDepartment(departmentId);
 		if(dept!=null){
+			dept.setFaculty(null);
 			hibernateTemplate.delete(dept);
 			hibernateTemplate.flush();
 		}

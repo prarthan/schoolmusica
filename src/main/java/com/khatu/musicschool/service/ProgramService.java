@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.khatu.musicschool.dao.ProgramDao;
 import com.khatu.musicschool.model.Program;
+import com.khatu.musicschool.model.Style;
 
 
 @Service
@@ -20,5 +21,9 @@ public class ProgramService {
 	
 	public List<Program> getAllProgram(){
 		return programDao.getAllProgram();
+	}
+	
+	public List<Style> getAllStylesById(List<Integer> instrumentIds){
+		return programDao.getAllStylesById(instrumentIds);
 	}
 }

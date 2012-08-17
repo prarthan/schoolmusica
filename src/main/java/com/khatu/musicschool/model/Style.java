@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Style {
 	private int styleId;
 	private String name;
+	private int programId;
 	
 	@Id
 	@GeneratedValue
@@ -27,6 +28,13 @@ public class Style {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getProgramId() {
+		return programId;
+	}
+	public void setProgramId(int programId) {
+		this.programId = programId;
 	}
 
 }
