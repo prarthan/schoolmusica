@@ -575,6 +575,15 @@ DepartmentInformation.prototype = {
         }
       }
     });
+    this.$el.find( ".form .address_information .state").autocomplete( {
+        minLength: 1,
+        source: Constants.States,
+        select: function( event, ui ) {
+          $(this).val( ui.item.name );
+          return false;
+        }
+      } 
+    );
     if( this.newDepartment ) {
       this.$el.find(".form .form_title").html("Add Faculty");
     }   

@@ -1,207 +1,207 @@
 var Constants = {
   States: [
     {
-      value: "Alabama",
+      value: "Alabama (AL)",
       name: "AL"
     },
     {
-      value: "Alaska",
+      value: "Alaska (AK)",
       name: "AK"
     },
     {
-      value: "Arizona",
+      value: "Arizona (AZ)",
       name: "AZ"
     },
     {
-      value: "Arkansas",
+      value: "Arkansas (AR)",
       name: "AR"
     },
     {
-      value: "California",
+      value: "California (CA)",
       name: "CA"
     },
     {
-      value: "Colorado",
+      value: "Colorado (CO)",
       name: "CO"
     },
     {
-      value: "Connecticut",
+      value: "Connecticut (CT)",
       name: "CT"
     },
     {
-      value: "Delaware",
+      value: "Delaware (DE)",
       name: "DE"
     },
     {
-      value: "District of Columbia",
+      value: "District of Columbia (DC)",
       name: "DC"
     },
     {
-      value: "Florida",
+      value: "Florida (FL)",
       name: "FL"
     },
     {
-      value: "Georgia",
+      value: "Georgia (GA)",
       name: "GA"
     },
     {
-      value: "Hawaii",
+      value: "Hawaii (HI)",
       name: "HI"
     },
     {
-      value: "Idaho",
+      value: "Idaho (ID)",
       name: "ID"
     },
     {
-      value: "Illinois",
+      value: "Illinois (IL)",
       name: "IL"
     },
     {
-      value: "Indiana",
+      value: "Indiana (IN)",
       name: "IN"
     },
     {
-      value: "Iowa",
+      value: "Iowa (IA)",
       name: "IA"
     },
     {
-      value: "Kansas",
+      value: "Kansas (KS)",
       name: "KS"
     },
     {
-      value: "Kentucky",
+      value: "Kentucky (KY)",
       name: "KY"
     },
     {
-      value: "Louisiana",
+      value: "Louisiana (LA)",
       name: "LA"
     },
     {
-      value: "Maine",
+      value: "Maine (ME)",
       name: "ME"
     },
     {
-      value: "Maryland",
+      value: "Maryland (MD)",
       name: "MD"
     },
     {
-      value: "Massachusetts",
+      value: "Massachusetts (MA)",
       name: "MA"
     },
     {
-      value: "Michigan",
+      value: "Michigan (MI)",
       name: "MI"
     },
     {
-      value: "Minnesota",
+      value: "Minnesota (MN)",
       name: "MN"
     },
     {
-      value: "Mississippi",
+      value: "Mississippi (MS)",
       name: "MS"
     },
     {
-      value: "Missouri",
+      value: "Missouri (MO)",
       name: "MO"
     },
     {
-      value: "Montana",
+      value: "Montana (MT)",
       name: "MT"
     },
     {
-      value: "Nebraska",
+      value: "Nebraska (NE)",
       name: "NE"
     },
     {
-      value: "Nevada",
+      value: "Nevada (NV)",
       name: "NV"
     },
     {
-      value: "New Hampshire",
+      value: "New Hampshire (NH)",
       name: "NH"
     },
     {
-      value: "New Jersey",
+      value: "New Jersey (NJ)",
       name: "NJ"
     },
     {
-      value: "New Mexicon",
+      value: "New Mexico (NM)",
       name: "NM"
     },
     {
-      value: "New York",
+      value: "New York (NY)",
       name: "NY"
     },
     {
-      value: "North Carolina",
+      value: "North Carolina (NC)",
       name: "NC"
     },
     {
-      value: "North Dakota",
+      value: "North Dakota (ND)",
       name: "ND"
     },
     {
-      value: "Ohio",
+      value: "Ohio (OH)",
       name: "OH"
     },
     {
-      value: "Oklahoma",
+      value: "Oklahoma (OK)",
       name: "OK"
     },
     {
-      value: "Oregon",
+      value: "Oregon (OR)",
       name: "OR"
     },
     {
-      value: "Pennsylvania",
+      value: "Pennsylvania (PA)",
       name: "PA"
     },
     {
-      value: "Rhode Island",
+      value: "Rhode Island (RI)",
       name: "RI"
     },
     {
-      value: "South Carolina",
+      value: "South Carolina (SC)",
       name: "SC"
     },
     {
-      value: "South Dakota",
+      value: "South Dakota (SD)",
       name: "SD"
     },
     {
-      value: "Tennessee",
+      value: "Tennessee (TN)",
       name: "TN"
     },
     {
-      value: "Texas",
+      value: "Texas (TX)",
       name: "TX"
     },
     {
-      value: "Utah",
+      value: "Utah (UT)",
       name: "UT"
     },
     {
-      value: "Vermont",
+      value: "Vermont (VT)",
       name: "VT"
     },     
     {
-      value: "Virginia",
+      value: "Virginia (VA)",
       name: "VA"
     },    
     {
-      value: "Washington",
+      value: "Washington (WA)",
       name: "WA"
     }, 
     {
-      value: "West Virginia",
+      value: "West Virginia (WV)",
       name: "WV"
     }, 
     {
-      value: "Wisconsin",
+      value: "Wisconsin (WI)",
       name: "WI"
     }, 
     {
-      value: "Wyoming",
+      value: "Wyoming (WY)",
       name: "WY"
     }
   ]
