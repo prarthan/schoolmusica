@@ -44,6 +44,12 @@ School.prototype = {
     this.$el.addClass("form").removeClass("information");
     this.$el.find("#edit").hide();
     this.$el.find("#done").show();
+    this.$el.find('input').tooltip( {
+      animation: true,
+      placement: "right",
+      title: "Please enter a school name",
+      trigger: "focus"
+    });
   },
   hideForm: function() {
     this.editMode = false;
@@ -508,6 +514,46 @@ DepartmentInformation.prototype = {
       this.$el.find(".scholarshipsAvailable .yes").removeClass("active")
     }
   },
+  initTooltips: function() {
+    var options = {
+      animation: true,
+      placement: "right",
+      title: "Please enter the name of your department offering courses for music or music related topics",
+      trigger: "focus"
+    };
+    this.$el.find(".departmentName").tooltip(options);
+    
+    options.title = "Please enter the URL for the department which will help students know more about the department";
+    this.$el.find(".departmentUrl").tooltip( options );
+   
+    options.title = "Please provide an email so that students can get in touch with your department";
+    this.$el.find(".email").tooltip( options );
+    
+    options.title = "Please provide an address for the department"
+    this.$el.find(".address_information input").tooltip( options );
+   
+    options.title = "What is the minimum SAT score required?"
+    this.$el.find(".satMin").tooltip( options );
+  
+    options.title = "What is the minimum GRE score required?"
+    this.$el.find(".greMin").tooltip( options );
+      
+    options.title = "What is the minimum ACT score required?"
+    this.$el.find(".actMin").tooltip( options );
+   
+    options.title = "Which instruments can a student learn in this department?";
+    this.$el.find(".keywords .tagedit-list input").tooltip( options );
+
+    options.trigger = "hover";
+    options.title = "Are graduate programs offered by this department?";
+    this.$el.find(".graduateProgramAvailable").tooltip(options);
+  
+    options.title = "Are scholarships available?";
+    this.$el.find(".scholarshipsAvailable").tooltip( options );
+
+    options.title = "Are music or music related minor programs offered by this department?";
+    this.$el.find(".musicMinorAvailable").tooltip( options );
+  },
   showForm: function() {
     this.$el.find( ".department_information").html( this.formTemplate.tmpl( this.data ) );
     this.$el.find(".faculty_list").parent().show();
@@ -533,6 +579,7 @@ DepartmentInformation.prototype = {
       this.$el.find(".form .form_title").html("Add Faculty");
     }   
     this.updateOtherInfo();
+    this.initTooltips();
     this.initEventListeners();
   },
   hideForm: function() {
@@ -623,7 +670,7 @@ FacultyInformation.prototype = {
       this.$el.find(".title").addClass("error");
       validate = false;
     }
-    var url = $.trim ( this.$el.find(".url").val() );
+    var url = $.trim ( this.$el.find(".facultyUrl").val() );
     if( title.length === 0 ) {
       this.$el.find(".url").addClass("error");
       validate = false;
@@ -641,7 +688,7 @@ FacultyInformation.prototype = {
     data.firstName = $.trim ( this.$el.find(".firstName").val() );
     data.middleName = $.trim ( this.$el.find(".middleName").val() );
     data.title = $.trim ( this.$el.find(".title").val() );
-    data.facultyUrl = $.trim ( this.$el.find(".url").val() );
+    data.facultyUrl = $.trim ( this.$el.find(".facultyUrl").val() );
     data.keyword = $.trim ( this.$el.find(".keywords .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") );
     
     if( ! this.newFaculty ) {
@@ -695,7 +742,32 @@ FacultyInformation.prototype = {
     if( this.newFaculty ) {
       this.$el.find(".form .form_title").html("Add Faculty");
     }   
+    this.initTooltips();
     this.initEventListeners();  
+  },
+  initTooltips: function() {
+    var options = {
+      animation: true,
+      placement: "right",
+      trigger: "focus",
+      title: "Please enter the first name of the faculty",
+    };    
+    this.$el.find(".firstName").tooltip( options );
+    
+    options.title = "Please enter the middle name of the faculty";
+    this.$el.find(".middleName").tooltip( options );
+   
+    options.title = "Please enter the last name of the faculty";
+    this.$el.find(".lastName").tooltip( options );
+
+    options.title = "Please enter the title of the faculty";
+    this.$el.find(".title").tooltip( options );
+
+    options.title = "Please provide us with the URL for the faculty";
+    this.$el.find(".facultyUrl").tooltip( options );
+
+    options.title = "What are instruments taught by this faculty?";
+    this.$el.find(".keywords .tagedit-list input").tooltip( options );
   },
   hideForm: function() {
     this.$el.find( ".faculty_information").html( this.informationTemplate.tmpl( this.data ) );

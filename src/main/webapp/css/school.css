@@ -128,7 +128,7 @@ label {
 }
 
 .other label {
-  width: 200px;
+  width: 205px;
   position: relative;
   top: 2px;
 }
@@ -176,6 +176,10 @@ ul.tagedit-list {
   font-weight: bold;
   font-size: 150%;
   margin-bottom: 10px;
+}
+
+.item {
+  width: 300px;
 }
 
 
