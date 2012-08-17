@@ -30,18 +30,10 @@ public class Department {
 	private String departmentName;
 	private int musicSchoolId;
 	private String keyword;
-	private int satMin=0;
-	private int actMin=0;
-	private int greMin=0;
 	private List<Faculty> faculty;
 	private boolean musicMinorAvailable=false;
 	private boolean graduateProgramAvailable=false;
 	private boolean scholarshipsAvailable=false;
-	private String address;
-	private String city;
-	private String state;
-	private String zip;
-	private String country;
 	private String departmentUrl;
 	private String announcement;
 	private String email;
@@ -93,32 +85,7 @@ public class Department {
 		this.keyword = keyword;
 	}
 
-	@Column(length=5)
-	@Index(name = "deptsatminindex")
-	public int getSatMin() {
-		return satMin;
-	}
-	public void setSatMin(int satMin) {
-		this.satMin = satMin;
-	}
-
-	@Column(length=5)
-	@Index(name = "deptactminindex")
-	public int getActMin() {
-		return actMin;
-	}
-	public void setActMin(int actMin) {
-		this.actMin = actMin;
-	}
-
-	@Column(length=5)
-	@Index(name = "deptgreminindex")
-	public int getGreMin() {
-		return greMin;
-	}
-	public void setGreMin(int greMin) {
-		this.greMin = greMin;
-	}
+	
 
 	
 	@OneToMany(cascade=CascadeType.REMOVE,fetch=FetchType.LAZY)
@@ -158,54 +125,7 @@ public class Department {
 		this.scholarshipsAvailable = scholarshipsAvailable;
 	}
 	
-	@NotEmpty(message="You must provide department address.")
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	@NotEmpty(message="You must provide city.")
-	@Column(length=20)
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	@NotEmpty(message="You must provide state.")
-	@Column(length=20)
-	@Index(name = "deptstateindex")
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	@NotEmpty(message="You must provide zip.")
-	public String getZip() {
-		return zip;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
 	
-	@NotEmpty(message="you must provide country.")
-	@Column(length=30)
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
 
 	@URL
 	@NotEmpty(message="You must provide department url.")

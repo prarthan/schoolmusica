@@ -9,6 +9,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.mapping.Join;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -51,12 +52,15 @@ public class MusicSchoolDao {
 		
 		List<Department> departments = new ArrayList<Department>();
 		
+		List<MusicSchool> musicSchool = new ArrayList<MusicSchool>();
+		
 		Conjunction conjuctionCriteria = Restrictions.conjunction();
 		
-		DetachedCriteria query = DetachedCriteria.forClass(Department.class,"Department");
-//			.createAlias("department", "dept");
+		DetachedCriteria query = DetachedCriteria.forClass(MusicSchool.class,"MusicSchool").createAlias("department","dept", DetachedCriteria.INNER_JOIN);
+	
+		
 		if(schoolSearchCriteria.getInstrument()!=null && !schoolSearchCriteria.getInstrument().isEmpty())
-			conjuctionCriteria.add(Restrictions.like("keyword", "%" + schoolSearchCriteria.getInstrument() +"%"));
+			conjuctionCriteria.add(Restrictions.like("dept.keyword", "%" + schoolSearchCriteria.getInstrument() +"%"));
 		
 		
 		if(schoolSearchCriteria.getState()!=null){
@@ -77,43 +81,43 @@ public class MusicSchoolDao {
 		}
 		
 		if(schoolSearchCriteria.getGraduateProgramAvailable()!=null){
-			conjuctionCriteria.add(Restrictions.eq("graduateProgramAvailable", (schoolSearchCriteria.getGraduateProgramAvailable().equalsIgnoreCase("true"))?true:false));
+			conjuctionCriteria.add(Restrictions.eq("dept.graduateProgramAvailable", (schoolSearchCriteria.getGraduateProgramAvailable().equalsIgnoreCase("true"))?true:false));
 		}
 		
 		if(schoolSearchCriteria.getMusicMinorAvailable()!=null){
-			conjuctionCriteria.add(Restrictions.eq("musicMinorAvailable", (schoolSearchCriteria.getMusicMinorAvailable().equalsIgnoreCase("true"))?true:false));
+			conjuctionCriteria.add(Restrictions.eq("dept.musicMinorAvailable", (schoolSearchCriteria.getMusicMinorAvailable().equalsIgnoreCase("true"))?true:false));
 		}
 		
 		if(schoolSearchCriteria.getScholarshipsAvailable()!=null){
-			conjuctionCriteria.add(Restrictions.eq("scholarshipsAvailable", (schoolSearchCriteria.getScholarshipsAvailable().equalsIgnoreCase("true"))?true:false));
+			conjuctionCriteria.add(Restrictions.eq("dept.scholarshipsAvailable", (schoolSearchCriteria.getScholarshipsAvailable().equalsIgnoreCase("true"))?true:false));
 		}
 		
 		if(schoolSearchCriteria.getStyle()!=null){
-			conjuctionCriteria.add(Restrictions.eq("faculty.styles", schoolSearchCriteria.getStyle()));
+			conjuctionCriteria.add(Restrictions.eq("dept.faculty.styles", schoolSearchCriteria.getStyle()));
 		}
 		
 		if(schoolSearchCriteria.getMethod() != null){
-			conjuctionCriteria.add(Restrictions.eq("faculty.methods", schoolSearchCriteria.getMethod()));
+			conjuctionCriteria.add(Restrictions.eq("dept.faculty.methods", schoolSearchCriteria.getMethod()));
 		}
 		
 		
 		if(schoolSearchCriteria.getInstrument()!=null && !schoolSearchCriteria.getInstrument().isEmpty()){
 			query.add(conjuctionCriteria);
-			departments = this.hibernateTemplate.findByCriteria(query);
+			musicSchool = this.hibernateTemplate.findByCriteria(query);
 		}
 		
 		List<MusicSchoolResponse> schools = new ArrayList<MusicSchoolResponse>();
 		
-		MusicSchool currentSchool = null;
 		MusicSchoolResponse schoolResponse = null;
 		
-		for(Department currentDept: departments){
-			currentSchool = this.getMusicSchool(currentDept.getMusicSchoolId());
-			schoolResponse = new MusicSchoolResponse();
-			schoolResponse.setMusicSchoolId(currentSchool.getMusicSchoolId());
-			schoolResponse.setName(currentSchool.getName());
-			schoolResponse.addDepartment(currentDept);
-			schools.add(schoolResponse);			
+		for(MusicSchool currentSchool: musicSchool){
+			if(currentSchool!=null){
+				schoolResponse = new MusicSchoolResponse();
+				schoolResponse.setMusicSchoolId(currentSchool.getMusicSchoolId());
+				schoolResponse.setName(currentSchool.getName());
+				schoolResponse.setDepartment(currentSchool.getDepartment());
+				schools.add(schoolResponse);
+			}
 		}
 		
 		

@@ -4,6 +4,7 @@ package com.khatu.musicschool.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Index;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -22,6 +24,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class MusicSchool {
 	private int musicSchoolId;
 	private String name;
+	private int satMin=0;
+	private int actMin=0;
+	private int greMin=0;
+	private String address;
+	private String city;
+	private String state;
+	private String zip;
+	private String country;
 	private List<Department> department;
 	private int sponsorWeight;
 	
@@ -36,7 +46,6 @@ public class MusicSchool {
 		return musicSchoolId;
 	}
 
-
 	public void setMusicSchoolId(int musicSchoolId) {
 		this.musicSchoolId = musicSchoolId;
 	}
@@ -46,11 +55,85 @@ public class MusicSchool {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Column(length=5)
+	@Index(name = "deptsatminindex")
+	public int getSatMin() {
+		return satMin;
+	}
+	public void setSatMin(int satMin) {
+		this.satMin = satMin;
+	}
 
+	@Column(length=5)
+	@Index(name = "deptactminindex")
+	public int getActMin() {
+		return actMin;
+	}
+	public void setActMin(int actMin) {
+		this.actMin = actMin;
+	}
+
+	@Column(length=5)
+	@Index(name = "deptgreminindex")
+	public int getGreMin() {
+		return greMin;
+	}
+	public void setGreMin(int greMin) {
+		this.greMin = greMin;
+	}
+
+	@NotEmpty(message="You must provide department address.")
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	@NotEmpty(message="You must provide city.")
+	@Column(length=20)
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	@NotEmpty(message="You must provide state.")
+	@Column(length=20)
+	@Index(name = "deptstateindex")
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	@NotEmpty(message="You must provide zip.")
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+	
+	@NotEmpty(message="you must provide country.")
+	@Column(length=30)
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
 
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
