@@ -92,6 +92,7 @@ body {
 #searchlist .searchresult .scores {
   height: 65px;
   width: 600px;
+  clear: both;
 }
 
 #searchlist .searchresult .scores .title {

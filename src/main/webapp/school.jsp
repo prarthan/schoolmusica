@@ -66,41 +66,6 @@
       <div class='name'>
         <h2>${name}</h2>
       </div>
-    </script>
-    <script id="schoolFormTemplate" type="text/x-jquery-tmpl"> 
-      <div class="form">
-        <div class="alert alert-error" style="display:none">Please fix the fields shown in red below</div>
-        <div class='name'>
-          <label>School Name</label>
-          <input required type="text" id="schoolName" value=${name} ></input>
-        </div>
-        <div class='button-group'>
-          <div class='btn save save-school'>Save Changes</div>
-          <div class='btn cancel cancel-school'>Cancel</div>
-        </div>
-      </div>
-    </script>
-    <script id="departmentTemplate" type="text/x-jquery-tmpl">
-      <div class='department' id="department_${departmentId}">
-        <div class='department_information'>
-        </div>
-        <div class="sublist">
-          <div class="sublist_title">Faculty</div>
-          <div class="faculty_list"></div>    
-        </div>    
-      </div>
-      <hr></hr>
-    </script>
-    <script id="departmentInformationTemplate" type="text/x-jquery-tmpl">
-      <div class='name'>
-        <h3>${departmentName}</h3>
-      </div>
-      <div class='departmentUrl'>
-        <a target="_blank" href="${departmentUrl}">${departmentUrl}</a>
-      </div>
-      <div class='email'>
-        ${email}
-      </div>
       <div class='address'>
         ${address} ${city} ${state}-${zip} ${country}
       </div>
@@ -121,34 +86,13 @@
            </div>
          </div>
       </div>
-      <div class="resultitem">
-        <b>Other Information</b>
-        <div class='resultiteminfo'>
-          <div><u>Music Minor Available:</u> {{if musicMinorAvailable}}Yes{{else}}No{{/if}}</div>
-          <div><u>Graduate Program Available:</u> {{if graduateProgramAvailable}}Yes{{else}}No{{/if}}</div>
-          <div><u>Scholarship Available:</u> {{if scholarshipsAvailable}}Yes{{else}}No{{/if}}</div>
-        </div>
-      </div>
-      <div class='keywords'>
-        <b>Instruments: </b>
-        <span>${keyword}</span>
-      </div>
     </script>
-    <script id="departmentFormTemplate" type="text/x-jquery-tmpl">
+    <script id="schoolFormTemplate" type="text/x-jquery-tmpl"> 
       <div class="form">
-        <div class='form_title'>Edit Department Information</div>
         <div class="alert alert-error" style="display:none">Please fix the fields shown in red below</div>
         <div class='name'>
-          <label>Name</label>
-          <input type="text" class="departmentName" value="${departmentName}" required></input>
-        </div>
-        <div class='url'>
-          <label>Website</label>
-          <input type="url" class="departmentUrl" value="${departmentUrl}" required></input>
-        </div>
-        <div class='department_email'>
-          <label>Email</label>
-          <input type="email" class="email" value="${email}" required></input>
+          <label>School Name</label>
+          <input required type="text" id="schoolName" value=${name} ></input>
         </div>
         <div class='address_information'>
           <label>Street Address</label>
@@ -178,6 +122,62 @@
                <input type="number" class="actMin" value="${actMin}" required></input>
              </div>
            </div>
+        </div>
+        <div class='button-group'>
+          <div class='btn save save-school'>Save Changes</div>
+          <div class='btn cancel cancel-school'>Cancel</div>
+        </div>
+      </div>
+    </script>
+    <script id="departmentTemplate" type="text/x-jquery-tmpl">
+      <div class='department' id="department_${departmentId}">
+        <div class='department_information'>
+        </div>
+        <div class="sublist">
+          <div class="sublist_title">Faculty</div>
+          <div class="faculty_list"></div>    
+        </div>    
+      </div>
+      <hr></hr>
+    </script>
+    <script id="departmentInformationTemplate" type="text/x-jquery-tmpl">
+      <div class='name'>
+        <h3>${departmentName}</h3>
+      </div>
+      <div class='departmentUrl'>
+        <a target="_blank" href="${departmentUrl}">${departmentUrl}</a>
+      </div>
+      <div class='email'>
+        ${email}
+      </div>
+      <div class="resultitem">
+        <b>Other Information</b>
+        <div class='resultiteminfo'>
+          <div><u>Music Minor Available:</u> {{if musicMinorAvailable}}Yes{{else}}No{{/if}}</div>
+          <div><u>Graduate Program Available:</u> {{if graduateProgramAvailable}}Yes{{else}}No{{/if}}</div>
+          <div><u>Scholarship Available:</u> {{if scholarshipsAvailable}}Yes{{else}}No{{/if}}</div>
+        </div>
+      </div>
+      <div class='keywords'>
+        <b>Instruments: </b>
+        <span>${keyword}</span>
+      </div>
+    </script>
+    <script id="departmentFormTemplate" type="text/x-jquery-tmpl">
+      <div class="form">
+        <div class='form_title'>Edit Department Information</div>
+        <div class="alert alert-error" style="display:none">Please fix the fields shown in red below</div>
+        <div class='name'>
+          <label>Name</label>
+          <input type="text" class="departmentName" value="${departmentName}" required></input>
+        </div>
+        <div class='url'>
+          <label>Website</label>
+          <input type="url" class="departmentUrl" value="${departmentUrl}" required></input>
+        </div>
+        <div class='department_email'>
+          <label>Email</label>
+          <input type="email" class="email" value="${email}" required></input>
         </div>
         <div class="other">
           <b>Other Information</b>

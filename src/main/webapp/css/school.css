@@ -46,6 +46,7 @@ label {
 .button-group {
   margin-left: 100px;
   margin-top: 10px;
+  clear: both;
 }
 
 #school input.error {
@@ -70,17 +71,18 @@ label {
   text-decoration: underline
 }
 
-.department .scores {
+.school .scores {
   height: 65px;
   width: 600px;
+  clear: both;
 }
 
-.department  .scores .title {
+.school  .scores .title {
   font-size: 11px;
   font-weight: bold;
 }
 
-.department  .score {
+.school  .score {
   height: 40px;
   width: 40px;
   border: 1px solid black;
@@ -90,7 +92,7 @@ label {
   margin-left: 3px;
 }
 
-.department .score .exam {
+.school .score .exam {
   background: black;
   color: white;
   font-weight: bold;

@@ -100,12 +100,6 @@
     <script id="searchResultSchoolTemplate" type="text/x-jquery-tmpl"> 
       <div class='searchresult' id=${domId} >
         <h2>${name}</h2>
-        <div class='department_list'></div>
-      </div>
-    </script>
-    <script id="searchResultDepartmentTemplate" type="text/x-jquery-tmpl"> 
-      <div class='department'>
-        <h3><a href="${departmentUrl}">${departmentName}</a></h3>
         <div class='address'>
           ${address} ${city} ${state}-${zip}
         </div>
@@ -126,6 +120,12 @@
              </div>
            </div>
         </div>
+        <div class='department_list'></div>
+      </div>
+    </script>
+    <script id="searchResultDepartmentTemplate" type="text/x-jquery-tmpl"> 
+      <div class='department'>
+        <h3><a href="${departmentUrl}">${departmentName}</a></h3>
         <div class="resultitem">
           <h4>Other Information</h4>
           <div class='resultiteminfo'>

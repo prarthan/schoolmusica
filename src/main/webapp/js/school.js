@@ -38,18 +38,43 @@ School.prototype = {
       _this.hideForm();
     });
   },
+  initTooltips: function() {
+    var options = {
+      animation: true,
+      placement: "right",
+      title: "Please enter a school name",
+      trigger: "focus"
+    };
+    this.$el.find('#schoolName').tooltip( options );
+    
+    options.title = "Please provide an address for the school"
+    this.$el.find(".address_information input").tooltip( options );
+   
+    options.title = "What is the minimum SAT score required?"
+    this.$el.find(".satMin").tooltip( options );
+  
+    options.title = "What is the minimum GRE score required?"
+    this.$el.find(".greMin").tooltip( options );
+      
+    options.title = "What is the minimum ACT score required?"
+    this.$el.find(".actMin").tooltip( options );
+  },
   showForm : function() {
     this.editMode = true;
     this.school.setEditable( true );
     this.$el.addClass("form").removeClass("information");
     this.$el.find("#edit").hide();
     this.$el.find("#done").show();
-    this.$el.find('input').tooltip( {
-      animation: true,
-      placement: "right",
-      title: "Please enter a school name",
-      trigger: "focus"
-    });
+    this.initTooltips();
+    this.$el.find( ".form .address_information .state").autocomplete( {
+        minLength: 1,
+        source: Constants.States,
+        select: function( event, ui ) {
+          $(this).val( ui.item.name );
+          return false;
+        }
+      } 
+    );
   },
   hideForm: function() {
     this.editMode = false;
@@ -146,6 +171,16 @@ SchoolInformation.prototype = {
   getData : function() {
     data = {};
     data.name = $.trim( this.$el.find("#schoolName").val() );
+    data.address = $.trim( this.$el.find(".address").val() );
+    data.city = $.trim( this.$el.find(".city").val() );
+    data.state = $.trim( this.$el.find(".state").val() );  
+    data.zip = $.trim( this.$el.find(".zip").val() );
+    data.country = $.trim( this.$el.find(".country").val() );
+
+    data.satMin = $.trim( this.$el.find(".satMin").val() );
+    data.greMin = $.trim( this.$el.find(".greMin").val() );
+    data.actMin = $.trim( this.$el.find(".actMin").val() );
+
     data.sponsorWeight = 1;
     if( ! this.newSchool ) {
       data.musicSchoolId = this.data.musicSchoolId;
@@ -160,6 +195,61 @@ SchoolInformation.prototype = {
       validate = false;
       this.$el.find("#schoolName").addClass("error");
     }
+
+   var address = $.trim( this.$el.find(".address").val() );
+    if( address.length == 0 ) {
+      this.$el.find(".address").addClass("error");
+      validate = false;
+    }
+
+    var city = $.trim( this.$el.find(".city").val() );
+    if( city.length == 0 ) {
+      this.$el.find(".city").addClass("error");
+      validate = false;
+    }
+
+    var state = $.trim( this.$el.find(".state").val() );
+    if( state.length == 0 ) {
+      this.$el.find(".state").addClass("error");
+      validate = false;
+    }  
+
+    var country = $.trim( this.$el.find(".country").val() );
+    if( country.length == 0 ) {
+      this.$el.find(".country").addClass("error");
+      validate = false;
+    }  
+
+    var zip = $.trim( this.$el.find(".zip").val() );
+    if( zip.length == 0 && ( zip.match(/^\d{5}(-\d{4})?$/g) ) == null  ) {
+      this.$el.find(".zip").addClass("error");
+      validate = false;
+    }  
+
+    var satMin = $.trim( this.$el.find(".satMin").val() );
+    if( satMin.length == 0 && ( satMin.match(/^\d+$/g) ) == null  ) {
+      this.$el.find(".satMin").addClass("error");
+      validate = false;
+    }  
+
+    var greMin = $.trim( this.$el.find(".greMin").val() );
+    if( satMin.length == 0 && ( satMin.match(/^\d+$/g) ) == null  ) {
+      this.$el.find(".greMin").addClass("error");
+      validate = false;
+    }      
+
+    var actMin = $.trim( this.$el.find(".actMin").val() );
+    if( actMin.length == 0 && ( actMin.match(/^\d+$/g) ) == null  ) {
+      this.$el.find(".actMin").addClass("error");
+      validate = false;
+    } 
+
+    var graduateProgramAvailable = this.$el.find(".graduateProgramAvailable .btn.active");
+    if( graduateProgramAvailable.length == 0 ) {
+      this.$el.find(".graduateProgramAvailable").addClass("error");
+      validate = false;     
+    }     
+
     return validate;
   },
   save: function() {
@@ -319,61 +409,7 @@ DepartmentInformation.prototype = {
     if( email.length == 0 ) {
       this.$el.find(".email").addClass("error");
       validate = false;
-    }  
-
-    var address = $.trim( this.$el.find(".address").val() );
-    if( address.length == 0 ) {
-      this.$el.find(".address").addClass("error");
-      validate = false;
-    }
-
-    var city = $.trim( this.$el.find(".city").val() );
-    if( city.length == 0 ) {
-      this.$el.find(".city").addClass("error");
-      validate = false;
-    }
-
-    var state = $.trim( this.$el.find(".state").val() );
-    if( state.length == 0 ) {
-      this.$el.find(".state").addClass("error");
-      validate = false;
-    }  
-
-    var country = $.trim( this.$el.find(".country").val() );
-    if( country.length == 0 ) {
-      this.$el.find(".country").addClass("error");
-      validate = false;
-    }  
-
-    var zip = $.trim( this.$el.find(".zip").val() );
-    if( zip.length == 0 && ( zip.match(/^\d{5}(-\d{4})?$/g) ) == null  ) {
-      this.$el.find(".zip").addClass("error");
-      validate = false;
-    }  
-
-    var satMin = $.trim( this.$el.find(".satMin").val() );
-    if( satMin.length == 0 && ( satMin.match(/^\d+$/g) ) == null  ) {
-      this.$el.find(".satMin").addClass("error");
-      validate = false;
-    }  
-
-    var greMin = $.trim( this.$el.find(".greMin").val() );
-    if( satMin.length == 0 && ( satMin.match(/^\d+$/g) ) == null  ) {
-      this.$el.find(".greMin").addClass("error");
-      validate = false;
-    }      
-
-    var actMin = $.trim( this.$el.find(".actMin").val() );
-    if( actMin.length == 0 && ( actMin.match(/^\d+$/g) ) == null  ) {
-      this.$el.find(".actMin").addClass("error");
-      validate = false;
     } 
-
-    var graduateProgramAvailable = this.$el.find(".graduateProgramAvailable .btn.active");
-    if( graduateProgramAvailable.length == 0 ) {
-      this.$el.find(".graduateProgramAvailable").addClass("error");
-      validate = false;     
-    }     
 
     var scholarshipsAvailable = this.$el.find(".scholarshipsAvailable .btn.active");
     if( scholarshipsAvailable.length == 0 ) {
@@ -398,15 +434,6 @@ DepartmentInformation.prototype = {
     var data = {};
     data.departmentName = $.trim ( this.$el.find(".departmentName").val() );
     data.departmentUrl = $.trim( this.$el.find(".departmentUrl").val() );
-    data.address = $.trim( this.$el.find(".address").val() );
-    data.city = $.trim( this.$el.find(".city").val() );
-    data.state = $.trim( this.$el.find(".state").val() );  
-    data.zip = $.trim( this.$el.find(".zip").val() );
-    data.country = $.trim( this.$el.find(".country").val() );
-
-    data.satMin = $.trim( this.$el.find(".satMin").val() );
-    data.greMin = $.trim( this.$el.find(".greMin").val() );
-    data.actMin = $.trim( this.$el.find(".actMin").val() );
 
     data.email = $.trim( this.$el.find(".email").val() );
     
@@ -528,18 +555,6 @@ DepartmentInformation.prototype = {
    
     options.title = "Please provide an email so that students can get in touch with your department";
     this.$el.find(".email").tooltip( options );
-    
-    options.title = "Please provide an address for the department"
-    this.$el.find(".address_information input").tooltip( options );
-   
-    options.title = "What is the minimum SAT score required?"
-    this.$el.find(".satMin").tooltip( options );
-  
-    options.title = "What is the minimum GRE score required?"
-    this.$el.find(".greMin").tooltip( options );
-      
-    options.title = "What is the minimum ACT score required?"
-    this.$el.find(".actMin").tooltip( options );
    
     options.title = "Which instruments can a student learn in this department?";
     this.$el.find(".keywords .tagedit-list input").tooltip( options );
@@ -575,15 +590,6 @@ DepartmentInformation.prototype = {
         }
       }
     });
-    this.$el.find( ".form .address_information .state").autocomplete( {
-        minLength: 1,
-        source: Constants.States,
-        select: function( event, ui ) {
-          $(this).val( ui.item.name );
-          return false;
-        }
-      } 
-    );
     if( this.newDepartment ) {
       this.$el.find(".form .form_title").html("Add Faculty");
     }   
