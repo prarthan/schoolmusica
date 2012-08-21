@@ -20,10 +20,13 @@ School.prototype = {
   getProgramList: function( onDone ) {
     var _this = this;
     $.getJSON( "rest/program/all", function( instruments ) {
+      Constants.InstrumentsMap = {};
       for( var i in instruments ) {
         instruments[i].name = instruments[i].name;
         instruments[i].label = instruments[i].name;
         instruments[i].id = instruments[i].name;
+        instruments[i].programId = instruments[i].programId;
+        Constants.InstrumentsMap[ instruments[i].name.toLowerCase() ] = instruments[i].programId;
       }
       Constants.Instruments = instruments;
       onDone.apply( _this );
@@ -98,6 +101,14 @@ School.prototype = {
     }
     var _this = this;
     $.getJSON( "rest/school/" + this.id, {}, function( response, textStatus, jqXHR ) {
+        if( response == null ) {
+          $("#school h3").html( "Add New School" );
+          _this.newSchool = true;
+          _this.school.setNew()
+          _this.showForm();
+          _this.hideButtons();
+          return;
+        }
         _this.data = response;
         _this.school.setData( response )
     } );
@@ -382,7 +393,11 @@ DepartmentInformation.prototype = {
       _this.save();
     });
     this.$el.find(".btn.cancel-department").click( function() {
-      _this.hideForm();
+      if( _this.newDepartment ) {
+        _this.$el.remove();
+        return;
+      }
+      _this.hideForm();    
     });
   },
   validate: function() {
@@ -425,7 +440,7 @@ DepartmentInformation.prototype = {
 
     var keyword = $.trim ( this.$el.find(".keywords .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") );
     if( keyword.length == 0 ) {
-      this.$el.find(".keyword").addClass("error");
+      this.$el.find(".keywords .tagedit-list").addClass("error");
       validate = false;     
     } 
     return validate;
@@ -448,7 +463,7 @@ DepartmentInformation.prototype = {
     }   
 
     var musicMinorAvailable = this.$el.find(".musicMinorAvailable .btn.active");
-    if( musicMinorAvailable.length == 0 ) {
+    if( musicMinorAvailable.length > 0 ) {
       data.musicMinorAvailable = ( musicMinorAvailable.text() == "Yes" ) ? true: false;
     }   
 
@@ -461,7 +476,7 @@ DepartmentInformation.prototype = {
   },
   save: function() {
     var _this = this;
-    this.$el.find(".error").removeClass(".error");
+    this.$el.find(".error").removeClass("error");
     this.$el.find(".form .alert").hide();
     if( ! this.validate() ) {
       this.$el.find(".form .alert").fadeIn();
@@ -591,7 +606,7 @@ DepartmentInformation.prototype = {
       }
     });
     if( this.newDepartment ) {
-      this.$el.find(".form .form_title").html("Add Faculty");
+      this.$el.find(".form .form_title").html("Add Department");
     }   
     this.updateOtherInfo();
     this.initTooltips();
@@ -671,6 +686,10 @@ FacultyInformation.prototype = {
       _this.save();
     });
     this.$el.find(".btn.cancel-faculty").click( function() {
+      if( _this.newFaculty ) {
+        _this.$el.remove();
+        return;
+      }
       _this.hideForm();
     });
   },
@@ -698,14 +717,20 @@ FacultyInformation.prototype = {
     }
     var url = $.trim ( this.$el.find(".facultyUrl").val() );
     if( title.length === 0 ) {
-      this.$el.find(".url").addClass("error");
+      this.$el.find(".facultyUrl").addClass("error");
       validate = false;
     }
     var keyword = $.trim ( this.$el.find(".keywords .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") );
     if( keyword.length === 0 ) {
-      this.$el.find(".keyword").addClass("error");
+      this.$el.find(".keywords .tagedit-list").addClass("error");
       validate = false;
     }    
+
+    var styles = $.trim ( this.$el.find(".styles .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") );
+    if( styles.length === 0 ) {
+      this.$el.find(".styles .tagedit-list").addClass("error");
+      validate = false;
+    }   
 
     return validate;
   },
@@ -716,7 +741,7 @@ FacultyInformation.prototype = {
     data.title = $.trim ( this.$el.find(".title").val() );
     data.facultyUrl = $.trim ( this.$el.find(".facultyUrl").val() );
     data.keyword = $.trim ( this.$el.find(".keywords .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") );
-    
+    data.style = $.trim ( this.$el.find(".styles .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") ); 
     if( ! this.newFaculty ) {
       data.departmentId = this.data.facultyId;
     }
@@ -726,7 +751,7 @@ FacultyInformation.prototype = {
   },
   save: function() {
     var _this = this;
-    this.$el.find(".error").removeClass(".error");
+    this.$el.find(".error").removeClass("error");
     this.$el.find(".form .alert").hide();
     if( ! this.validate() ) {
       this.$el.find(".form .alert").fadeIn();
@@ -752,8 +777,43 @@ FacultyInformation.prototype = {
       }
     });    
   },
+  getStyleList: function() {
+    var _this = this;
+    $.getJSON( "rest/program/style/" + _this.styles.join(","), function( styles ) {
+      Constants.Styles = [];
+      for( var i in styles ) {
+        styles[i].name = styles[i].name;
+        styles[i].label = styles[i].name;
+        styles[i].id = styles[i].name;
+        styles[i].programId = styles[i].programId;
+      }
+      Constants.Styles = styles;
+      _this.$el.find('.styles .ui-autocomplete-input').autocomplete( "option" , "source" ,  Constants.Styles );
+    });
+  },
   showForm: function() {
     this.$el.find( ".faculty_information").html( this.formTemplate.tmpl( this.data ) );
+    var _this = this;
+    _this.styles = [];
+    Constants.Styles = [ 
+      {
+        "name" : "style",
+        "label" : "style"
+      }
+    ];
+
+    this.$el.find('.form input.style').tagedit({
+      allowEdit: false,
+      autocompleteOptions: {
+        source: Constants.Styles,
+        minLength: 1,
+        select: function( event, ui ) {
+          $(this).val(ui.item.value).trigger('transformToTag', [ui.item.id]);
+          return false;
+        }
+      }
+    }); 
+
     this.$el.find('.form input.keyword').tagedit({
       allowEdit: false,
       autocompleteOptions: {
@@ -765,6 +825,19 @@ FacultyInformation.prototype = {
         }
       }
     }); 
+    this.$el.find('.keywords .ui-autocomplete-input').bind( "itemAdded", function(e, data ) {
+      var styles = _this.$el.find(".keywords .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get();
+      if( typeof styles == "string" ) {
+        style = styles;
+        styles = [ style ];
+      }
+      _this.styles = [];
+      for( var i in styles ) {
+        _this.styles.push( Constants.InstrumentsMap[ styles[i].toLowerCase() ] ); 
+      }
+      _this.getStyleList();
+    });
+
     if( this.newFaculty ) {
       this.$el.find(".form .form_title").html("Add Faculty");
     }   

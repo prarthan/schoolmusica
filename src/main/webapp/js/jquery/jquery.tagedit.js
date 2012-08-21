@@ -254,6 +254,7 @@ $.fn.autoGrowInput = function(o) {
                                     $(this).parent().before(html);
                                 }
                             }
+                            $(this).trigger("itemAdded", { item:  $(this).val() });
                             $(this).val('');
 
                             // close autocomplete

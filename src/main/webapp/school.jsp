@@ -92,7 +92,7 @@
         <div class="alert alert-error" style="display:none">Please fix the fields shown in red below</div>
         <div class='name'>
           <label>School Name</label>
-          <input required type="text" id="schoolName" value=${name} ></input>
+          <input required type="text" id="schoolName" value="${name}" required ></input>
         </div>
         <div class='address_information'>
           <label>Street Address</label>
@@ -144,6 +144,10 @@
       <div class='name'>
         <h3>${departmentName}</h3>
       </div>
+      <div class='keywords'>
+        <b>Instruments: </b>
+        <span>${keyword}</span>
+      </div>
       <div class='departmentUrl'>
         <a target="_blank" href="${departmentUrl}">${departmentUrl}</a>
       </div>
@@ -158,10 +162,6 @@
           <div><u>Scholarship Available:</u> {{if scholarshipsAvailable}}Yes{{else}}No{{/if}}</div>
         </div>
       </div>
-      <div class='keywords'>
-        <b>Instruments: </b>
-        <span>${keyword}</span>
-      </div>
     </script>
     <script id="departmentFormTemplate" type="text/x-jquery-tmpl">
       <div class="form">
@@ -170,6 +170,10 @@
         <div class='name'>
           <label>Name</label>
           <input type="text" class="departmentName" value="${departmentName}" required></input>
+        </div>
+        <div class="keywords">
+          <label>Instruments</label>
+          <input type="text" name='keyword[]' class="keyword" value="${keyword}" required></input>
         </div>
         <div class='url'>
           <label>Website</label>
@@ -205,10 +209,6 @@
             </div>
           </div>
         </div>
-        <div class="keywords">
-          <label>Instruments</label>
-          <input type="text" name='keyword[]' class="keyword" value="${keyword}" required></input>
-        </div>
         <div class="button-group">
           <div class='btn save save-department'>Save Changes</div>
           <div class='btn cancel cancel-department'>Cancel</div>
@@ -228,12 +228,16 @@
         <div class='title'>
           ${title}
         </div>
-        <div class='url'>
-          <a href="${facultyUrl}" target="_blank">${facultyUrl}</a>
-        </div>
         <div class='keywords'>
           <b>Instruments: </b>
           <span>${keyword}</span>
+        </div>
+        <div class='keywords'>
+          <b>Styles: </b>
+          <span>${style}</span>
+        </div>
+        <div class='url'>
+          <a href="${facultyUrl}" target="_blank">${facultyUrl}</a>
         </div>
       </div>
     </script>
@@ -251,13 +255,17 @@
           <label>Title</label>
           <input type="text" class="title" value="${title}" required></input>
         </div>
-        <div class='url-field'>
-          <label>Website</label>
-          <input type="url" class="facultyUrl" value="${facultyUrl}" required></input>
-        </div>
         <div class="keywords">
           <label>Instruments</label>
           <input type="text" name='keyword[]' class="keyword" value="${keyword}" required></input>
+        </div>
+        <div class="styles">
+          <label>Styles</label>
+          <input type="text" name='style[]' class="style" value="${style}" required></input>
+        </div>
+        <div class='url-field'>
+          <label>Website</label>
+          <input type="url" class="facultyUrl" value="${facultyUrl}" required></input>
         </div>
         <div class='button-group'>
           <div class='btn save-faculty'>Save Changes</div>

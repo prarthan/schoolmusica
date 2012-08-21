@@ -49,7 +49,7 @@ label {
   clear: both;
 }
 
-#school input.error {
+#school .error {
   border-color: red;
   -webkit-box-shadow:  0 0 3px red;
   -moz-box-shadow:  0 0 3px red;
@@ -183,6 +183,10 @@ ul.tagedit-list {
 
 .item {
   width: 300px;
+}
+
+.tagedit-list {
+  margin-bottom: 9px;
 }
 
 
