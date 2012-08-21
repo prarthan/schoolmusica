@@ -242,12 +242,6 @@ SchoolInformation.prototype = {
     if( actMin.length == 0 && ( actMin.match(/^\d+$/g) ) == null  ) {
       this.$el.find(".actMin").addClass("error");
       validate = false;
-    } 
-
-    var graduateProgramAvailable = this.$el.find(".graduateProgramAvailable .btn.active");
-    if( graduateProgramAvailable.length == 0 ) {
-      this.$el.find(".graduateProgramAvailable").addClass("error");
-      validate = false;     
     }     
 
     return validate;
@@ -409,6 +403,12 @@ DepartmentInformation.prototype = {
     if( email.length == 0 ) {
       this.$el.find(".email").addClass("error");
       validate = false;
+    } 
+
+    var graduateProgramAvailable = this.$el.find(".graduateProgramAvailable .btn.active");
+    if( graduateProgramAvailable.length == 0 ) {
+      this.$el.find(".graduateProgramAvailable").addClass("error");
+      validate = false;     
     } 
 
     var scholarshipsAvailable = this.$el.find(".scholarshipsAvailable .btn.active");
