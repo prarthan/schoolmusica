@@ -162,6 +162,9 @@ SchoolInformation.prototype = {
     }
     else {
       this.hideForm();
+      for( var i in this.departments ) {
+        this.departments[i].setEditable( false );
+      }
     }
   },
   initEventListeners: function() {
@@ -300,6 +303,9 @@ SchoolInformation.prototype = {
       });    
     }
   },
+  removeDepartmentButton: function() {
+    this.$el.find(".addDepartment").remove();
+  },
   addEditButtons: function() {
     for( var i in this.departments ) {
       this.departments[i].addEditButton();
@@ -320,10 +326,13 @@ SchoolInformation.prototype = {
   hideForm: function() {
     this.$el.find( ".data .school_information").html( this.informationTemplate.tmpl( this.data ) );
     this.$el.find(".department_list").parent().show();
-
+    
     if( this.editable ) {
       this.addEditButtons();
       this.addDepartmentButton();
+    }
+    else {
+      this.removeDepartmentButton();
     }
     if( this.departments.length == 0 ) {
       this.$el.find(".department_list").parent().hide();

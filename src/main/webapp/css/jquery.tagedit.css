@@ -23,7 +23,6 @@ label {font-weight: bold; margin-bottom: 0.5em; display: block;}
 /* New Item input */
 .tagedit-list li.tagedit-listelement-new input {border: 0; height: 100%; padding: 2px 5px; width: 15px; background: #fff;}
 .tagedit-list li.tagedit-listelement-new input:focus {outline: none;}
-.tagedit-list li.tagedit-listelement-new input.tagedit-input-disabled {display: none;}
 /* Item that is put to the List */
 .tagedit-list li.tagedit-listelement-old {background: #DEE7F8 url(../img/disc.png) 4px center no-repeat; border: 1px solid #CAD8F3; padding: 2px 0 2px 13px; -moz-border-radius: 8px 4px 4px 8px; -webkit-border-radius: 8px 4px 4px 8px; border-radius: 8px 4px 4px 8px;}
 .tagedit-list li.tagedit-listelement-old:hover {background-color: #D6E4FF;}

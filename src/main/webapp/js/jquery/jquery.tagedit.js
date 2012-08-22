@@ -217,7 +217,7 @@ $.fn.autoGrowInput = function(o) {
             // put an input field at the End
             // Put an empty element at the end
             html = '<li class="tagedit-listelement tagedit-listelement-new">';
-            html += '<input type="text" name="'+baseName+'[]" value="" id="tagedit-input" disabled="disabled" class="tagedit-input-disabled" dir="'+options.direction+'"/>';
+            html += '<input type="text" name="'+baseName+'[]" value="" id="tagedit-input" class="tagedit-input-disabled" dir="'+options.direction+'"/>';
             html += '</li>';
             html += '</ul>';
 
@@ -308,7 +308,7 @@ $.fn.autoGrowInput = function(o) {
                         .blur(function() {
                             if($(this).val().length == 0) {
                                 // disable the field to prevent sending with the form
-                                $(this).attr('disabled', 'disabled').addClass('tagedit-input-disabled');
+                                $(this).addClass('tagedit-input-disabled');
                             }
                             else {
                                 // Delete entry after a timeout
