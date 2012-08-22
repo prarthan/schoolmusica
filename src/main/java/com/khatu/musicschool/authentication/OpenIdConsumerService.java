@@ -51,7 +51,7 @@ public class OpenIdConsumerService {
         {
             // configure the return_to URL where your application will receive
             // the authentication responses from the OpenID provider
-            String returnToUrl = "http://example.com/openid";
+            String returnToUrl = "http://www.schoolmusica.com/openid";
 
             // --- Forward proxy setup (only if needed) ---
             // ProxyProperties proxyProps = new ProxyProperties();

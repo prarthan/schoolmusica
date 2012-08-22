@@ -701,10 +701,7 @@ FacultyInformation.prototype = {
       validate = false;
     }
     var middleName = $.trim ( this.$el.find(".middleName").val() );
-    if( middleName.length === 0 ) {
-      this.$el.find(".middleName").addClass("error");
-      validate = false;
-    }
+
     var lastName = $.trim ( this.$el.find(".lastName").val() );
     if( lastName.length === 0 ) {
       this.$el.find(".lastName").addClass("error");
@@ -738,10 +735,11 @@ FacultyInformation.prototype = {
     var data = {};
     data.firstName = $.trim ( this.$el.find(".firstName").val() );
     data.middleName = $.trim ( this.$el.find(".middleName").val() );
+    data.lastName = $.trim ( this.$el.find(".lastName").val() );
     data.title = $.trim ( this.$el.find(".title").val() );
     data.facultyUrl = $.trim ( this.$el.find(".facultyUrl").val() );
     data.keyword = $.trim ( this.$el.find(".keywords .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") );
-    data.style = $.trim ( this.$el.find(".styles .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") ); 
+    data.styles = $.trim ( this.$el.find(".styles .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") ); 
     if( ! this.newFaculty ) {
       data.departmentId = this.data.facultyId;
     }

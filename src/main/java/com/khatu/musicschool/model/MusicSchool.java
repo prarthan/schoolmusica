@@ -34,6 +34,7 @@ public class MusicSchool {
 	private String country;
 	private List<Department> department;
 	private int sponsorWeight;
+	private int verified;
 	
 	
 	public MusicSchool(){
@@ -59,7 +60,7 @@ public class MusicSchool {
 		this.name = name;
 	}
 	
-	@Column(length=5)
+	@Column(length=5,columnDefinition="int default 0")
 	@Index(name = "deptsatminindex")
 	public int getSatMin() {
 		return satMin;
@@ -68,7 +69,7 @@ public class MusicSchool {
 		this.satMin = satMin;
 	}
 
-	@Column(length=5)
+	@Column(length=5,columnDefinition="int default 0")
 	@Index(name = "deptactminindex")
 	public int getActMin() {
 		return actMin;
@@ -77,7 +78,7 @@ public class MusicSchool {
 		this.actMin = actMin;
 	}
 
-	@Column(length=5)
+	@Column(length=5,columnDefinition="int default 0")
 	@Index(name = "deptgreminindex")
 	public int getGreMin() {
 		return greMin;
@@ -152,6 +153,15 @@ public class MusicSchool {
 
 	public void setSponsorWeight(int sponsorWeight) {
 		this.sponsorWeight = sponsorWeight;
+	}
+
+	@Column(columnDefinition="int default 0")
+	public int getVerified() {
+		return verified;
+	}
+
+	public void setVerified(int verified) {
+		this.verified = verified;
 	}	
 	
 }

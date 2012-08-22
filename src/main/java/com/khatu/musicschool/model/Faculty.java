@@ -37,7 +37,7 @@ public class Faculty {
 		this.facultyId = facultyId;
 	}
 	
-	@NotEmpty
+	@NotEmpty(message="You must provide First name.")
 	@Column(length=20)
 	public String getFirstName() {
 		return firstName;
@@ -54,7 +54,7 @@ public class Faculty {
 		this.middleName = middleName;
 	}
 	
-	@NotEmpty
+	@NotEmpty(message="You must provide Last name.")
 	@Column(length=20)
 	public String getLastName() {
 		return lastName;
@@ -81,7 +81,7 @@ public class Faculty {
 		this.title = title;
 	}
 	
-	@NotEmpty
+	@NotEmpty(message="You must provide Instrument.")
 	public String getKeyword() {
 		return keyword;
 	}
@@ -110,7 +110,7 @@ public class Faculty {
 		this.methods = methods;
 	}
 	
-	@NotEmpty
+	@NotEmpty(message="You must provide Faculty Url.")
 	@URL
 	public String getFacultyUrl() {
 		return facultyUrl;
