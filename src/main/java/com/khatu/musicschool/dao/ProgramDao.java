@@ -28,6 +28,8 @@ public class ProgramDao {
 	
 	public List<Style> getAllStylesById(List<Integer> instrumentIds){
 		DetachedCriteria query = DetachedCriteria.forClass(Style.class).add(Restrictions.in("programId", instrumentIds));
+
+		this.hibernateTemplate.setCacheQueries(true);
 		@SuppressWarnings("unchecked")
 		List<Style> styles = (List<Style>)this.hibernateTemplate.findByCriteria(query);
 		return styles;

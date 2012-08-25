@@ -24,9 +24,11 @@ public class MusicSchoolDao {
 	
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
+	
+    @Autowired
+	private DepartmentDao departmentDao;
 		
 	public MusicSchool getMusicSchool(int musicSchoolId){
-		
 		MusicSchool musicSchool = (MusicSchool)hibernateTemplate.get(MusicSchool.class, musicSchoolId);
 		return musicSchool;
 	}
@@ -45,6 +47,8 @@ public class MusicSchoolDao {
 	 * @return
 	 */
 	public MusicSchool addMusicSchool(MusicSchool musicSchool){
+		List<Department> departments = departmentDao.getDepartmentBySchool(musicSchool.getMusicSchoolId());
+		musicSchool.setDepartment(departments);
 		return (MusicSchool)hibernateTemplate.merge(musicSchool);
 	}
 	
@@ -112,10 +116,7 @@ public class MusicSchoolDao {
 		
 		for(MusicSchool currentSchool: musicSchool){
 			if(currentSchool!=null){
-				schoolResponse = new MusicSchoolResponse();
-				schoolResponse.setMusicSchoolId(currentSchool.getMusicSchoolId());
-				schoolResponse.setName(currentSchool.getName());
-				schoolResponse.setDepartment(currentSchool.getDepartment());
+				schoolResponse = new MusicSchoolResponse(currentSchool);
 				schools.add(schoolResponse);
 			}
 		}

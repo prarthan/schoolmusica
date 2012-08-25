@@ -11,9 +11,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+
+
+
 
 @XmlRootElement
 @Entity
+@Cache(region = "program", usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Program {
 	
 	private int programId;

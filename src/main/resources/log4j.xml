@@ -12,11 +12,21 @@
 					<param name="ConversionPattern" value="[%t] %d{HH:mm:ss,SSS} %-5p %l - %m%n" />
 				</layout>
         </appender>
+        
+        
+        
+		<appender name="systemlogs" class="org.apache.log4j.ConsoleAppender">
+                <param name="target" value="System.out" />
+        		
+                <layout class="org.apache.log4j.PatternLayout">
+					<param name="ConversionPattern" value="[%t] %d{HH:mm:ss,SSS} %-5p %l - %m%n" />
+				</layout>
+        </appender>
 
         <!-- Debugging loggers -->
         <root>
                 <priority value="ALL" />
-                <appender-ref ref="ROLL" />
+                <appender-ref ref="systemlogs" />
         </root>
 
 </log4j:configuration>

@@ -136,8 +136,7 @@ public class MusicSchool {
 		this.country = country;
 	}
 
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(fetch=FetchType.LAZY)
     @JoinColumn(name="musicSchoolId")
 	public List<Department> getDepartment() {
 		return department;
