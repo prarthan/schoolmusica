@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Index;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -35,6 +36,7 @@ public class MusicSchool {
 	private List<Department> department;
 	private int sponsorWeight;
 	private int verified;
+	private String admin;
 	
 	
 	public MusicSchool(){
@@ -161,6 +163,17 @@ public class MusicSchool {
 
 	public void setVerified(int verified) {
 		this.verified = verified;
-	}	
+	}
+
 	
+	
+	@Column(length=30)
+	public String getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
+		
 }

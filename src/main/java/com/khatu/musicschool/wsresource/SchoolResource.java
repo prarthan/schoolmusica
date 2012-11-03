@@ -1,9 +1,9 @@
 package com.khatu.musicschool.wsresource;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -15,6 +15,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -39,7 +40,7 @@ public class SchoolResource {
 	@Autowired
 	private MusicSchoolService musicSchoolService;
 	
- 
+	
 	@GET
 	@Path("/{musicSchoolId}")
 	@Produces({MediaType.APPLICATION_JSON })
@@ -68,9 +69,24 @@ public class SchoolResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public MusicSchool addMusicSchool(MusicSchool musicSchool){
+	public MusicSchool addMusicSchool(MusicSchool musicSchool,@Context HttpServletRequest request){
 		validateSchool(musicSchool);
+		String email = getMail(request.getCookies());
+		musicSchool.setAdmin(email);
 		return musicSchoolService.addMusicSchool(musicSchool);
+	}
+	
+	
+	private String getMail(Cookie [] cookies){
+		if(cookies !=null){
+			for(Cookie currentCookie: cookies){
+				if(currentCookie.getName().equalsIgnoreCase("schoolmusicausermail")){
+					return currentCookie.getValue();
+				}
+			}
+			
+		}
+		return null;
 	}
 	
 	private void validateSchool(MusicSchool musicSchool){

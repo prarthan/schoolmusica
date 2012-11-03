@@ -33,6 +33,20 @@ public class MusicSchoolDao {
 		return musicSchool;
 	}
 	
+	/*
+	 * get school by school admin user
+	 */
+	public MusicSchool getMusicSchoolByUser(final String email){
+		Object [] params = new Object [] {email};
+		List<MusicSchool> schools = hibernateTemplate.find("FROM MusicSchool school WHERE school.admin = ?",params);
+		if(schools != null && schools.size()==1)
+			return schools.get(0);
+		else
+			return null;
+		
+		
+	}
+	
 	public void deleteMusicSchool(final int musicSchoolId){
 		MusicSchool school = getMusicSchool(musicSchoolId);
 		if(school !=null)

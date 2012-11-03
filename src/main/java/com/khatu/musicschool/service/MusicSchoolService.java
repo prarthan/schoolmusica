@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.khatu.musicschool.common.Filters;
 import com.khatu.musicschool.dao.MusicSchoolDao;
+import com.khatu.musicschool.dao.SchoolAdminDao;
 import com.khatu.musicschool.model.MusicSchool;
 import com.khatu.musicschool.wsresource.SchoolSearchCriteria;
 import com.khatu.musicschool.wsresource.response.MusicSchoolResponse;
@@ -24,6 +25,8 @@ public class MusicSchoolService {
 	@Autowired
 	private MusicSchoolDao musicSchoolDao;
 	
+	@Autowired
+	private SchoolAdminDao adminDao;
 	
 	/**
 	 * get music school
@@ -32,6 +35,10 @@ public class MusicSchoolService {
 	 */
 	public MusicSchool getMusicSchool(int musicSchoolId){
 		return musicSchoolDao.getMusicSchool(musicSchoolId);		
+	}
+	
+	public MusicSchool getMusicSchoolByUser(final String email){
+		return musicSchoolDao.getMusicSchoolByUser(email);
 	}
 	
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
@@ -61,6 +68,8 @@ public class MusicSchoolService {
 		filters.put(Filters.STYLES, new ArrayList<String>());
 		return filters; 
 	}
+	
+
 	
 
 }

@@ -2,6 +2,7 @@
 <%@ page import = " java.util.* " %>
 <%
     String id= "-1";
+	String email = "";
     if (request.getParameter("id") != null) {
       id = request.getParameter("id");
     } 

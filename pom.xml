@@ -111,6 +111,11 @@
                  <url>https://oss.sonatype.org/content/repositories/openid4java-snapshots</url>
                  <snapshots />
              </repository>
+              <repository>
+			    <id>step2</id>
+			    <name>Step 2 Maven Repository</name>
+			    <url>http://step2.googlecode.com/svn/code/java/maven</url>
+			  </repository>
     </repositories>
 
     <pluginRepositories>
@@ -127,6 +132,13 @@
 
     <dependencies>
         <!-- Spring Web Dependencies -->
+        
+        <dependency>
+		  <groupId>org.expressme</groupId>
+		  <artifactId>JOpenId</artifactId>
+		  <version>1.08</version>
+		</dependency>
+		
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -277,19 +289,8 @@
 		   <version>2.6.0</version>
 		</dependency>
 		
-		<dependency>
-            <groupId>org.openid4java</groupId>
-            <artifactId>openid4java-consumer</artifactId>
-            <!--artifactId>openid4java-server</artifactId-->
-            <!--artifactId>openid4java-infocard</artifactId-->
-            <!--artifactId>openid4java-xri</artifactId-->
-            <!--artifactId>openid4java</artifactId-->
-            <!--artifactId>openid4java-full</artifactId-->
-            <version>0.9.7-SNAPSHOT</version>
-            <type>pom</type>
-        </dependency>
 
-            
+        
         <!-- Testing Dependencies -->
         <dependency>
             <groupId>org.jmock</groupId>

@@ -18,16 +18,15 @@
     </bean> 
     
   
-	<bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+ 	<bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://schoolmusica.c9nlp4oasxjs.us-east-1.rds.amazonaws.com/schoolmusica"/>
+		<property name="url" value="jdbc:mysql://schoolmusica.c2vvz1kuxxih.us-west-2.rds.amazonaws.com/schoolmusica"/>
 		<property name="username" value="schoolmusica"/>
-		<property name="password" value="schoolmusica"/>
+		<property name="password" value="12Khojme"/>
 		<property name="maxActive" value="30"/>
 		<property name="minIdle" value="5"/>
 		<property name="validationQuery" value="select 1 from dual"/>
 	</bean> 
- 	
 	
 <!--   <bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -38,7 +37,7 @@
 		<property name="minIdle" value="5"/>
 		<property name="validationQuery" value="select 1 from dual"/>
 	</bean>
-  -->
+ -->
 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="musicschoolDataSource" />
 		<property name="annotatedClasses">
@@ -49,13 +48,14 @@
 				<value>com.khatu.musicschool.model.Method</value>
 				<value>com.khatu.musicschool.model.Style</value>
 				<value>com.khatu.musicschool.model.Faculty</value>
+				<value>com.khatu.musicschool.model.SchoolAdmin</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-			<!--  	<prop key="hibernate.hbm2ddl.auto">update</prop> -->
+		     <!--  <prop key="hibernate.hbm2ddl.auto">create</prop> -->
 				<prop key="hibernate.cache.use_second_level_cache">true</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop> 
 				<prop key="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</prop>  
