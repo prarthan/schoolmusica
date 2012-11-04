@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -19,11 +20,13 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.expressme.openid.Authentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.khatu.musicschool.authentication.OpenIdServiceManager;
 import com.khatu.musicschool.exception.InvalidParameterException;
 import com.khatu.musicschool.model.MusicSchool;
 import com.khatu.musicschool.service.MusicSchoolService;
@@ -39,6 +42,13 @@ public class SchoolResource {
 	
 	@Autowired
 	private MusicSchoolService musicSchoolService;
+	
+
+	@Autowired
+	private OpenIdServiceManager openIdServicemanager;
+	
+    private static final String ATTR_MAC = "openid_mac";
+    private static final String ATTR_ALIAS = "openid_alias";
 	
 	
 	@GET
@@ -71,23 +81,18 @@ public class SchoolResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public MusicSchool addMusicSchool(MusicSchool musicSchool,@Context HttpServletRequest request){
 		validateSchool(musicSchool);
-		String email = getMail(request.getCookies());
+		String email = getEmail(request);
 		musicSchool.setAdmin(email);
 		return musicSchoolService.addMusicSchool(musicSchool);
 	}
 	
-	
-	private String getMail(Cookie [] cookies){
-		if(cookies !=null){
-			for(Cookie currentCookie: cookies){
-				if(currentCookie.getName().equalsIgnoreCase("schoolmusicausermail")){
-					return currentCookie.getValue();
-				}
-			}
-			
-		}
-		return null;
+	private String getEmail(HttpServletRequest request){
+		HttpSession session = request.getSession();       
+	    String email = (String) session.getAttribute("email");
+	    return email;
+	    
 	}
+	
 	
 	private void validateSchool(MusicSchool musicSchool){
 		 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

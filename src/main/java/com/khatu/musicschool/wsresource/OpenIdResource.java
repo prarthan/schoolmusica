@@ -86,6 +86,7 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 		    int schoolId = authnticateService.authenticateAndGetSchool(email);
 		    response.addCookie(getCookie(email));
 		    response.addCookie(getTestCookie());
+		    session.setAttribute("email", email);
 		    logger.info("added cookie to response");
 		    response.sendRedirect(url+"?id="+schoolId);
 			} catch (IOException e) {
@@ -114,6 +115,7 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 		    int schoolId = authnticateService.authenticateAndGetSchool(email);
 		    response.addCookie(getCookie(email));
 		    response.addCookie(getTestCookie());
+		    session.setAttribute("email", email);
 		    logger.info("added cookie to response");
 			response.sendRedirect(url+"?id="+schoolId);
 		} catch (IOException e) {
