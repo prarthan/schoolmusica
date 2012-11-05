@@ -54,6 +54,19 @@ html, body {
   border: 1px solid #50B217;
 }
 
+
+.hd .loginbutton button {
+  height: 37px;
+  width: 200px;
+  background: transparent url( "../img/goog-login-button.png" ) center center scroll no-repeat;
+  border-radius: 3px;
+  border: 0px solid #50B217;
+  float:right;
+  vertical-align: middle;
+}
+
+
+
 .hd .searchfield div:hover {
   background: #50B217;
 }
