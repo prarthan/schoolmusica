@@ -33,6 +33,7 @@ html, body {
   background-size: 32px 32px;
   background-repeat: no-repeat;
   background-position: 2px center;
+  float: left;
 }
 
 .hd .searchfield div {

@@ -130,6 +130,7 @@ body {
 #filters {
   padding: 5px;
   position: fixed;
+  width: 205px;
 }
 
 #filters .filter {
