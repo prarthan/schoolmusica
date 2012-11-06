@@ -204,6 +204,11 @@ body {
 .label div:first-child {
   position: relative;
   top: 4px;
-  width: 110px;
+  width: 104px;
   float: left;
+}
+
+#others .btn-grp {
+  position: relative;
+  top: -1px;
 }
