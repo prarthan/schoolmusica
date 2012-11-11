@@ -6,7 +6,10 @@ html, body {
   width: 100%;
   height: 100px;
   padding: 3px;
-  display:inline-block; vertical-align:middle;
+  display:inline-block; 
+  vertical-align:middle;
+  display: table-cell;
+  z-index: 1;
 }
 
 .hd .logo {
@@ -56,17 +59,18 @@ html, body {
 }
 
 
-.hd .loginbutton button {
-  height: 37px;
-  width: 200px;
-  background: transparent url( "../img/goog-login-button.png" ) center center scroll no-repeat;
-  border-radius: 3px;
-  border: 0px solid #50B217;
-  float:right;
-  vertical-align: middle;
+.hd .login {
+  float: right;
+  margin-top: 38px;
+  font-size: 11px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 30px;
 }
 
-
+.hd .login .title a {
+  color: #fff;
+}
 
 .hd .searchfield div:hover {
   background: #50B217;
@@ -74,4 +78,13 @@ html, body {
 
 .hd .searchfield div:hover button {
   border: 1px solid #96c56f;
+}
+
+
+.popover {
+  z-index: 1000;
+}
+
+.popover img {
+  height: 30px;
 }

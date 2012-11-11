@@ -148,6 +148,7 @@ body {
   border-radius: 5px 5px 0 0;
   color: #B2F289;
   text-shadow: 2px 1px 3px black;
+  display: block;
 }
 
 #filters .filter .hd span {
@@ -210,5 +211,5 @@ body {
 
 #others .btn-grp {
   position: relative;
-  top: -1px;
+    top: -1px;
 }

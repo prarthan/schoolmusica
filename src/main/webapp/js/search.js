@@ -12,6 +12,17 @@ Search.prototype = {
   initUI : function() {
     this.initSearchButton();
     this.initSearchAutoComplete();
+    this.initLoginButton();
+  },
+  initLoginButton: function() {
+    $(".login .title").popover({
+       "animate" : true,
+       "trigger" : "hover",
+       "html" : "true",
+       "content": "We use <img src='img/google-logo.png'></img> for login.",
+       "delay" : 500,
+       "placement": "bottom"
+    });
   },
   initResultsPane : function() {
     this.searchPane = new SearchPane();
