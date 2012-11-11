@@ -58,17 +58,25 @@ html, body {
   border: 1px solid #50B217;
 }
 
-
-.hd .login {
+.hd .options {
   float: right;
-  margin-top: 38px;
+  margin-top: 10px;
   font-size: 11px;
   text-decoration: underline;
   cursor: pointer;
   margin-right: 30px;
 }
 
-.hd .login .title a {
+.hd .options div {
+  float: left;
+}
+
+.hd .options .spacer {
+  color: #fff;
+  margin: 0px 5px;
+}
+
+.hd .options .title a {
   color: #fff;
 }
 
@@ -80,9 +88,16 @@ html, body {
   border: 1px solid #96c56f;
 }
 
+body > .bd {
+  margin-top: 100px;
+}
 
 .popover {
   z-index: 1000;
+}
+
+.popover-inner {
+  width: 230px;
 }
 
 .popover img {
