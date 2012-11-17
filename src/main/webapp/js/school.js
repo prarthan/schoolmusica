@@ -9,6 +9,8 @@ var School = function( id ) {
 
 School.prototype = {
   init: function() {
+    this.header = new Header();
+    this.header.init();
     this.$el = $("#school");
     this.school = new SchoolInformation();
     this.school.init(  this.$el.find(".information") );

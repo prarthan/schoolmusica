@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/jquery.tagedit.css" type='text/css'>   
     <link rel="stylesheet" href="css/gradients.css" type='text/css'>
     <link rel="stylesheet" href="css/common.css" type='text/css'>   
+    <link rel="stylesheet" href="css/header.css" type='text/css'>   
     <link rel="stylesheet" href="css/school.css" type='text/css'>   
   </head>
   <body>
@@ -27,6 +28,17 @@
         <a href="index.html">
           <img src="img/logo2.png" alt="Logo"></img>
         </a>
+      </div>
+      <div class="options">
+        <div class='login'>
+          <div class='title'> 
+            <a href="rest/openid?op=google">Manager Your School</a>
+          </div>
+        </div>
+        <div class='spacer'>|</div>
+        <div class='about-us'>
+          <div class='title'><a href=''>About Us</a></div>
+        </div>
       </div>
     </div>
     <div class="bd container-fluid gray-gradient">
@@ -49,6 +61,7 @@
     <script type="text/javascript" src="js/jquery/jquery.tmpl.min.js"></script>
     <script type="text/javascript" src="js/jquery/jquery.tagedit.js"></script>
     <script type="text/javascript" src="js/constants.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
     <script type="text/javascript" src="js/school.js"></script>
     <script id="schoolTemplate" type="text/x-jquery-tmpl"> 
       <div class='school' id="school_${musicSchoolId}">

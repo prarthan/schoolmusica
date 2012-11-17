@@ -1,26 +1,24 @@
 
 
-var Search = function() {
+var Search = function() {};
 
-};
+Search.prototype = Header.prototype;
 
-Search.prototype = {
-  init : function() {
-    this.initUI();
-    this.initResultsPane();
-  },
-  initUI : function() {
-    this.initSearchButton();
-    this.initSearchAutoComplete();
-    this.initLoginButton();
-  },
+Search.prototype.initUI = function() {
+  this.initResultsPane()
+  this.initSearchButton();
+  this.initSearchAutoComplete();
+  this.initLoginButton();
+}
+
+Search.prototype = $.extend( {
   initLoginButton: function() {
     $(".login .title").popover({
        "animate" : true,
        "trigger" : "hover",
        "html" : "true",
        "content": "We use <img src='img/google-logo.png'></img> for login.",
-       "delay" : 500,
+       "delay" : 100,
        "placement": "bottom"
     });
   },
@@ -77,12 +75,12 @@ Search.prototype = {
       .data( "autocomplete" )._renderItem = function( ul, item ) {
         return $( "<li></li>" )
           .data( "item.autocomplete", item )
-          .append( "<a><div class='item-image'><img style='display:none;' src='" + item.image + "'/></div><div class='item-name'>" + item.name + "</div></a>" )
+          .append( "<a><div class='item-name'>" + item.name + "</div></a>" )
           .appendTo( ul );
       };
     });
   }
-};
+}, Search.prototype )
 
 var FilterPane = function( searchPane ) {
   this.state = null; 

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type='text/css'>
     <link rel="stylesheet" href="css/gradients.css" type='text/css'>
-    <link rel="stylesheet" href="css/common.css" type='text/css'>   
+    <link rel="stylesheet" href="css/common.css" type='text/css'>  
+    <link rel="stylesheet" href="css/header.css" type='text/css'>    
     <link rel="stylesheet" href="css/search.css" type='text/css'>   
   </head>
   <body>
@@ -107,6 +108,7 @@
     <script type="text/javascript" src="js/jquery/jquery-ui-1.8.21.custom.min.js"></script>
     <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/constants.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
     <script type="text/javascript" src="js/search.js"></script>
     <script id="searchResultSchoolTemplate" type="text/x-jquery-tmpl"> 
       <div class='searchresult' id=${domId} >

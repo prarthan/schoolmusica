@@ -1,0 +1,85 @@
+.hd {
+  width: 100%;
+  height: 100px;
+  padding: 3px;
+  display:inline-block; 
+  vertical-align:middle;
+  display: table-cell;
+  z-index: 1;
+}
+
+.hd .logo {
+  margin-left: 20px;
+}
+
+.hd .logo, .hd .searchfield {
+  margin-top: 20px;
+  float: left;
+}
+
+.hd .searchfield {
+  height: 60px;
+  margin-left: 100px;
+  width: 460px;
+}
+
+.hd .searchfield input {
+  width: 340px;
+  position: relative;
+  top: 15px;
+  height: 27px;
+  padding-left: 36px;
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: 2px center;
+  float: left;
+}
+
+.hd .searchfield div {
+  float: right;
+  height: 37px;
+  width: 64px;
+  position: relative; 
+  top: 14px;
+  margin-left: 10px;
+  border-radius: 3px;
+  background: #6CCD29;
+}
+
+.hd .searchfield button {
+  height: 37px;
+  width: 64px;
+  background: transparent url( "../img/search.png" ) center center scroll no-repeat;
+  border-radius: 3px;
+  border: 1px solid #50B217;
+}
+
+.hd .options {
+  float: right;
+  margin-top: 10px;
+  font-size: 11px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+.hd .options div {
+  float: left;
+}
+
+.hd .options .spacer {
+  color: #fff;
+  margin: 0px 5px;
+}
+
+.hd .options .title a {
+  color: #fff;
+}
+
+.hd .searchfield div:hover {
+  background: #50B217;
+}
+
+.hd .searchfield div:hover button {
+  border: 1px solid #96c56f;
+}
