@@ -2,9 +2,11 @@ package com.khatu.musicschool.dao;
 
 import java.util.List;
 
+import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Property;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.orm.hibernate3.HibernateTemplate;
@@ -22,17 +24,73 @@ public class DepartmentDao {
 	@Autowired
 	private FacultyDao facultyDao;
 	
+	/**
+	 * search department by criteria
+	 * @param departmentSearchCriteria
+	 * @return
+	 */
 	
 	public List<Department> searchDepartment(DepartmentSearchCriteria departmentSearchCriteria){
-		DetachedCriteria query = DetachedCriteria.forClass(Department.class)
-				.add((Criterion) Property.forName("keyword").like("%" + departmentSearchCriteria.getInstrument() +"%"));
-//		if(departmentSearchCriteria.getState()!=null)
-//			query.add((Criterion) Property.forName("state").like("%" + departmentSearchCriteria.getInstrument() +"%"))
-		List<Department> departments = this.hibernateTemplate.findByCriteria(query);
+		
+		List<Department> departments= null;
+		
+		DetachedCriteria query = DetachedCriteria.forClass(Department.class);
+				
+		
+		Conjunction conjuctionCriteria = Restrictions.conjunction();
 
+		if(departmentSearchCriteria.getInstrument()!=null && !departmentSearchCriteria.getInstrument().isEmpty())
+			conjuctionCriteria.add(Restrictions.like("keyword", "%" + departmentSearchCriteria.getInstrument() +"%"));
+		
+		
+		if(departmentSearchCriteria.getState()!=null){
+			conjuctionCriteria.add(Restrictions.eq("state", departmentSearchCriteria.getState()));
+		}
+		
+		if(departmentSearchCriteria.getSatMin()>0){
+			conjuctionCriteria.add(Restrictions.le("satMin", departmentSearchCriteria.getSatMin()));
+
+		}
+		
+		if(departmentSearchCriteria.getGreMin()>0){
+			conjuctionCriteria.add(Restrictions.le("greMin", departmentSearchCriteria.getGreMin()));
+		}
+		
+		if(departmentSearchCriteria.getActMin()>0){
+			conjuctionCriteria.add(Restrictions.le("actMin", departmentSearchCriteria.getActMin()));
+		}
+		
+		if(departmentSearchCriteria.getGraduateProgramAvailable()!=null){
+			conjuctionCriteria.add(Restrictions.eq("graduateProgramAvailable", (departmentSearchCriteria.getGraduateProgramAvailable().equalsIgnoreCase("true"))?true:false));
+		}
+		
+		if(departmentSearchCriteria.getMusicMinorAvailable()!=null){
+			conjuctionCriteria.add(Restrictions.eq("musicMinorAvailable", (departmentSearchCriteria.getMusicMinorAvailable().equalsIgnoreCase("true"))?true:false));
+		}
+		
+		if(departmentSearchCriteria.getScholarshipsAvailable()!=null){
+			conjuctionCriteria.add(Restrictions.eq("scholarshipsAvailable", (departmentSearchCriteria.getScholarshipsAvailable().equalsIgnoreCase("true"))?true:false));
+		}
+		
+		if(departmentSearchCriteria.getStyle()!=null){
+			conjuctionCriteria.add(Restrictions.eq("faculty.styles", departmentSearchCriteria.getStyle()));
+		}
+		
+		if(departmentSearchCriteria.getMethod() != null){
+			conjuctionCriteria.add(Restrictions.eq("faculty.methods", departmentSearchCriteria.getMethod()));
+		}
+		
+		
+		if(departmentSearchCriteria.getInstrument()!=null && !departmentSearchCriteria.getInstrument().isEmpty()){
+			query.add(conjuctionCriteria);
+			
+			departments = this.hibernateTemplate.findByCriteria(query);
+		}
 		
 		return departments;
 	}
+	
+	
 	
 	
 	public Department addDepartment(Department department){

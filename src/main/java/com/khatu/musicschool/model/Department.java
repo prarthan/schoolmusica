@@ -37,6 +37,17 @@ public class Department {
 	private String departmentUrl;
 	private String announcement;
 	private String email;
+	private String name;
+	private int satMin=0;
+	private int actMin=0;
+	private int greMin=0;
+	private String address;
+	private String city;
+	private String state;
+	private String zip;
+	private String country;
+	private int sponsorWeight;
+	private int verified;
 	
 
 	
@@ -44,6 +55,7 @@ public class Department {
 		
 		
 	}
+	
 	
 	@Id
 	@GeneratedValue
@@ -76,7 +88,7 @@ public class Department {
 	}
 
 	@NotEmpty(message="You must provide instrument/program.")
-	@Index(name = "departmentkeywordindex")
+	@Index(name = "deptkeywordindex")
 	public String getKeyword() {
 		return keyword;
 	}
@@ -154,5 +166,130 @@ public class Department {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	/**
+	 * set music school values at dept values.
+	 * @param musicSchool
+	 */
+	public void setMusicSchoolValues(final MusicSchool musicSchool){
+		this.setActMin(musicSchool.getSatMin());
+		this.setSatMin(musicSchool.getActMin());
+		this.setGreMin(musicSchool.getGreMin());
+		this.setAddress(musicSchool.getAddress());
+		this.setCity(musicSchool.getCity());
+		this.setState(musicSchool.getState());
+		this.setZip(musicSchool.getZip());
+		this.setCountry(musicSchool.getCountry());
+		this.setSponsorWeight(musicSchool.getSponsorWeight());
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Column(length=5,columnDefinition="int default 0")
+	@Index(name = "deptsatminindex")
+	public int getSatMin() {
+		return satMin;
+	}
+
+	public void setSatMin(int satMin) {
+		this.satMin = satMin;
+	}
+
+	@Column(length=5,columnDefinition="int default 0")
+	@Index(name = "deptactminindex")
+	public int getActMin() {
+		return actMin;
+	}
+
+	public void setActMin(int actMin) {
+		this.actMin = actMin;
+	}
+
+	@Column(length=5,columnDefinition="int default 0")
+	@Index(name = "deptgreminindex")
+	public int getGreMin() {
+		return greMin;
+	}
+
+	public void setGreMin(int greMin) {
+		this.greMin = greMin;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	@NotEmpty(message="You must provide city.")
+	@Column(length=20)
+	@Index(name = "deptcityindex")
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	@NotEmpty(message="You must provide state.")
+	@Column(length=20)
+	@Index(name = "deptstateindex")
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+	@NotEmpty(message="You must provide zip.")
+	@Column(length=8)
+	@Index(name = "deptzipindex")
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	@NotEmpty(message="you must provide country.")
+	@Column(length=30)
+	@Index(name = "deptcountryindex")
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	@Index(name = "deptweightindex")
+	public int getSponsorWeight() {
+		return sponsorWeight;
+	}
+
+	public void setSponsorWeight(int sponsorWeight) {
+		this.sponsorWeight = sponsorWeight;
+	}
+
+	@Index(name = "deptverifiedindex")
+	public int getVerified() {
+		return verified;
+	}
+
+	public void setVerified(int verified) {
+		this.verified = verified;
+	}
+	
 
 }

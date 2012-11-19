@@ -3,6 +3,7 @@ package com.khatu.musicschool.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.FetchMode;
 import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
@@ -74,8 +75,9 @@ public class MusicSchoolDao {
 		
 		Conjunction conjuctionCriteria = Restrictions.conjunction();
 		
-		DetachedCriteria query = DetachedCriteria.forClass(MusicSchool.class,"MusicSchool").createAlias("department","dept", DetachedCriteria.INNER_JOIN);
+		DetachedCriteria query = DetachedCriteria.forClass(MusicSchool.class,"MusicSchool").createAlias("department","dept");
 	
+		query.setFetchMode("department", FetchMode.JOIN);
 		
 		if(schoolSearchCriteria.getInstrument()!=null && !schoolSearchCriteria.getInstrument().isEmpty())
 			conjuctionCriteria.add(Restrictions.like("dept.keyword", "%" + schoolSearchCriteria.getInstrument() +"%"));
@@ -121,6 +123,7 @@ public class MusicSchoolDao {
 		
 		if(schoolSearchCriteria.getInstrument()!=null && !schoolSearchCriteria.getInstrument().isEmpty()){
 			query.add(conjuctionCriteria);
+			
 			musicSchool = this.hibernateTemplate.findByCriteria(query);
 		}
 		
