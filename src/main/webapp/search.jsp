@@ -1,3 +1,4 @@
+<%@ page isELIgnored="true" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -113,7 +114,7 @@
     <script type="text/javascript" src="js/search.js"></script>
     <script id="searchResultSchoolTemplate" type="text/x-jquery-tmpl"> 
       <div class='searchresult' id=${domId} >
-        <h2>${name}</h2>
+        <h2><a href="school.jsp?id="${musicSchoolId}>${name}</a></h2>
         <div class='address'>
           ${address} ${city} ${state}-${zip}
         </div>
