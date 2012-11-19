@@ -31,12 +31,15 @@ import com.khatu.musicschool.model.MusicSchool;
 import com.khatu.musicschool.model.Program;
 import com.khatu.musicschool.model.Style;
 import com.khatu.musicschool.service.DepartmentService;
+import com.khatu.musicschool.service.MusicSchoolService;
 import com.khatu.musicschool.wsresource.response.DepartmentResponse;
 
 @Component
 @Path("/department")
 public class DepartmentResource {
 	
+	@Autowired
+	private MusicSchoolService musicSchoolService;
 	
 	@Autowired
 	private DepartmentService departmentService;
@@ -66,6 +69,8 @@ public class DepartmentResource {
 	@Produces({MediaType.APPLICATION_JSON })
 	@Consumes({MediaType.APPLICATION_JSON })
 	public Department addDepartment(Department department){
+		MusicSchool school = musicSchoolService.getMusicSchool(department.getMusicSchoolId());
+		department.setMusicSchoolValues(school);
 		validateDepartment(department);
 		return departmentService.addDepartment(department);
 	}

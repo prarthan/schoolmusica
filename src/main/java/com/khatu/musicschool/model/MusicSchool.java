@@ -63,7 +63,7 @@ public class MusicSchool {
 	}
 	
 	@Column(length=5,columnDefinition="int default 0")
-	@Index(name = "deptsatminindex")
+	@Index(name = "musicsatminindex")
 	public int getSatMin() {
 		return satMin;
 	}
@@ -72,7 +72,7 @@ public class MusicSchool {
 	}
 
 	@Column(length=5,columnDefinition="int default 0")
-	@Index(name = "deptactminindex")
+	@Index(name = "musicactminindex")
 	public int getActMin() {
 		return actMin;
 	}
@@ -81,7 +81,7 @@ public class MusicSchool {
 	}
 
 	@Column(length=5,columnDefinition="int default 0")
-	@Index(name = "deptgreminindex")
+	@Index(name = "musicgreminindex")
 	public int getGreMin() {
 		return greMin;
 	}
@@ -110,7 +110,7 @@ public class MusicSchool {
 
 	@NotEmpty(message="You must provide state.")
 	@Column(length=20)
-	@Index(name = "deptstateindex")
+	@Index(name = "musicstateindex")
 	public String getState() {
 		return state;
 	}
@@ -165,7 +165,6 @@ public class MusicSchool {
 		this.verified = verified;
 	}
 
-	
 	
 	@Column(length=30)
 	public String getAdmin() {

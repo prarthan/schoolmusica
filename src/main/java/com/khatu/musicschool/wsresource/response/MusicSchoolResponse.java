@@ -1,6 +1,7 @@
 package com.khatu.musicschool.wsresource.response;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.khatu.musicschool.model.Department;
@@ -60,6 +61,22 @@ public class MusicSchoolResponse {
 		this.country = musicSchool.getCountry();
 		this.department = musicSchool.getDepartment();
 		this.sponsorWeight = musicSchool.getSponsorWeight();
+		
+	}
+	
+	public MusicSchoolResponse(Department department){
+		this.musicSchoolId = department.getMusicSchoolId();
+		this.name = department.getName();
+		this.satMin = department.getSatMin();
+		this.actMin = department.getActMin();
+		this.greMin = department.getGreMin();
+		this.address = department.getAddress();
+		this.city = department.getCity();
+		this.state = department.getState();
+		this.zip = department.getZip();
+		this.country = department.getCountry();
+		this.department = Arrays.asList(department);
+		this.sponsorWeight = department.getSponsorWeight();
 		
 	}
 

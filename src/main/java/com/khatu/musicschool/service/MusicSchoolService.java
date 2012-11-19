@@ -25,8 +25,6 @@ public class MusicSchoolService {
 	@Autowired
 	private MusicSchoolDao musicSchoolDao;
 	
-	@Autowired
-	private SchoolAdminDao adminDao;
 	
 	/**
 	 * get music school

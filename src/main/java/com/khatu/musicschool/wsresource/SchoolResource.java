@@ -29,6 +29,7 @@ import org.springframework.stereotype.Component;
 import com.khatu.musicschool.authentication.OpenIdServiceManager;
 import com.khatu.musicschool.exception.InvalidParameterException;
 import com.khatu.musicschool.model.MusicSchool;
+import com.khatu.musicschool.service.DepartmentService;
 import com.khatu.musicschool.service.MusicSchoolService;
 import com.khatu.musicschool.wsresource.response.MusicSearchResponse;
 
@@ -42,6 +43,9 @@ public class SchoolResource {
 	
 	@Autowired
 	private MusicSchoolService musicSchoolService;
+	
+	@Autowired
+	private DepartmentService departmentService;
 	
 
 	@Autowired
@@ -70,9 +74,9 @@ public class SchoolResource {
 	@Path("/search")
 	@Consumes({MediaType.APPLICATION_JSON })
 	@Produces({MediaType.APPLICATION_JSON })
-	public MusicSearchResponse searchMusicSchool(SchoolSearchCriteria schoolSearchCriteria){
+	public MusicSearchResponse searchMusicSchool(DepartmentSearchCriteria departmentSearchCriteria){
 
-		return musicSchoolService.searchMusicSchool(schoolSearchCriteria);
+		return departmentService.searchSchool(departmentSearchCriteria);
 
 	}
 	
