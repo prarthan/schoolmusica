@@ -27,7 +27,7 @@
       <div class="options">
         <div class='login'>
           <div class='title'> 
-            <a href="rest/openid?op=google">Manager Your School</a>
+            <a href="rest/openid?op=google">Manage Your School</a>
           </div>
         </div>
         <div class='spacer'>|</div>

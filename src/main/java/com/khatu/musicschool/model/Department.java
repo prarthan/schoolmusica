@@ -172,6 +172,7 @@ public class Department {
 	 * @param musicSchool
 	 */
 	public void setMusicSchoolValues(final MusicSchool musicSchool){
+		this.setName(musicSchool.getName());
 		this.setActMin(musicSchool.getSatMin());
 		this.setSatMin(musicSchool.getActMin());
 		this.setGreMin(musicSchool.getGreMin());
