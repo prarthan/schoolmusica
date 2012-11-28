@@ -36,7 +36,7 @@ public class OpenIdResource {
 	private OpenIdServiceManager openIdServicemanager;
 	
 	@Autowired
-	private AuthenticationService authnticateService;
+	private AuthenticationService authenticateService;
 	
 
 
@@ -80,12 +80,10 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 		    Authentication authentication = openIdServicemanager.getManager().getAuthentication(request, mac_key, alias);       
 		    String identity = authentication.getIdentity();       
 		    String email = authentication.getEmail(); 
-			
-		    logger.info("user email id"+ email);
+
 		    
-		    int schoolId = authnticateService.authenticateAndGetSchool(email);
-		    response.addCookie(getCookie(email));
-		    response.addCookie(getTestCookie());
+		    int schoolId = authenticateService.authenticateAndGetSchool(authentication);
+
 		    session.setAttribute("email", email);
 		    logger.info("added cookie to response");
 		    response.sendRedirect(url+"?id="+schoolId);
@@ -102,41 +100,30 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 		
 		String url = "http://www.schoolmusica.com/school.jsp";
 		try {
+			boolean canEdit = false;
 			HttpSession session = request.getSession();       
 		    byte[] mac_key = (byte[]) session.getAttribute(ATTR_MAC);       
 		    String alias = (String) session.getAttribute(ATTR_ALIAS);  
 		    logger.info("authenticated user");
 		    Authentication authentication = openIdServicemanager.getManager().getAuthentication(request, mac_key, alias);       
-		    String identity = authentication.getIdentity();       
-		    String email = authentication.getEmail(); 
-			
-		    logger.info("user email id"+ email);
+		    String email = authentication.getEmail();
 		    
-		    int schoolId = authnticateService.authenticateAndGetSchool(email);
-		    response.addCookie(getCookie(email));
-		    response.addCookie(getTestCookie());
+		    int schoolId = -1;
+		    String schoolIdString = request.getParameter("id");
+		    if(schoolIdString!=null){
+		    	canEdit = authenticateService.canEdit(email, Integer.parseInt(schoolIdString));
+		    }else{
+		    	schoolId = authenticateService.authenticateAndGetSchool(authentication);
+		    }
+		    
 		    session.setAttribute("email", email);
+		    session.setAttribute("canedit", canEdit);
 		    logger.info("added cookie to response");
 			response.sendRedirect(url+"?id="+schoolId);
 		} catch (IOException e) {
 			logger.error("can not validate user.",e.getStackTrace());
 		}
 				
-	}
-	
-	/**
-	 * set cookie with school musica user email
-	 * @param email
-	 * @return
-	 */
-	private Cookie getCookie(final String email){
-		 Cookie ck = new Cookie("schoolmusicausermail", email);
-		 return ck;
-	}
-	
-	private Cookie getTestCookie(){
-		Cookie ck = new Cookie("siteMail", "schoolmusica");
-		return ck;
 	}
 	
 

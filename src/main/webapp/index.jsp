@@ -16,7 +16,7 @@
   <body>
     <div class="hd blue-gradient navbar navbar-fixed-top">
       <div class="logo">
-        <a href="index.html">
+        <a href="index.jsp">
           <img src="img/logo2.png" alt="Logo"></img>
         </a>
       </div>
@@ -114,7 +114,7 @@
     <script type="text/javascript" src="js/search.js"></script>
     <script id="searchResultSchoolTemplate" type="text/x-jquery-tmpl"> 
       <div class='searchresult' id=${domId} >
-        <h2><a href="school.jsp?id=${musicSchoolId}">${name}</a></h2>
+        <h2><a href="school.jsp?id=${musicSchoolId}" target="_blank">${name}</a></h2>
         <div class='address'>
           ${address} ${city} ${state}-${zip}
         </div>
@@ -140,7 +140,7 @@
     </script>
     <script id="searchResultDepartmentTemplate" type="text/x-jquery-tmpl"> 
       <div class='department'>
-        <h3><a href="${departmentUrl}">${departmentName}</a></h3>
+        <h3><a href="${departmentUrl}" target="_blank">${departmentName}</a></h3>
         <div class="resultitem">
           <h4>Other Information</h4>
           <div class='resultiteminfo'>

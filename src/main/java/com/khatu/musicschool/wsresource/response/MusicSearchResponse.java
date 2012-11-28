@@ -9,6 +9,7 @@ public class MusicSearchResponse {
 	
 	private List<MusicSchoolResponse> schools;
 	private Map<String,List<String>> filters;
+	private int resultCount;
 	
 	public List<MusicSchoolResponse> getSchools() {
 		return schools;
@@ -24,6 +25,14 @@ public class MusicSearchResponse {
 	
 	public void setFilters(Map<String, List<String>> filters) {
 		this.filters = filters;
+	}
+
+	public int getResultCount() {
+		return resultCount;
+	}
+
+	public void setResultCount(int resultCount) {
+		this.resultCount = resultCount;
 	}
 
 }

@@ -25,7 +25,7 @@
   <body>
     <div class="hd blue-gradient navbar navbar-fixed-top">
       <div class="logo">
-        <a href="index.html">
+        <a href="index.jsp">
           <img src="img/logo2.png" alt="Logo"></img>
         </a>
       </div>

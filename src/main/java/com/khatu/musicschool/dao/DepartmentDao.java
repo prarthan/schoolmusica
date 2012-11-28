@@ -1,5 +1,6 @@
 package com.khatu.musicschool.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.criterion.Conjunction;
@@ -14,6 +15,8 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import com.khatu.musicschool.model.Department;
 import com.khatu.musicschool.model.Faculty;
 import com.khatu.musicschool.wsresource.DepartmentSearchCriteria;
+import com.khatu.musicschool.wsresource.response.MusicSchoolResponse;
+import com.khatu.musicschool.wsresource.response.MusicSearchResponse;
 
 @Repository
 public class DepartmentDao {
@@ -84,10 +87,30 @@ public class DepartmentDao {
 		if(departmentSearchCriteria.getInstrument()!=null && !departmentSearchCriteria.getInstrument().isEmpty()){
 			query.add(conjuctionCriteria);
 			
-			departments = this.hibernateTemplate.findByCriteria(query, departmentSearchCriteria.getFirstResult(), departmentSearchCriteria.getMaxResult());
+			departments = this.hibernateTemplate.findByCriteria(query, 0, 20);
+			
 		}
 		
 		return departments;
+	}
+	
+	/**
+	 * get search result
+	 * @param department
+	 * @return
+	 */
+	
+	private MusicSearchResponse getSearchResult(List<Department> department){
+
+		List<MusicSchoolResponse> responseMusic = new ArrayList<MusicSchoolResponse>();
+    	// generate return response
+    	for(Department currentDept: department){
+    		responseMusic.add(new MusicSchoolResponse(currentDept));
+    	}
+    	
+    	MusicSearchResponse response = new MusicSearchResponse();
+    	response.setSchools(responseMusic);
+    	return response;
 	}
 	
 	
