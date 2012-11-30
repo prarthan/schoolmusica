@@ -113,6 +113,7 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 		    if(schoolIdString!=null){
 		    	canEdit = authenticateService.canEdit(email, Integer.parseInt(schoolIdString));
 		    }else{
+		    	canEdit = true;
 		    	schoolId = authenticateService.authenticateAndGetSchool(authentication);
 		    }
 		    
@@ -124,6 +125,21 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 			logger.error("can not validate user.",e.getStackTrace());
 		}
 				
+	}
+	
+	@GET
+	@Path("/logout")
+	public void logout(@Context HttpServletRequest request,@Context HttpServletResponse response){
+		
+		request.getSession().invalidate();
+		try {		
+			response.sendRedirect("http://www.schoolmusica.com/");
+		} catch (IOException e) {
+			logger.error("can not logout user.",e.getStackTrace());
+		}
+		
+		
+		
 	}
 	
 

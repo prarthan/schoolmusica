@@ -36,6 +36,10 @@
           </div>
         </div>
         <div class='spacer'>|</div>
+        <div class='Sign Out'>
+          <div class='title'><a href='rest/openid/logout'>Sign Out</a></div>
+        </div>
+        <div class='spacer'>|</div>
         <div class='about-us'>
           <div class='title'><a href=''>About Us</a></div>
         </div>
