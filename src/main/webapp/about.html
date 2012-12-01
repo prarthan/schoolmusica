@@ -10,27 +10,64 @@
     <link rel="stylesheet" href="css/gradients.css" type='text/css'>
     <link rel="stylesheet" href="css/common.css" type='text/css'>  
     <link rel="stylesheet" href="css/header.css" type='text/css'>    
-    <link rel="stylesheet" href="css/search.css" type='text/css'>   
+    <link rel="stylesheet" href="css/about.css" type='text/css'>   
   </head>
   <body>
-  <div class="hd blue-gradient navbar navbar-fixed-top">
+    <div class="hd blue-gradient navbar navbar-fixed-top">
       <div class="logo">
         <a href="index.jsp">
           <img src="img/logo2.png" alt="Logo"></img>
         </a>
       </div>
-  </div>
-    <div>
-	  	<ul class="nav nav-pills nav-stacked">
-	  		<li><a href="#about">About</a></li>
-	  		<li><a href="#questions">Questions</a></li>
-	  		<li><a href="#contact">Contact</a></li>
-	  	</ul>
-	   <div class="container">
-		  	<a name="about">About</a>
-		  	<a name="questions">Questions</a>
-		  	<a name="contact">email</a>  
-	  </div>
-  </div>
+      <div class="options">
+        <div class='login'>
+          <div class='title'> 
+            <a href="rest/openid?op=google">Manage Your School</a>
+          </div>
+        </div>
+        <div class='spacer'>|</div>
+        <div class='Sign Out'>
+          <div class='title'><a href='rest/openid/logout'>Sign Out</a></div>
+        </div>
+        <div class='spacer'>|</div>
+        <div class='about-us'>
+          <div class='title'><a href=''>About Us</a></div>
+        </div>
+      </div>
+    </div>
+      <div class='bd'>
+  	  	<ul class="nav nav-pills nav-stacked" id="navbar">
+  	  		<li class='active'><a href="#about">About</a></li>
+  	  		<li><a href="#questions">Questions</a></li>
+  	  		<li><a href="#contact">Contact</a></li>
+  	  	</ul>
+  	   <div class="container">
+          <div id="about">
+  		  	  <a name="about"><h1>About</h1></a>
+            <div class="information"></div>
+          </div>
+          <div id="questions" style="display:none;">
+            <a name="questions"><h1>Questions</h1></a>
+            <div class="information"></div>
+          </div>
+          <div id="contact" style="display:none;">
+            <a name="contact"><h1>Contact Us</h1></a>
+            <div class="information"></div>
+          </div>
+  	  </div>
+    </div>
+    <script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/constants.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="js/about.js"></script>
+    <script type="text/javascript">
+      $(document).ready( function() {
+        var about = new About();
+        about.init();
+      });
+    </script>
   </body>
 </html>

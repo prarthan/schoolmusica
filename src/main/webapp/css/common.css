@@ -2,8 +2,16 @@ html, body {
   overflow-x: hidden;
 }
 
+body > .hd {
+  z-index: 3;
+}
+
+.ui-autocomplete {
+  z-index: 3 !important;
+}
+
 body > .bd {
-  margin-top: 100px;
+  margin-top: 107px;
 }
 
 .popover {
