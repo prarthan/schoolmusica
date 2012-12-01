@@ -46,7 +46,7 @@ public class Department {
 	private String state;
 	private String zip;
 	private String country;
-	private int sponsorWeight;
+	private int sponsorWeight=0;
 	private int verified;
 	
 
@@ -274,6 +274,7 @@ public class Department {
 		this.country = country;
 	}
 
+	@Column(columnDefinition="int default 0")
 	@Index(name = "deptweightindex")
 	public int getSponsorWeight() {
 		return sponsorWeight;
