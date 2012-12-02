@@ -43,6 +43,12 @@ SchoolInformation.prototype = {
   init: function( $el ) {
     this.$el = $el;
     this.$el.find(".data").html( this.template.tmpl( {} ) );
+    this.$el.find(".department_list").on( "shown", function(e) {
+      $(e.target).parent().addClass("expanded");
+    });
+    this.$el.find(".department_list").on( "hidden", function(e) {
+      $(e.target).parent().removeClass("expanded");
+    });
   },
   setData : function( data ) {
     this.data = data;
@@ -50,7 +56,7 @@ SchoolInformation.prototype = {
     for( var i in data.department ) {
       var department = data.department[i];
       if( i == 0 )
-         department.inClass = "in"
+        department.inClass = "in"
       this.addDepartment( department )
     }
     this.updateTemplate();
@@ -83,6 +89,7 @@ DepartmentInformation = function( school ) {
   this.template = $("#departmentInformationTemplate");
   this.faculty = [];
   this.data = null;
+  this.addedEvent = false;
 }
 
 DepartmentInformation.prototype = {
@@ -96,6 +103,15 @@ DepartmentInformation.prototype = {
       this.addFaculty( faculty );
     }
     this.updateTemplate();
+    if( ! this.addedEvent ) {
+      this.$el.find(".faculty_list").on( "shown", function(e) {
+        $(e.target).parent().addClass("expanded");
+      });
+      this.$el.find(".faculty_list").on( "hidden", function(e) {
+        $(e.target).parent().removeClass("expanded");
+      });
+      this.addedEvent = true;
+    }
   },  
   addFaculty: function( data, editable ) {
     if( data == null ) {

@@ -70,6 +70,12 @@ SchoolForm.prototype = {
   init: function( $el ) {
     this.$el = $el;
     this.$el.find(".data").html( this.template.tmpl( {} ) );
+    this.$el.find(".department_list").on( "shown", function(e) {
+      $(e.target).parent().addClass("expanded");
+    });
+    this.$el.find(".department_list").on( "hidden", function(e) {
+      $(e.target).parent().removeClass("expanded");
+    });
   },
   setData : function( data, skipDepartment ) {
     this.data = data;
@@ -133,6 +139,7 @@ SchoolForm.prototype = {
       _this.resetData( _this.data )
 
     });
+
   },
   resetData: function() {
     this.$el.find("#schoolName").val( this.data.name );
@@ -300,8 +307,8 @@ DepartmentForm = function( school ) {
   this.template = $("#departmentFormTemplate");
   this.faculty = [];
   this.data = null;
-  this.editable = false;
   this.newDepartment = false;
+  this.addedEvent = false;
 }
 
 DepartmentForm.prototype = {
@@ -315,6 +322,15 @@ DepartmentForm.prototype = {
       }
     }
     this.updateTemplate();
+    if( ! this.addedEvent ) {
+      this.$el.find(".faculty_list").on( "shown", function(e) {
+        $(e.target).parent().addClass("expanded");
+      });
+      this.$el.find(".faculty_list").on( "hidden", function(e) {
+        $(e.target).parent().removeClass("expanded");
+      });
+      this.addedEvent = true;
+    }
   },
   addFaculty: function( data ) {
     var faculty = new FacultyForm(  this );
@@ -587,6 +603,7 @@ FacultyForm = function( department ) {
   this.data = null;
   this.editable = false;
   this.newFaculty = false;
+  this.instruments = [];
 }
 
 FacultyForm.prototype = {
@@ -607,7 +624,6 @@ FacultyForm.prototype = {
       _this.save();
     });
     this.$el.find(".btn.cancel-faculty").click( function() {
-      console.log("Cancel");
       if( _this.newFaculty ) {
         _this.$el.remove();
         return;
@@ -697,32 +713,35 @@ FacultyForm.prototype = {
   },
   getStyleList: function() {
     var _this = this;
-    $.getJSON( "rest/program/style/" + _this.styles.join(","), function( styles ) {
+    if( _this.instruments.length == 0 ) {
+      _this.updateInstrumentList();
+    }
+    $.getJSON( "rest/program/style/" + _this.instruments.join(","), function( styles ) {
       Constants.Styles = [];
       for( var i in styles ) {
         styles[i].name = styles[i].name;
         styles[i].label = styles[i].name;
         styles[i].id = styles[i].name;
+        styles[i].styleId = styles[i].styleId;
         styles[i].programId = styles[i].programId;
       }
       Constants.Styles = styles;
-      _this.$el.find('.styles .ui-autocomplete-input').autocomplete( "option" , "source" ,  Constants.Styles );
+      console.log(_this.$el.find('.styles #tagedit-input').length );
+      _this.$el.find('.styles #tagedit-input').autocomplete( "option" , "source" ,  Constants.Styles );
     });
+  },
+  getStyles: function() {
+    return Constants.Styles;
   },
   updateTemplate: function() {
     var _this = this;
-    _this.styles = [];
-    Constants.Styles = [ 
-      {
-        "name" : "style",
-        "label" : "style"
-      }
-    ];
-
+    this.updateInstrumentList();
+    this.getStyleList();
+    Constants.Styles = [];
     this.$el.find('input.style').tagedit({
       allowEdit: false,
       autocompleteOptions: {
-        source: Constants.Styles,
+        source: _this.getStyles,
         minLength: 1,
         select: function( event, ui ) {
           $(this).val(ui.item.value).trigger('transformToTag', [ui.item.id]);
@@ -743,15 +762,7 @@ FacultyForm.prototype = {
       }
     }); 
     this.$el.find('.keywords .ui-autocomplete-input').bind( "itemAdded", function(e, data ) {
-      var styles = _this.$el.find(".keywords .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get();
-      if( typeof styles == "string" ) {
-        style = styles;
-        styles = [ style ];
-      }
-      _this.styles = [];
-      for( var i in styles ) {
-        _this.styles.push( Constants.InstrumentsMap[ styles[i].toLowerCase() ] ); 
-      }
+      _this.updateInstrumentList();
       _this.getStyleList();
     });
 
@@ -760,6 +771,25 @@ FacultyForm.prototype = {
     }   
     this.initTooltips();
     this.initEventListeners();  
+  },
+  updateInstrumentList: function() {
+    var _this = this;
+    var instruments;
+
+    if ( _this.$el.find(".keywords .tagedit-list input:hidden").length == 0 ) {
+      instruments = this.data.keyword.split(",");
+    }
+    else {
+      instruments = _this.$el.find(".keywords .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get();
+    }
+    if( typeof instruments == "string" ) {
+      instrument = instruments;
+      instruments = [ instrument ];
+    }
+    _this.instruments = [];
+    for( var i in instruments ) {
+      _this.instruments.push( Constants.InstrumentsMap[ instruments[i].toLowerCase() ] ); 
+    }
   },
   initTooltips: function() {
     var options = {

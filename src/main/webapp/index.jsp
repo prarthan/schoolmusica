@@ -31,8 +31,12 @@
           </div>
         </div>
         <div class='spacer'>|</div>
+        <div class='signout'>
+          <div class='title'><a href='rest/openid/logout'>Sign Out</a></div>
+        </div>
+        <div class='spacer'>|</div>
         <div class='about-us'>
-          <div class='title'><a href=''>About Us</a></div>
+          <div class='title'><a href='about.html'>About Us</a></div>
         </div>
       </div>
     </div>
