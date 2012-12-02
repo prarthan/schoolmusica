@@ -191,7 +191,7 @@ $.fn.autoGrowInput = function(o) {
                         var values = $.trim( $(this).val() ).split(",");
                         for( var i in values ) {
                             if( $.trim( values[i] ).length == 0 ) continue; 
-                            html += '<li class="tagedit-listelement tagedit-listelement-old">';
+                            html += '<li class="tagedit-listelement tagedit-listelement-old originalValue">';
                             html += '<span dir="'+options.direction+'">' + $.trim( values[i] ) + '</span>';
                             html += '<input type="hidden" name="'+baseName+'['+elementId+']" value="'+$.trim( values[i] ) +'" />';
                             html += '<a class="tagedit-close" title="'+options.texts.removeLinkTitle+'">x</a>';
