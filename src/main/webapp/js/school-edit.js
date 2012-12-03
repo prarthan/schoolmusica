@@ -50,6 +50,7 @@ SchoolEdit.prototype = {
           _this.school.updateTemplate();
           return;
         }
+        $("#school h3").html( "Edit School Information" );
         _this.data = response;
         _this.school.setData( response )
     } );
@@ -70,12 +71,7 @@ SchoolForm.prototype = {
   init: function( $el ) {
     this.$el = $el;
     this.$el.find(".data").html( this.template.tmpl( {} ) );
-    this.$el.find(".department_list").on( "shown", function(e) {
-      $(e.target).parent().addClass("expanded");
-    });
-    this.$el.find(".department_list").on( "hidden", function(e) {
-      $(e.target).parent().removeClass("expanded");
-    });
+    this.initEventListeners();
   },
   setData : function( data, skipDepartment ) {
     this.data = data;
@@ -113,17 +109,21 @@ SchoolForm.prototype = {
     var department = new DepartmentForm( this );
     if( data == null ) {
       data = {};
+      data.inClass = " in ";
       department.setNew();
     }
     else {
       this.departments.push( department );
     }
-    if( this.departments.length == 1 )
+    if( this.departments.length == 1 ) {
       data.inClass = "in"
+    }
     department.setData( data );
     this.$el.find(".data .department_list" ).append( department.$el );
     this.$el.find(".department_list").parent().show();
-
+    if( this.departments.length == 1 ) {
+      this.$el.find(".department_list .department").addClass("expanded")
+    }    
   },
   initEventListeners: function() {
     var _this = this;
@@ -139,7 +139,12 @@ SchoolForm.prototype = {
       _this.resetData( _this.data )
 
     });
-
+    this.$el.find(".department_list").on( "shown", function(e) {
+      $(e.target).parent().addClass("expanded");
+    });
+    this.$el.find(".department_list").on( "hidden", function(e) {
+      $(e.target).parent().removeClass("expanded");
+    });
   },
   resetData: function() {
     this.$el.find("#schoolName").val( this.data.name );
@@ -336,6 +341,7 @@ DepartmentForm.prototype = {
     var faculty = new FacultyForm(  this );
     if( data == null ) {
       data = {};
+      data.inClass = " in ";
       faculty.setNew();
     }
     else {
@@ -346,6 +352,8 @@ DepartmentForm.prototype = {
     faculty.setData( data )
     this.$el.find(".faculty_list").append( faculty.$el );
     this.$el.find(".faculty_list").parent().show();
+    if( data.inClass ) 
+      faculty.$el.find(".faculty").addClass("expanded");
    
   },
   initEventListeners: function() {
@@ -366,6 +374,11 @@ DepartmentForm.prototype = {
       }
       _this.resetData();    
     });
+    
+    this.$el.find(".departmentName").change( function() {
+      _this.$el.find( ".department > .accordion-toggle > .name").html(_this.$el.find(".departmentName").val());
+    });
+
   },
   validate: function() {
     var validate = true;
@@ -610,6 +623,9 @@ FacultyForm.prototype = {
   setData : function( data ) {
     this.data = data;
     this.$el.html( this.template.tmpl( data ) );
+    if( this.newFaculty ) {
+      this.$el.find(".faculty > .accordion-toggle > .name").html( "" );
+    }
     this.updateTemplate();
   },
   setNew: function() {
@@ -630,6 +646,19 @@ FacultyForm.prototype = {
       }
       _this.setData( _this.data );
     });
+
+    var updateName = function() {
+      var val = _this.$el.find(".firstName").val() + " " + _this.$el.find(".middleName").val() + " " + _this.$el.find(".lastName").val();
+      title = $.trim( _this.$el.find(".title").val() );
+      if($.trim( val ).length > 0 && title.length > 0 )
+        val += ",&nbsp;"
+        val += "<i>" + title  + "</i>";
+      _this.$el.find(".faculty > .accordion-toggle > .name").html( val );
+    };
+
+    this.$el.find(".faculty_form .name input").change( updateName );
+    this.$el.find(".faculty_form .title").change( updateName );
+
   },
   validate: function() {
     var validate = true;
@@ -716,6 +745,9 @@ FacultyForm.prototype = {
     if( _this.instruments.length == 0 ) {
       _this.updateInstrumentList();
     }
+    if( _this.instruments.length == 0 ) {
+      return;
+    }
     $.getJSON( "rest/program/style/" + _this.instruments.join(","), function( styles ) {
       Constants.Styles = [];
       for( var i in styles ) {
@@ -726,7 +758,6 @@ FacultyForm.prototype = {
         styles[i].programId = styles[i].programId;
       }
       Constants.Styles = styles;
-      console.log(_this.$el.find('.styles #tagedit-input').length );
       _this.$el.find('.styles #tagedit-input').autocomplete( "option" , "source" ,  Constants.Styles );
     });
   },
@@ -776,7 +807,7 @@ FacultyForm.prototype = {
     var _this = this;
     var instruments;
 
-    if ( _this.$el.find(".keywords .tagedit-list input:hidden").length == 0 ) {
+    if ( _this.$el.find(".keywords .tagedit-list").length > 0 && _this.$el.find(".keywords .tagedit-list input:hidden").length == 0 && this.data.keyword.length > 0) {
       instruments = this.data.keyword.split(",");
     }
     else {

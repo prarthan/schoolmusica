@@ -10,7 +10,7 @@
     if( edit == null ) {
       edit = new Boolean(false);
     }
-    //edit = new Boolean(true);
+    edit = new Boolean(true);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -167,7 +167,8 @@
     </script>
     <% if( edit == true ) { %>
       <script id="schoolFormTemplate" type="text/x-jquery-tmpl"> 
-        <div class="form">
+        <div class='school'>
+          <div class="form">
           <div class="alert alert-error" style="display:none">Please fix the fields shown in red below</div>
           <div class='name'>
             <label>School Name</label>
@@ -206,11 +207,12 @@
             <div class='btn save save-school'>Save Changes</div>
             <div class='btn cancel cancel-school'>Cancel</div>
           </div>
+          </div>
         </div>
       </script>
       <script id="departmentFormTemplate" type="text/x-jquery-tmpl">
       <div class='department accordion-group'>
-        <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_dept_${departmentId}" >${departmentName}</a>
+        <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_dept_${departmentId}" ><div class='name'>${departmentName}</div></a>
         <div id="collapse_dept_${departmentId}" class="accordion-body collapse ${inClass}">
           <div class="form accordian-inner">
             <div class='form_title'>Edit Department Information</div>
@@ -271,7 +273,7 @@
       </script>
       <script id="facultyFormTemplate" type="text/x-jquery-tmpl"> 
       <div class='faculty accordion-group'>
-        <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_faculty_${facultyId}" > ${firstName} ${middleName} ${lastName}</a>
+        <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_faculty_${facultyId}" ><div class='name'>${firstName} ${middleName} ${lastName},&nbsp;<i>${title}</i></div></a>
         <div id="collapse_faculty_${facultyId}" class="accordion-body collapse ${inClass}">
           <div class="faculty_form form accordian-inner">
             <div class='form_title'>Edit Faculty Information</div>

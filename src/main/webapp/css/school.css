@@ -5,6 +5,7 @@ body {
 
 #school {
   width: 800px;
+  margin-bottom: 20px;
 }
 
 #school .form h3 {
@@ -16,14 +17,13 @@ body {
 }
 
 #school .form  {
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   padding: 10px;
   margin: 10px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
   width: 768px;
-  background-color: #ccc;
 }
 
 .school .sublist {
@@ -198,8 +198,12 @@ label {
   clear: both;
 }
 
+.faculty_form {
+  width: 650px;
+}
+
 .faculty_form .name input {
-  width: 180px;
+  width: 153px;
 }
 
 .faculty_form .title {
@@ -228,13 +232,21 @@ ul.tagedit-list {
   width: 40px;
 }
 
+.input_score b {
+  margin-left: 35px;
+}
+
 .input_score div {
   float: left;
 }
 
+.input_score .resultiteminfo {
+  margin-top: 7px;
+}
+
 .form_title {
   font-weight: bold;
-  font-size: 150%;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 
@@ -244,6 +256,14 @@ ul.tagedit-list {
 
 .tagedit-list {
   margin-bottom: 9px;
+}
+
+#school .btn {
+  margin: 10px;
+}
+
+#school .btn-mini {
+  margin: 0px;
 }
 
 
