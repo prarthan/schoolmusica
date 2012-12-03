@@ -10,7 +10,7 @@
     if( edit == null ) {
       edit = new Boolean(false);
     }
-    edit = new Boolean(true);
+    //edit = new Boolean(true);
 %>
 <!DOCTYPE html>
 <html lang="en">
