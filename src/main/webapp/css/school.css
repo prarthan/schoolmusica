@@ -26,6 +26,72 @@ body {
   background-color: #ccc;
 }
 
+.school .sublist {
+  border: 1px solid #E5E5E5;
+  border-radius: 5px;
+}
+
+.school .sublist_title {
+  background: black;
+  color: white;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  height: 20px;
+  padding: 5px;
+}
+
+
+.department > .accordion-toggle > .name {
+  height: 16px;
+  width: 750px;
+  padding: 10px;
+  line-height: 120%;
+  font-size: 18px;
+  padding-left: 30px;
+  background: transparent url("../img/arrow-right-big.png") 10px 11px no-repeat;
+}
+
+.faculty > .accordion-toggle > .name {
+  height: 10px;
+  padding: 10px;
+  line-height: 120%;
+  font-size: 18px;
+  padding-left: 20px;
+  background: transparent url("../img/arrow-right-small.png") 9px 13px no-repeat;
+}
+
+.department.expanded > .accordion-toggle > .name {
+  background: transparent url("../img/arrow-down-big.png") 7px 16px no-repeat;
+}
+
+.faculty.expanded > .accordion-toggle > .name {
+  background: transparent url("../img/arrow-down-small.png") 5px 15px no-repeat;
+}
+
+.department .sublist {
+  width: 730px;
+  margin-top: 15px;
+}
+
+.department .accordian-inner {
+  padding: 10px;
+}
+
+.faculty {
+  width: 698px;
+}
+
+.faculty .accordion-toggle .name {
+  width: 641px;
+  height: 10px;
+  font-size: 14px;
+}
+
+.accordion-group {
+  border-width: 0px 0px 1px 0px ;
+  margin-bottom: 0px;
+}
+
 label {
   float: left;
   font-size: 13px;
@@ -55,15 +121,11 @@ label {
 }
 
 .school .sublist {
-  margin-left: 15px;
   width: 810px;
 }
 
-.school .sublist_title {
-  font-size: 15px;
-  margin: 5px;
-  font-weight: bold;
-  text-decoration: underline
+.department .sublist {
+  width: 700px;
 }
 
 .school .scores {

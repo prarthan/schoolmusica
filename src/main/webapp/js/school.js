@@ -60,6 +60,12 @@ SchoolInformation.prototype = {
       this.addDepartment( department )
     }
     this.updateTemplate();
+    this.$el.find(".department_list").on( "shown", function(e) {
+      $(e.target).parent().addClass("expanded");
+    });
+    this.$el.find(".department_list").on( "hidden", function(e) {
+      $(e.target).parent().removeClass("expanded");
+    });
   },
   updateTemplate: function() {
     this.$el.find( ".data .school_information").html( this.informationTemplate.tmpl( this.data ) );
@@ -77,6 +83,9 @@ SchoolInformation.prototype = {
     department.setData( data );
     this.$el.find(".data .department_list" ).append( department.$el );
     this.$el.find(".department_list").parent().show();
+    if( this.departments.length == 1 ) {
+      this.$el.find(".department_list .department").addClass("expanded");
+    }
   },
   getId: function() {
     return ( this.data && this.data.musicSchoolId ) ? this.data.musicSchoolId : -1;
@@ -103,15 +112,6 @@ DepartmentInformation.prototype = {
       this.addFaculty( faculty );
     }
     this.updateTemplate();
-    if( ! this.addedEvent ) {
-      this.$el.find(".faculty_list").on( "shown", function(e) {
-        $(e.target).parent().addClass("expanded");
-      });
-      this.$el.find(".faculty_list").on( "hidden", function(e) {
-        $(e.target).parent().removeClass("expanded");
-      });
-      this.addedEvent = true;
-    }
   },  
   addFaculty: function( data, editable ) {
     if( data == null ) {
@@ -122,11 +122,21 @@ DepartmentInformation.prototype = {
     faculty.setData( data )
     this.$el.find(".faculty_list").append( faculty.$el );
     this.$el.find(".faculty_list").parent().show();
-   
+    if( this.faculty.length == 1 ) 
+      this.$el.find(".faculty_list .faculty").addClass("expanded");   
   },
   updateTemplate: function() {
     if( this.faculty.length == 0 ) {
       this.$el.find(".faculty_list").parent().hide();
+    }
+    if( ! this.addedEvent ) {
+      this.$el.find(".faculty_list").on( "shown", function(e) {
+        $(e.target).parent().addClass("expanded");
+      });
+      this.$el.find(".faculty_list").on( "hidden", function(e) {
+        $(e.target).parent().removeClass("expanded");
+      });
+      this.addedEvent = true;
     }
   },
   getId: function() {

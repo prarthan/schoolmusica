@@ -113,50 +113,42 @@
       </div>
     </script>
     <script id="departmentInformationTemplate" type="text/x-jquery-tmpl">
-      <div class='name accordion-group'>
-        <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_dept_${departmentId}" >${departmentName}</a>
+      <div class='accordion-group department'>
+        <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_dept_${departmentId}"><div class='name'>${departmentName}</div></a>
         <div id="collapse_dept_${departmentId}" class="accordion-body collapse ${inClass}">
           <div class='accordian-inner'>
-          <div class='name'>
-            ${departmentName}
-          </div>
-          <div class='keywords'>
-            <b>Instruments: </b>
-            <span>${keyword}</span>
-          </div>
-          <div class='departmentUrl'>
-            <a target="_blank" href="${departmentUrl}">${departmentUrl}</a>
-          </div>
-          <div class='email'>
-            ${email}
-          </div>
-          <div class="resultitem">
-            <b>Other Information</b>
-            <div class='resultiteminfo'>
-              <div><u>Music Minor Available:</u> {{if musicMinorAvailable}}Yes{{else}}No{{/if}}</div>
-              <div><u>Graduate Program Available:</u> {{if graduateProgramAvailable}}Yes{{else}}No{{/if}}</div>
-              <div><u>Scholarship Available:</u> {{if scholarshipsAvailable}}Yes{{else}}No{{/if}}</div>
+            <div class='keywords'>
+              <b>Instruments: </b>
+              <span>${keyword}</span>
             </div>
+            <div class='departmentUrl'>
+              <a target="_blank" href="${departmentUrl}">${departmentUrl}</a>
+            </div>
+            <div class='email'>
+              ${email}
+            </div>
+            <div class="resultitem">
+              <b>Other Information</b>
+              <div class='resultiteminfo'>
+                <div><u>Music Minor Available:</u> {{if musicMinorAvailable}}Yes{{else}}No{{/if}}</div>
+                <div><u>Graduate Program Available:</u> {{if graduateProgramAvailable}}Yes{{else}}No{{/if}}</div>
+                <div><u>Scholarship Available:</u> {{if scholarshipsAvailable}}Yes{{else}}No{{/if}}</div>
+              </div>
+            </div>
+            <div class="sublist">
+              <div class="sublist_title">Faculty</div>
+              <div class="faculty_list accordian"></div>    
+            </div> 
           </div>
-          <div class="sublist">
-            <div class="sublist_title">Faculty</div>
-            <div class="faculty_list accordian"></div>    
-          </div> 
         </div>
       </div>
     </script>
     <script id="facultyInformationTemplate" type="text/x-jquery-tmpl">
-      <div class='name accordion-group'>
-        <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_faculty_${facultyId}" > ${firstName} ${middleName} ${lastName}</a>
+      <div class='accordion-group faculty'>
+        <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_faculty_${facultyId}" ><div class='name'>${firstName} ${middleName} ${lastName},&nbsp;<i>${title}</i></div></a>
         <div id="collapse_faculty_${facultyId}" class="accordion-body collapse ${inClass}">
           <div class='accordian-inner'>      
             <div class='faculty'>
-              <div class='name'>
-                ${firstName} ${middleName} ${lastName}
-              </div>
-              <div class='title'>
-                ${title}
-              </div>
               <div class='keywords'>
                 <b>Instruments: </b>
                 <span>${keyword}</span>
@@ -217,7 +209,7 @@
         </div>
       </script>
       <script id="departmentFormTemplate" type="text/x-jquery-tmpl">
-      <div class='name accordion-group'>
+      <div class='department accordion-group'>
         <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_dept_${departmentId}" >${departmentName}</a>
         <div id="collapse_dept_${departmentId}" class="accordion-body collapse ${inClass}">
           <div class="form accordian-inner">
@@ -278,7 +270,7 @@
       </div>
       </script>
       <script id="facultyFormTemplate" type="text/x-jquery-tmpl"> 
-      <div class='name accordion-group'>
+      <div class='faculty accordion-group'>
         <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_faculty_${facultyId}" > ${firstName} ${middleName} ${lastName}</a>
         <div id="collapse_faculty_${facultyId}" class="accordion-body collapse ${inClass}">
           <div class="faculty_form form accordian-inner">
@@ -318,6 +310,9 @@
     <script type="text/javascript">
        $(document).ready( function() {
         $(".row-fluid").height( $(window).height() - 109 );
+        $(window).on( "resize", function() {
+          $(".row-fluid").height( $(window).height() - 109 );
+        });
         <% if( edit == true ) { %>
           var school = new SchoolEdit(<%= id %> );
         <% } else { %>
