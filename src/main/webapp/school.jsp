@@ -10,7 +10,6 @@
     if( edit == null ) {
       edit = new Boolean(false);
     }
-    edit = new Boolean(true);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -155,7 +154,7 @@
               </div>
               <div class='keywords'>
                 <b>Styles: </b>
-                <span>${style}</span>
+                <span>${styles}</span>
               </div>
               <div class='url'>
                 <a href="${facultyUrl}" target="_blank">${facultyUrl}</a>
@@ -294,7 +293,7 @@
             </div>
             <div class="styles">
               <label>Styles</label>
-              <input type="text" name='style[]' class="style" value="${style}" required></input>
+              <input type="text" name='style[]' class="style" value="${styles}" required></input>
             </div>
             <div class='url-field'>
               <label>Website</label>
