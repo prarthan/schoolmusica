@@ -11,8 +11,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.khatu.musicschool.common.Filters;
+import com.khatu.musicschool.dao.DepartmentDao;
 import com.khatu.musicschool.dao.MusicSchoolDao;
 import com.khatu.musicschool.dao.SchoolAdminDao;
+import com.khatu.musicschool.model.Department;
 import com.khatu.musicschool.model.MusicSchool;
 import com.khatu.musicschool.wsresource.SchoolSearchCriteria;
 import com.khatu.musicschool.wsresource.response.MusicSchoolResponse;
@@ -24,6 +26,9 @@ public class MusicSchoolService {
 	
 	@Autowired
 	private MusicSchoolDao musicSchoolDao;
+	
+	@Autowired
+	private DepartmentDao departmentDao;
 	
 	
 	/**
@@ -41,7 +46,23 @@ public class MusicSchoolService {
 	
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public MusicSchool addMusicSchool(MusicSchool musicSchool){
+		List<Department> departments = departmentDao.getDepartmentBySchool(musicSchool.getMusicSchoolId());
+		updateSchoolDetails(musicSchool,departments);
 		return musicSchoolDao.addMusicSchool(musicSchool);
+	}
+	
+	/**
+	 * update music school values for the departments.
+	 * @param musicSchool
+	 * @param departments
+	 */
+	
+	private void updateSchoolDetails(MusicSchool musicSchool, List<Department> departments){
+		if(departments!=null){
+			for(Department currentDepartment: departments){
+				currentDepartment.setMusicSchoolValues(musicSchool);
+			}
+		}
 	}
 	
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
