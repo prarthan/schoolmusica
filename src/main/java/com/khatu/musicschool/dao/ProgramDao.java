@@ -23,6 +23,8 @@ public class ProgramDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Program> getAllProgram(){
+		this.hibernateTemplate.setCacheQueries(true);
+		this.hibernateTemplate.setQueryCacheRegion("allprogram");
 		return (List<Program>)hibernateTemplate.loadAll(Program.class);
 	}
 	
@@ -30,6 +32,7 @@ public class ProgramDao {
 		DetachedCriteria query = DetachedCriteria.forClass(Style.class).add(Restrictions.in("programId", instrumentIds));
 
 		this.hibernateTemplate.setCacheQueries(true);
+		this.hibernateTemplate.setQueryCacheRegion("alltylesbyId"); 
 		@SuppressWarnings("unchecked")
 		List<Style> styles = (List<Style>)this.hibernateTemplate.findByCriteria(query);
 		return styles;

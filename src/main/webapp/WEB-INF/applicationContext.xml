@@ -14,7 +14,7 @@
     <context:annotation-config/>
     
      <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">   
-         <property name="configLocation" value="ehcache.xml" />    
+         <property name="configLocation" value="classpath:ehcache.xml" />    
     </bean> 
     
   
@@ -57,6 +57,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 		       <prop key="hibernate.hbm2ddl.auto">update</prop> 
 				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop> 
 				<prop key="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</prop>  
 				<prop key="hibernate.search.default.directory_provider">filesystem</prop>

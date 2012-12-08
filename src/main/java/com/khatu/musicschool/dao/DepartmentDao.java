@@ -117,8 +117,8 @@ public class DepartmentDao {
 	
 	
 	public Department addDepartment(Department department){
-		List<Faculty> faculties = facultyDao.getFacultyByDepartment(department.getDepartmentId());
-		department.setFaculty(faculties);
+//		List<Faculty> faculties = facultyDao.getFacultyByDepartment(department.getDepartmentId());
+//		department.setFaculty(faculties);
 		return (Department)hibernateTemplate.merge(department);
 	}
 	

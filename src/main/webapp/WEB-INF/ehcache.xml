@@ -21,4 +21,11 @@
 	overflowToDisk="true"
 	 />
 	 
+	 <cache
+      name="org.hibernate.cache.StandardQueryCache"
+      maxElementsInMemory="500"
+      eternal="false"
+      timeToLiveSeconds="600"
+      overflowToDisk="true"/>
+	 
 </ehcache>

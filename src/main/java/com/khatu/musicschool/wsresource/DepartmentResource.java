@@ -43,19 +43,7 @@ public class DepartmentResource {
 	
 	@Autowired
 	private DepartmentService departmentService;
-	
-//	
-//	@POST
-//	@Path("/search")
-//	@Produces({MediaType.APPLICATION_JSON })
-//	@Consumes({MediaType.APPLICATION_JSON })
-//	public DepartmentResponse searchDepartment(final DepartmentSearchCriteria searchCriteria){
-//		
-//		List<Department> departments = departmentService.searchDepartment(searchCriteria);
-//		DepartmentResponse response = getdummydata();
-//		response.setDepartment(departments);
-//		return response;
-//	}
+
 	
 	@DELETE
 	@Path("/{departmentId}")
