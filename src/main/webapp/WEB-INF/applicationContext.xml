@@ -17,6 +17,11 @@
          <property name="configLocation" value="classpath:ehcache.xml" />    
     </bean> 
     
+     <task:executor id="reportexecuter" pool-size="1000-2000" queue-capacity="1000"
+               rejection-policy="CALLER_RUNS"/>
+               
+     <task:scheduler id="reportScheduler" pool-size="10"/>
+    
   
  	<bean id="musicschoolDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -49,6 +54,7 @@
 				<value>com.khatu.musicschool.model.Style</value>
 				<value>com.khatu.musicschool.model.Faculty</value>
 				<value>com.khatu.musicschool.model.SchoolAdmin</value>
+				<value>com.khatu.musicschool.model.ClickTrackReport</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

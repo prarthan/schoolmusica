@@ -13,9 +13,12 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +31,9 @@ import com.khatu.musicschool.service.FacultyService;
 @Component
 @Path("/faculty")
 public class FacultyResource {
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	
 	@Autowired
 	private FacultyService facultyService;
@@ -47,15 +53,25 @@ public class FacultyResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Faculty addFaculty(Faculty faculty){
 		validateFaculty(faculty);
-		return facultyService.addFaculty(faculty);
+		try{
+			return facultyService.addFaculty(faculty);
+		}catch(Exception e){
+			logger.error("Can not add faculty {}",faculty.toString(),e.getMessage());
+			throw new WebApplicationException(400);
+		}
 	}
 	
 	@DELETE
 	@Path("/{facultyId}")
 	@Produces({MediaType.APPLICATION_JSON })
 	public Response deleteFaculty(@PathParam("facultyId") int facultyId){
-		facultyService.deleteFaculty(facultyId);
-		return Response.ok().build();
+		try{
+			facultyService.deleteFaculty(facultyId);
+			return Response.ok().build();
+		}catch(Exception e){
+			logger.error("Can not delete faculty {}",facultyId,e.getMessage());
+			throw new WebApplicationException(400);
+		}
 	}
 	
 	private void validateFaculty(Faculty faculty){

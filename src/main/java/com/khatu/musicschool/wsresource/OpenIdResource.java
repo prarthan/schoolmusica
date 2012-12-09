@@ -109,9 +109,9 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 		    String email = authentication.getEmail();
 		    
 		    int schoolId = -1;
-		    String searchTerm = "";
+		    String dId = "";
 		    String schoolIdString = request.getParameter("id");
-		    searchTerm = request.getParameter("term");
+		    dId = request.getParameter("dId");
 		    if(schoolIdString!=null){
 		    	canEdit = authenticateService.canEdit(email, Integer.parseInt(schoolIdString));
 		    }else{
@@ -122,7 +122,7 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 		    session.setAttribute("email", email);
 		    session.setAttribute("canedit", canEdit);
 		    logger.info("added cookie to response");
-			response.sendRedirect(url+"?id="+schoolId + "&searchTerm"+searchTerm);
+			response.sendRedirect(url+"?id="+schoolId + "&dId="+dId);
 		} catch (IOException e) {
 			logger.error("can not validate user.",e.getStackTrace());
 		}

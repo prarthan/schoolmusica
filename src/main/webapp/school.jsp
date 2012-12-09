@@ -121,7 +121,7 @@
               <span>${keyword}</span>
             </div>
             <div class='departmentUrl'>
-              <a target="_blank" href="${departmentUrl}">${departmentUrl}</a>
+              <a target="_blank" href="rest/track/school?schoolId=${musicSchoolId}&departmentUrl=${departmentUrl}">${departmentUrl}</a>
             </div>
             <div class='email'>
               ${email}

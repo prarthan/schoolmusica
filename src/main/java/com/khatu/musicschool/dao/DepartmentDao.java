@@ -86,9 +86,7 @@ public class DepartmentDao {
 		
 		if(departmentSearchCriteria.getInstrument()!=null && !departmentSearchCriteria.getInstrument().isEmpty()){
 			query.add(conjuctionCriteria);
-			
 			departments = this.hibernateTemplate.findByCriteria(query, 0, 20);
-			
 		}
 		
 		return departments;

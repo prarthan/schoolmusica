@@ -16,6 +16,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -59,15 +60,25 @@ public class SchoolResource {
 	@Path("/{musicSchoolId}")
 	@Produces({MediaType.APPLICATION_JSON })
 	public MusicSchool getMusicSchool(@PathParam("musicSchoolId")int musicSchoolId){
-		return 	musicSchoolService.getMusicSchool(musicSchoolId);
+		try{
+			return 	musicSchoolService.getMusicSchool(musicSchoolId);
+		}catch(Exception e){
+			logger.error("Can not get music school {}",musicSchoolId,e.getMessage());
+			throw new WebApplicationException(400);
+		}
 	}
 	
 	@DELETE
 	@Path("/{musicSchoolId}")
 	@Produces({MediaType.APPLICATION_JSON })
 	public Response deleteMusicSchool(@PathParam("musicSchoolId")int musicSchoolId){
-		musicSchoolService.deleteMusicSchool(musicSchoolId);
-		return Response.ok().build();
+		try{
+			musicSchoolService.deleteMusicSchool(musicSchoolId);
+			return Response.ok().build();
+		}catch(Exception e){
+			logger.error("Can not delete music school {}",musicSchoolId,e.getMessage());
+			throw new WebApplicationException(400);
+		}
 	}
 	
 	@POST
@@ -75,9 +86,12 @@ public class SchoolResource {
 	@Consumes({MediaType.APPLICATION_JSON })
 	@Produces({MediaType.APPLICATION_JSON })
 	public MusicSearchResponse searchMusicSchool(DepartmentSearchCriteria departmentSearchCriteria){
-
-		return departmentService.searchSchool(departmentSearchCriteria);
-
+		try{
+			return departmentService.searchSchool(departmentSearchCriteria);
+		}catch(Exception e){
+			logger.error("Can not search music school {}",departmentSearchCriteria.toString(),e.getMessage());
+			throw new WebApplicationException(400);
+		}
 	}
 	
 	@POST
@@ -85,9 +99,14 @@ public class SchoolResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public MusicSchool addMusicSchool(MusicSchool musicSchool,@Context HttpServletRequest request){
 		validateSchool(musicSchool);
+		try{
 		String email = getEmail(request);
 		musicSchool.setAdmin(email);
 		return musicSchoolService.addMusicSchool(musicSchool);
+		}catch(Exception e){
+			logger.error("Can not add music school {}",musicSchool.toString(),e.getMessage());
+			throw new WebApplicationException(400);
+		}
 	}
 	
 	private String getEmail(HttpServletRequest request){
