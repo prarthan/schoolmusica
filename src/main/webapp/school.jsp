@@ -3,12 +3,17 @@
 <%
     String id= "-1";
 	  String email = "";
+    String searchQuery = "";
     if (request.getParameter("id") != null) {
       id = request.getParameter("id");
     } 
     Boolean edit = (Boolean)session.getAttribute("canedit");
     if( edit == null ) {
       edit = new Boolean(false);
+    }
+    edit = new Boolean( true );
+    if (request.getParameter("search") != null ) {
+      searchQuery = request.getParameter("search");
     }
 %>
 <!DOCTYPE html>
@@ -317,7 +322,7 @@
         <% if( edit == true ) { %>
           var school = new SchoolEdit(<%= id %> );
         <% } else { %>
-          var school = new School(<%= id %> );
+          var school = new School(<%= id %>, "<%= searchQuery %>" );
         <% } %>
         school.init();
        });

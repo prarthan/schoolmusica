@@ -190,7 +190,7 @@ SearchPane.prototype = {
         }
         $('#searchinfo').css('display', 'table-cell').html( "<span class='resultcount'>" + response.schools.length + "</span> schools found in " + timeInfo + "." );
         for( var i in response.schools ) {
-          var result = new SearchResult( response.schools[i]);
+          var result = new SearchResult( response.schools[i], query );
           result.init();
         }
       },
@@ -201,14 +201,16 @@ SearchPane.prototype = {
   }
 };
 
-var SearchResult = function( resultData ) {
+var SearchResult = function( resultData, query ) {
   this.resultData = resultData;
+  this.query = query;
 }
 
 SearchResult.prototype = {
   init : function() {
     var school = this.resultData;
     school.domId = "school_" + school.musicSchoolId;
+    school.searchQuery = this.query;
     $("#searchResultSchoolTemplate").tmpl( school ).appendTo( "#searchresults")
     for( var j in school.department ) {
       $( "#searchResultDepartmentTemplate" ).tmpl( school.department[j] ).appendTo( "#searchresults #" + school.domId + " .department_list" );

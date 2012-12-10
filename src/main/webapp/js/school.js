@@ -1,8 +1,9 @@
-var School = function( id ) {
+var School = function( id, searchQuery ) {
   this.id = id;
   this.$el = $("<div/>");
   this.school = null;
   this.data = null;
+  this.searchQuery = ( searchQuery && searchQuery.length > 0 ) ? searchQuery : null;
 };
 
 School.prototype = {
@@ -11,7 +12,7 @@ School.prototype = {
     this.header.init();
     this.$el = $("#school");
     this.school = new SchoolInformation();
-    this.school.init(  this.$el.find(".information") );
+    this.school.init(  this.$el.find(".information"), this.searchQuery );
     this.fetchData();
   },
   fetchData : function() {
@@ -31,12 +32,13 @@ School.prototype = {
   }
 }
 
-SchoolInformation = function( id ) {
+SchoolInformation = function( id, searchQuery ) {
   this.$el = $("<div/>");
   this.data = {};
   this.template = $("#schoolTemplate");
   this.informationTemplate = $("#schoolInformationTemplate");
   this.departments = [];
+  this.searchQuery = ( searchQuery && searchQuery.length > 0 ) ? searchQuery : null;
 }
 
 SchoolInformation.prototype = {
@@ -55,8 +57,17 @@ SchoolInformation.prototype = {
     this.$el.find(".data").html( this.template.tmpl( this.data ) );
     for( var i in data.department ) {
       var department = data.department[i];
-      if( i == 0 )
-        department.inClass = "in"
+      if( !this.searchQuery ) {
+        if( i == 0 ) {
+          department.inClass = "in"
+        }
+      }
+      else {
+        if( data.department[i].keyword.match( this.searchQuery ) ) {
+          department.inClass  = "in"
+        }
+      }
+
       this.addDepartment( department )
     }
     this.updateTemplate();

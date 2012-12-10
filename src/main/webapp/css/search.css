@@ -125,7 +125,7 @@
 
 #filters {
   padding: 5px;
-  position: fixed;
+  position: absolute;
   width: 205px;
 }
 
