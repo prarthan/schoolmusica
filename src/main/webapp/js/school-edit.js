@@ -475,6 +475,7 @@ DepartmentForm.prototype = {
       this.$el.find(".form .alert").fadeIn();
       return;
     }
+    _this.$el.addClass( "saving" ).removeClass("saved").find(".indicator").html("Saving");
     var data = this.getData();
     $.ajax({
       url: "rest/department",
@@ -485,6 +486,12 @@ DepartmentForm.prototype = {
       success: function( response, jqXHR, textStatus) {
         _this.data = response;
         _this.$el.find(".keywords li" ).addClass("originalValue");
+        _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Saved Successfully");
+        setTimeout( function() { 
+          _this.$el.find(".indicator").fadeOut( 'slow', {
+            _this.$el.removeClass("saved");
+          });
+        }, 2000 );
         if( _this.newDepartment ) {
           _this.newDepartment = false;
           _this.$el.find(".faculty_list").parent().show();
@@ -592,10 +599,13 @@ DepartmentForm.prototype = {
   deleteDepartment: function() {
     var _this = this;
     if( confirm("Are you sure you want to delete this department?") ) {
+      _this.$el.addClass( "saving" ).removeClass("saved").find(".indicator").html("Deleting");
       $.ajax( {
         url: "rest/department/" + this.getId(),
         method: "POST",
         success: function( response, jqXHR, textStatus) {
+          _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Deleted Successfully");
+          _this.$el.fadeOut( 2000 );
         }, 
         error: function( response, jqXHR, textStatus ) {
           console.log("error");
@@ -708,7 +718,7 @@ FacultyForm.prototype = {
     data.keyword = $.trim ( this.$el.find(".keywords .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") );
     data.styles = $.trim ( this.$el.find(".styles .tagedit-list input:hidden").map(function(){ val = $(this).val(); if( val.length > 0 ) return val; }).get().join(",") ); 
     if( ! this.newFaculty ) {
-      data.departmentId = this.data.facultyId;
+      data.facultyId = this.data.facultyId;
     }
     data.departmentId = this.department.getId();
 
@@ -722,6 +732,8 @@ FacultyForm.prototype = {
       this.$el.find(".form .alert").fadeIn();
       return;
     }
+    _this.$el.addClass( "saving" ).removeClass("saved").find(".indicator").html("Saving");
+
     var data = this.getData();
     $.ajax({
       url: "rest/faculty",
@@ -730,6 +742,12 @@ FacultyForm.prototype = {
       contentType: "application/json",
       data: JSON.stringify( data ),
       success: function( response, jqXHR, textStatus) {
+        _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Saved Successfully");
+        setTimeout( function() { 
+          _this.$el.find(".indicator").fadeOut( 'slow', {
+            _this.$el.removeClass("saved");
+          });
+        }, 2000 );
         _this.data = response;
         _this.$el.find(".keywords li" ).addClass("originalValue");
         _this.$el.find(".styles li" ).addClass("originalValue");
@@ -851,13 +869,14 @@ FacultyForm.prototype = {
   },
   deleteFaculty: function() {
     var _this = this;
-
     if( confirm("Are you sure you want to delete this faculty?") ) {
+      _this.$el.addClass( "saving" ).removeClass("saved").find(".indicator").html("Deleting");
       $.ajax( {
         url: "rest/faculty/" + this.getId(),
         method: "POST",
         success: function( response, jqXHR, textStatus) {
-          this.$el.remove();
+          _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Deleted Successfully");
+          _this.$el.fadeOut( 2000 );
         }, 
         error: function( response, jqXHR, textStatus ) {
           console.log("error");
