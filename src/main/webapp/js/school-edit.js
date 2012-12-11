@@ -488,7 +488,7 @@ DepartmentForm.prototype = {
         _this.$el.find(".keywords li" ).addClass("originalValue");
         _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Saved Successfully");
         setTimeout( function() { 
-          _this.$el.find(".indicator").fadeOut( 'slow', {
+          _this.$el.find(".indicator").fadeOut( 'slow', function(){
             _this.$el.removeClass("saved");
           });
         }, 2000 );
@@ -744,7 +744,7 @@ FacultyForm.prototype = {
       success: function( response, jqXHR, textStatus) {
         _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Saved Successfully");
         setTimeout( function() { 
-          _this.$el.find(".indicator").fadeOut( 'slow', {
+          _this.$el.find(".indicator").fadeOut( 'slow', function(){
             _this.$el.removeClass("saved");
           });
         }, 2000 );

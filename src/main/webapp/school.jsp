@@ -216,6 +216,7 @@
       </script>
       <script id="departmentFormTemplate" type="text/x-jquery-tmpl">
       <div class='department accordion-group'>
+        <div class='indicator'>Loading...</div>
         <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_dept_${departmentId}" ><div class='name'>${departmentName}</div></a>
         <div id="collapse_dept_${departmentId}" class="accordion-body collapse ${inClass}">
           <div class="form accordian-inner">
@@ -277,6 +278,7 @@
       </script>
       <script id="facultyFormTemplate" type="text/x-jquery-tmpl"> 
       <div class='faculty accordion-group'>
+        <div class='indicator'>Loading...</div>
         <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_faculty_${facultyId}" ><div class='name'>${firstName} ${middleName} ${lastName},&nbsp;<i>${title}</i></div></a>
         <div id="collapse_faculty_${facultyId}" class="accordion-body collapse ${inClass}">
           <div class="faculty_form form accordian-inner">
