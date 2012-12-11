@@ -5,7 +5,7 @@ var School = function( id, searchQuery ) {
   this.data = null;
   this.searchQuery = ( searchQuery && searchQuery.length > 0 ) ? searchQuery : null;
   if( this.searchQuery != null ) {
-    this.searchQuery = this.searchQuery.replace("##", " ")
+    this.searchQuery = this.searchQuery.replace("_-_", " ")
   }
 };
 
