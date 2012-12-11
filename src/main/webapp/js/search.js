@@ -210,7 +210,7 @@ SearchResult.prototype = {
   init : function() {
     var school = this.resultData;
     school.domId = "school_" + school.musicSchoolId;
-    school.searchQuery = this.query;
+    school.searchQuery = this.query.replace(" ", "##");
     $("#searchResultSchoolTemplate").tmpl( school ).appendTo( "#searchresults")
     for( var j in school.department ) {
       $( "#searchResultDepartmentTemplate" ).tmpl( school.department[j] ).appendTo( "#searchresults #" + school.domId + " .department_list" );

@@ -4,6 +4,9 @@ var School = function( id, searchQuery ) {
   this.school = null;
   this.data = null;
   this.searchQuery = ( searchQuery && searchQuery.length > 0 ) ? searchQuery : null;
+  if( this.searchQuery != null ) {
+    this.searchQuery = this.searchQuery.replace("##", " ")
+  }
 };
 
 School.prototype = {
