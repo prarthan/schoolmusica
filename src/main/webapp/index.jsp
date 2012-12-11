@@ -1,4 +1,20 @@
 <%@ page isELIgnored="true" %>
+<%@ page import = " java.util.* " %>
+<%
+    String id= "-1";
+	  String email = "";
+    String searchQuery = "";
+    if (request.getParameter("id") != null) {
+      id = request.getParameter("id");
+    } 
+    Boolean edit = (Boolean)session.getAttribute("canedit");
+    if( edit == null ) {
+      edit = new Boolean(false);
+    }
+    if (request.getParameter("search") != null ) {
+      searchQuery = request.getParameter("search");
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,15 +41,17 @@
         <div id="searchbutton"><button></button></div>
       </div>
       <div class="options">
+      <% if( edit != true ) { %>
         <div class='login'>
           <div class='title'> 
             <a href="rest/openid?op=google">Manage Your School</a>
           </div>
         </div>
-        <div class='spacer'>|</div>
+        <% }else{ %>
         <div class='signout'>
           <div class='title'><a href='rest/openid/logout'>Sign Out</a></div>
         </div>
+        <%}%>     
         <div class='spacer'>|</div>
         <div class='about-us'>
           <div class='title'><a href='about.html'>About Us</a></div>

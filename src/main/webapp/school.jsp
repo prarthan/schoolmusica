@@ -11,7 +11,6 @@
     if( edit == null ) {
       edit = new Boolean(false);
     }
-    edit = new Boolean( true );
     if (request.getParameter("search") != null ) {
       searchQuery = request.getParameter("search");
     }
@@ -39,15 +38,17 @@
         </a>
       </div>
       <div class="options">
-        <div class='login'>
-          <div class='title'> 
-            <a href="rest/openid?op=google">Manage Your School</a>
-          </div>
-        </div>
-        <div class='spacer'>|</div>
-        <div class='signout'>
-          <div class='title'><a href='rest/openid/logout'>Sign Out</a></div>
-        </div>
+         <% if( edit != true ) { %>
+	        <div class='login'>
+	          <div class='title'> 
+	            <a href="rest/openid?op=google">Manage Your School</a>
+	          </div>
+	        </div>
+        <% }else{ %>
+	        <div class='signout'>
+	          <div class='title'><a href='rest/openid/logout'>Sign Out</a></div>
+	        </div>
+        <%}%>
         <div class='spacer'>|</div>
         <div class='about-us'>
           <div class='title'><a href='about.html'>About Us</a></div>
