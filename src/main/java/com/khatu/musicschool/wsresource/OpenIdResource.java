@@ -109,9 +109,12 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 		    String email = authentication.getEmail();
 		    
 		    int schoolId = -1;
-		    String dId = "";
 		    String schoolIdString = request.getParameter("id");
+		    String dId = "";
 		    dId = request.getParameter("dId");
+		    if(dId==null)
+		    	dId="-1";
+		    
 		    if(schoolIdString!=null){
 		    	canEdit = authenticateService.canEdit(email, Integer.parseInt(schoolIdString));
 		    }else{
@@ -135,13 +138,13 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 		
 		request.getSession().invalidate();
 		try {		
+			openIdServicemanager.logout();
+			request.getSession().setAttribute("email",null);
+			request.getSession().setAttribute("canedit", null);
 			response.sendRedirect("http://www.schoolmusica.com/");
 		} catch (IOException e) {
 			logger.error("can not logout user.",e.getStackTrace());
 		}
-		
-		
-		
 	}
 	
 

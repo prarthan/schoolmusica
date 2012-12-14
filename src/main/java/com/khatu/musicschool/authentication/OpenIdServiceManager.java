@@ -5,6 +5,10 @@ import org.expressme.openid.Endpoint;
 import org.expressme.openid.OpenIdManager;
 import org.springframework.stereotype.Component;
 
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+
 
 @Component
 public class OpenIdServiceManager {
@@ -33,6 +37,21 @@ public class OpenIdServiceManager {
 
 	public Association getAssociation(){
 		return manager.lookupAssociation(getEndpoint());
+	}
+	
+	public void logout(){
+		Client client = Client.create();
+		
+		WebResource webResource = client
+				   .resource("https://www.google.com/accounts/Logout");
+		 
+				ClientResponse response = webResource.accept("application/json")
+		                   .get(ClientResponse.class);
+		 
+				if (response.getStatus() != 200) {
+				   throw new RuntimeException("Failed : HTTP error code : "
+					+ response.getStatus());
+				}
 	}
 
 }
