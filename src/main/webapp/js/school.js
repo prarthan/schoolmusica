@@ -41,12 +41,12 @@ SchoolInformation = function( id, searchQuery ) {
   this.template = $("#schoolTemplate");
   this.informationTemplate = $("#schoolInformationTemplate");
   this.departments = [];
-  this.searchQuery = ( searchQuery && searchQuery.length > 0 ) ? searchQuery : null;
 }
 
 SchoolInformation.prototype = {
-  init: function( $el ) {
+  init: function( $el, searchQuery ) {
     this.$el = $el;
+    this.searchQuery = ( searchQuery && searchQuery.length > 0 ) ? searchQuery : null;
     this.$el.find(".data").html( this.template.tmpl( {} ) );
     this.$el.find(".department_list").on( "shown", function(e) {
       $(e.target).parent().addClass("expanded");
