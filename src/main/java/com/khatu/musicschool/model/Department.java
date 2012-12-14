@@ -158,7 +158,7 @@ public class Department {
 
 	@NotEmpty(message="You must provide email.")
 	@Email(message="Invalid email format.")
-	@Column(length=30)
+	@Column(length=80)
 	public String getEmail() {
 		return email;
 	}
