@@ -101,6 +101,12 @@ FilterPane.prototype = {
         return false;
       }
     });
+    this.$el.find('#stateAC').on("change", function() {
+      $( "#state" ).val('');
+      if( $(this).val().length == 0 ) {
+        _this.refreshSearch();
+      }
+    });
     this.$el.find( "input.filterInput" ).on( "change", function() {
       _this.refreshSearch() 
     } ); 
