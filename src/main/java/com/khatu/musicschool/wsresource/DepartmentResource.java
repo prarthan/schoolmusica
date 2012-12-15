@@ -26,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.khatu.musicschool.common.Filters;
+import com.khatu.musicschool.exception.InvalidOperationException;
 import com.khatu.musicschool.exception.InvalidParameterException;
 import com.khatu.musicschool.model.Department;
 import com.khatu.musicschool.model.Faculty;
@@ -59,7 +60,7 @@ public class DepartmentResource {
 			return Response.ok().build();
 		}catch(Exception e){
 			logger.error("Can not delete department {}",departmentId,e.getMessage());
-			throw new WebApplicationException(400);
+			throw new InvalidOperationException(e.getMessage());
 		}
 	}
 	
@@ -79,7 +80,7 @@ public class DepartmentResource {
 			return departmentService.addDepartment(department);
 		}catch(Exception e){
 			logger.error("Can not add department {}",department.toString(),e.getMessage());
-			throw new WebApplicationException(400);
+			throw new InvalidOperationException(e.getMessage());
 		}
 	}
 	

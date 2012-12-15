@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.khatu.musicschool.exception.InvalidOperationException;
 import com.khatu.musicschool.service.TrackService;
 import com.khatu.musicschool.wsresource.response.SchoolReportResponse;
 
@@ -71,7 +72,7 @@ public class SchoolTrack {
 		   return trackService.getReport(schoolId);
 		}catch (Exception e) {
 			logger.error("can not get report for school : {} {}",schoolId,e.getStackTrace());
-			throw new WebApplicationException(400);
+			throw new InvalidOperationException(e.getMessage());
 		}
 	}
 }
