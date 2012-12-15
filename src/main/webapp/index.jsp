@@ -19,7 +19,7 @@
 <html lang="en">
   <head>
     <meta charset=utf-8>
-    <title>School Musica</title>
+    <title>Worlds first instrument based school search |SchoolMusica</title>
     <link rel="stylesheet" href="css/reset.min.css" type='text/css'>    
     <link rel="stylesheet" href="css/jquery-ui-1.8.21.custom.css" type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.min.css" type='text/css'>
