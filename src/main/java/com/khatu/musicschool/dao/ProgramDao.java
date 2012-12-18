@@ -24,7 +24,7 @@ public class ProgramDao {
 	@SuppressWarnings("unchecked")
 	public List<Program> getAllProgram(){
 		this.hibernateTemplate.setCacheQueries(true);
-		this.hibernateTemplate.setQueryCacheRegion("allprogram");
+		this.hibernateTemplate.setQueryCacheRegion("query.programmeall");
 		return (List<Program>)hibernateTemplate.loadAll(Program.class);
 	}
 	

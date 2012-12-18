@@ -86,7 +86,9 @@ public class DepartmentDao {
 		
 		if(departmentSearchCriteria.getInstrument()!=null && !departmentSearchCriteria.getInstrument().isEmpty()){
 			query.add(conjuctionCriteria);
-			departments = this.hibernateTemplate.findByCriteria(query, 0, 20);
+			departments = this.hibernateTemplate.findByCriteria(query,departmentSearchCriteria.getFirstResult() , departmentSearchCriteria.getMaxResult());
+			this.hibernateTemplate.setCacheQueries(true);
+			this.hibernateTemplate.setQueryCacheRegion("query.searchquery");
 		}
 		
 		return departments;

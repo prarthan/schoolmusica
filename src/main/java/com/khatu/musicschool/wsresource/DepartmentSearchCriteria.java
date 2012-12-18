@@ -16,8 +16,8 @@ public class DepartmentSearchCriteria {
 	private String musicMinorAvailable;
 	private String graduateProgramAvailable;
 	private String scholarshipsAvailable;
-	private int firstResult;
-	private int maxResult;
+	private int firstResult=0;
+	private int maxResult=20;
 	
 	public String getInstrument() {
 		return instrument;
