@@ -19,6 +19,10 @@
 <html lang="en">
   <head>
     <meta charset=utf-8>
+    <meta name="description" content="schoolmusica will provide simple way for musicians to search music schools. It will simplify schools admission process by recommending matching students and allowing schools
+	          to search for the students.">
+	<meta name="keywords" content="music school, music school search, top music school, music schools, music school ranking, school of music, music college, music institute, conservatory of music, music conservatory, 
+	    top music conservatory, music conservatory ranking, music conservatory search">          
     <title>School Musica</title>
     <link rel="stylesheet" href="css/reset.min.css" type='text/css'>    
     <link rel="stylesheet" href="css/jquery-ui-1.8.21.custom.css" type='text/css'>
