@@ -180,7 +180,7 @@
     </script>
     <script id="searchResultDepartmentTemplate" type="text/x-jquery-tmpl"> 
       <div class='department'>
-        <h3><a href="rest/track/school?schoolId=${musicSchoolId}&departmentUrl=${departmentUrl}" target="_blank">${departmentName}</a></h3>
+        <h3><a href="rest/track/department?schoolId=${musicSchoolId}&departmentUrl=${departmentUrl}" target="_blank">${departmentName}</a></h3>
         <div class="resultitem">
           <h4>Other Information</h4>
           <div class='resultiteminfo'>

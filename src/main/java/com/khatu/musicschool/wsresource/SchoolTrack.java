@@ -40,20 +40,46 @@ public class SchoolTrack {
 	 */
 	
 	@GET
-	@Path("/school")
-	public Response trackSchool(@QueryParam("schoolId") int id,@QueryParam("departmentUrl") String departmentUrl,@Context HttpServletResponse response){
+	@Path("/department")
+	public Response trackDepartment(@QueryParam("schoolId") int id,@QueryParam("departmentUrl") String departmentUrl,@Context HttpServletResponse response){
 		
 		try {
 			try{
 				trackService.trackClick(id);
 			}catch (Exception e) {
-				logger.error("can not report click for school: {} {}",id,e.getMessage());
+				logger.error("can not report click for department: {} {}",id,e.getMessage());
 			}
 			response.sendRedirect(departmentUrl);
 		} catch (IOException e) {
 			logger.error("can not redirect url : {} {}",departmentUrl,e.getMessage());
 		}
 		return Response.ok().build();
+	}
+	
+	/**
+	 * track school click
+	 * @param id
+	 * @param schoolUrl
+	 * @param response
+	 * @return
+	 */
+	
+	@GET
+	@Path("/school")
+	public Response trackSchool(@QueryParam("id") int id, @QueryParam("schoolUrl") String schoolUrl,@Context HttpServletResponse response){
+		try {
+			try{
+				trackService.trackClick(id);
+			}catch (Exception e) {
+				logger.error("can not report click for school: {} {}",id,e.getMessage());
+			}
+			response.sendRedirect(schoolUrl);
+		} catch (IOException e) {
+			logger.error("can not redirect url : {} {}",schoolUrl,e.getMessage());
+		}
+		return Response.ok().build();
+		
+		
 	}
 	
 	
