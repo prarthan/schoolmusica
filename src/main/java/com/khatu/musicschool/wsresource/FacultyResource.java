@@ -62,8 +62,8 @@ public class FacultyResource {
 		}
 	}
 	
-	@DELETE
-	@Path("/{facultyId}")
+	@GET
+	@Path("/delete/{facultyId}")
 	@Produces({MediaType.APPLICATION_JSON })
 	public Response deleteFaculty(@PathParam("facultyId") int facultyId){
 		try{

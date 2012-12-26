@@ -601,8 +601,8 @@ DepartmentForm.prototype = {
     if( confirm("Are you sure you want to delete this department?") ) {
       _this.$el.addClass( "saving" ).removeClass("saved").find(".indicator").html("Deleting");
       $.ajax( {
-        url: "rest/department/" + this.getId(),
-        method: "POST",
+        url: "rest/department/delete/" + this.getId(),
+        method: "DELETE",
         success: function( response, jqXHR, textStatus) {
           _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Deleted Successfully");
           _this.$el.fadeOut( 2000 );
@@ -658,7 +658,7 @@ FacultyForm.prototype = {
     });
 
     var updateName = function() {
-      var val = _this.$el.find(".firstName").val() + " " + _this.$el.find(".middleName").val() + " " + _this.$el.find(".lastName").val();
+      var val = _this.$el.find(".firstName").val()  + " " + _this.$el.find(".lastName").val();
       title = $.trim( _this.$el.find(".title").val() );
       if($.trim( val ).length > 0 && title.length > 0 )
         val += ",&nbsp;"
@@ -677,8 +677,7 @@ FacultyForm.prototype = {
       this.$el.find(".firstName").addClass("error");
       validate = false;
     }
-    var middleName = $.trim ( this.$el.find(".middleName").val() );
-
+    
     var lastName = $.trim ( this.$el.find(".lastName").val() );
     if( lastName.length === 0 ) {
       this.$el.find(".lastName").addClass("error");
@@ -711,7 +710,6 @@ FacultyForm.prototype = {
   getData: function() {
     var data = {};
     data.firstName = $.trim ( this.$el.find(".firstName").val() );
-    data.middleName = $.trim ( this.$el.find(".middleName").val() );
     data.lastName = $.trim ( this.$el.find(".lastName").val() );
     data.title = $.trim ( this.$el.find(".title").val() );
     data.facultyUrl = $.trim ( this.$el.find(".facultyUrl").val() );
@@ -848,9 +846,6 @@ FacultyForm.prototype = {
       title: "Please enter the first name of the faculty",
     };    
     this.$el.find(".firstName").tooltip( options );
-    
-    options.title = "Please enter the middle name of the faculty";
-    this.$el.find(".middleName").tooltip( options );
    
     options.title = "Please enter the last name of the faculty";
     this.$el.find(".lastName").tooltip( options );
@@ -872,8 +867,8 @@ FacultyForm.prototype = {
     if( confirm("Are you sure you want to delete this faculty?") ) {
       _this.$el.addClass( "saving" ).removeClass("saved").find(".indicator").html("Deleting");
       $.ajax( {
-        url: "rest/faculty/" + this.getId(),
-        method: "POST",
+        url: "rest/faculty/delete" + this.getId(),
+        method: "DELETE",
         success: function( response, jqXHR, textStatus) {
           _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Deleted Successfully");
           _this.$el.fadeOut( 2000 );

@@ -11,6 +11,7 @@
     if( edit == null ) {
       edit = new Boolean(false);
     }
+    edit = new Boolean(true);
     if (request.getParameter("search") != null ) {
       searchQuery = request.getParameter("search");
     }
@@ -285,6 +286,7 @@
             <div class="button-group">
               <div class='btn save save-department'>Save Changes</div>
               <div class='btn cancel cancel-department'>Cancel</div>
+			  <div class='btn delete delete-department'>Delete</div> 	
             </div>
             <div class="sublist">
               <div class="sublist_title">Faculty</div>
@@ -305,7 +307,6 @@
             <div class='name'>
               <label>Name</label>
               <input type="text" class="firstName" value="${firstName}" required></input>
-              <input type="text" class="middleName" value="${middleName}" required></input>
               <input type="text" class="lastName" value="${lastName}" required></input>
             </div>
             <div class='title-field'>
@@ -327,6 +328,7 @@
             <div class='button-group'>
               <div class='btn save-faculty'>Save Changes</div>
               <div class='btn cancel-faculty'>Cancel</div>
+			  <div class='btn delete-faculty'>Delete</div>
             </div>
           </div>
         </div>

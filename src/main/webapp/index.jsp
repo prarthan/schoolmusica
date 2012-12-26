@@ -141,6 +141,9 @@
         <div id="searchlist" class="span10">
            <div id="searchinfo"></div>
            <div id="searchresults"></div>
+           <div> 
+           		<font id="footer" size="-2">&copy;2013 schoolmusica</font>
+           </div>
         </div>
       </div>
     </div>

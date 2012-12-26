@@ -1,9 +1,5 @@
 package com.khatu.musicschool.wsresource;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -12,6 +8,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -25,18 +22,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.khatu.musicschool.common.Filters;
 import com.khatu.musicschool.exception.InvalidOperationException;
 import com.khatu.musicschool.exception.InvalidParameterException;
 import com.khatu.musicschool.model.Department;
-import com.khatu.musicschool.model.Faculty;
-import com.khatu.musicschool.model.Method;
 import com.khatu.musicschool.model.MusicSchool;
-import com.khatu.musicschool.model.Program;
-import com.khatu.musicschool.model.Style;
 import com.khatu.musicschool.service.DepartmentService;
 import com.khatu.musicschool.service.MusicSchoolService;
-import com.khatu.musicschool.wsresource.response.DepartmentResponse;
 
 @Component
 @Path("/department")
@@ -51,8 +42,8 @@ public class DepartmentResource {
 	private DepartmentService departmentService;
 
 	
-	@DELETE
-	@Path("/{departmentId}")
+	@GET
+	@Path("/delete/{departmentId}")
 	@Produces({MediaType.APPLICATION_JSON })
 	public Response deleteDepartment(@PathParam("departmentId") int departmentId){
 		try{
