@@ -142,7 +142,7 @@
            <div id="searchinfo"></div>
            <div id="searchresults"></div>
            <div> 
-           		<font id="footer" size="-2">&copy;2013 schoolmusica</font>
+           		<font id="footer" size="-2">&copy;2012 - 2016 schoolmusica, All rights reserved</font>
            </div>
         </div>
       </div>
