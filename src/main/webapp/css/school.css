@@ -61,10 +61,10 @@ body {
   padding-left: 18px;
 }
 
-.department.saving > .indicator,
-.department.saved > .indicator,
-.facutly.saving > .indicator,
-.faculty.saved > .indicator {
+.saving > .department  > .indicator,
+.saved > .department > .indicator,
+.saving > .facutly > .indicator,
+.saving > .faculty > .indicator {
   display: block;
   color: #888;
 }

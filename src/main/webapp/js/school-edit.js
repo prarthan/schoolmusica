@@ -475,7 +475,7 @@ DepartmentForm.prototype = {
       this.$el.find(".form .alert").fadeIn();
       return;
     }
-    _this.$el.addClass( "saving" ).removeClass("saved").find(".indicator").html("Saving");
+    _this.$el.first().addClass( "saving" ).removeClass("saved").find(".indicator").html("Saving");
     var data = this.getData();
     $.ajax({
       url: "rest/department",
@@ -486,7 +486,7 @@ DepartmentForm.prototype = {
       success: function( response, jqXHR, textStatus) {
         _this.data = response;
         _this.$el.find(".keywords li" ).addClass("originalValue");
-        _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Saved Successfully");
+        _this.$el.first().addClass( "saved" ).removeClass("saving").find(".indicator").html("Saved Successfully");
         setTimeout( function() { 
           _this.$el.find(".indicator").fadeOut( 'slow', function(){
             _this.$el.removeClass("saved");
@@ -599,12 +599,12 @@ DepartmentForm.prototype = {
   deleteDepartment: function() {
     var _this = this;
     if( confirm("Are you sure you want to delete this department?") ) {
-      _this.$el.addClass( "saving" ).removeClass("saved").find(".indicator").html("Deleting");
+      _this.$el.first().addClass( "saving" ).removeClass("saved").find(".indicator").html("Deleting");
       $.ajax( {
         url: "rest/department/delete/" + this.getId(),
         method: "DELETE",
         success: function( response, jqXHR, textStatus) {
-          _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Deleted Successfully");
+          _this.$el.first().addClass( "saved" ).removeClass("saving").find(".indicator").html("Deleted Successfully");
           _this.$el.fadeOut( 2000 );
         }, 
         error: function( response, jqXHR, textStatus ) {
@@ -730,7 +730,7 @@ FacultyForm.prototype = {
       this.$el.find(".form .alert").fadeIn();
       return;
     }
-    _this.$el.addClass( "saving" ).removeClass("saved").find(".indicator").html("Saving");
+    _this.$el.first().addClass( "saving" ).removeClass("saved").find(".indicator").html("Saving");
 
     var data = this.getData();
     $.ajax({
@@ -740,7 +740,7 @@ FacultyForm.prototype = {
       contentType: "application/json",
       data: JSON.stringify( data ),
       success: function( response, jqXHR, textStatus) {
-        _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Saved Successfully");
+        _this.$el.first().addClass( "saved" ).removeClass("saving").find(".indicator").html("Saved Successfully");
         setTimeout( function() { 
           _this.$el.find(".indicator").fadeOut( 'slow', function(){
             _this.$el.removeClass("saved");
@@ -865,12 +865,12 @@ FacultyForm.prototype = {
   deleteFaculty: function() {
     var _this = this;
     if( confirm("Are you sure you want to delete this faculty?") ) {
-      _this.$el.addClass( "saving" ).removeClass("saved").find(".indicator").html("Deleting");
+      _this.$el.first().addClass( "saving" ).removeClass("saved").find(".indicator").html("Deleting");
       $.ajax( {
         url: "rest/faculty/delete" + this.getId(),
         method: "DELETE",
         success: function( response, jqXHR, textStatus) {
-          _this.$el.addClass( "saved" ).removeClass("saving").find(".indicator").html("Deleted Successfully");
+          _this.$el.first().addClass( "saved" ).removeClass("saving").find(".indicator").html("Deleted Successfully");
           _this.$el.fadeOut( 2000 );
         }, 
         error: function( response, jqXHR, textStatus ) {

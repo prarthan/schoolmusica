@@ -11,7 +11,7 @@
     if( edit == null ) {
       edit = new Boolean(false);
     }
-    edit = new Boolean(true);
+    
     if (request.getParameter("search") != null ) {
       searchQuery = request.getParameter("search");
     }

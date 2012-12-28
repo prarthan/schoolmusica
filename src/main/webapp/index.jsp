@@ -23,7 +23,7 @@
 	          to search for the students.">
    <meta name="keywords" content="music school, music school search, top music school, music schools, music school ranking, school of music, music college, music institute, conservatory of music, music conservatory, 
 	    top music conservatory, music conservatory ranking, music conservatory search">
-    <title>Worlds first instrument based music school search |SchoolMusica</title>
+    <title>Instrument based music school search |SchoolMusica</title>
     <link rel="stylesheet" href="css/reset.min.css" type='text/css'>    
     <link rel="stylesheet" href="css/jquery-ui-1.8.21.custom.css" type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.min.css" type='text/css'>
