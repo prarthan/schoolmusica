@@ -64,7 +64,7 @@
 	        </div>
         <% }else{ %>
 	        <div class='signout'>
-	          <div class='title'><a href='rest/openid/logout'>Sign Out</a></div>
+	          <div class='title'><a href='https://www.google.com/accounts/Logout '>Sign Out</a></div>
 	        </div>
         <%}%>
         <div class='spacer'>|</div>
