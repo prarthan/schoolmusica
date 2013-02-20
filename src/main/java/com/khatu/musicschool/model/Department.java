@@ -136,9 +136,7 @@ public class Department {
 		this.scholarshipsAvailable = scholarshipsAvailable;
 	}
 	
-	
 
-	@URL
 	@NotEmpty(message="You must provide department url.")
 	public String getDepartmentUrl() {
 		return departmentUrl;
