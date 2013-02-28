@@ -124,7 +124,7 @@ FilterPane.prototype = {
     });
   },
   refreshSearch : function() {
-    this.searchPane.search( this.searchPane.query );
+    this.searchPane.search( this.searchPane.query, this.searchPane.startCount, 10 );
   },
   getValue: function() {
     var data =  this.$el.find( "form input.filterInput" ).serializeArray();
@@ -155,29 +155,51 @@ FilterPane.prototype = {
 var SearchPane = function() {
   this.filterPane = null;
   this.query = "";
+  this.resultCount = 0;
+  this.startCount = 0;
 };
 
 SearchPane.prototype = {
   init : function() {
     this.initFilters();
+    this.initInfiniteScroller();
+  },
+  initInfiniteScroller: function() {
+    var _this = this;
+    $(window).scroll( function() {
+      if( ( $(window).scrollTop() >= $(document).height() - $(window).height() ) && (_this.searched) && ! _this.fetching ) {
+        _this.addMoreResults();
+      }
+    });
   },
   initFilters : function() {
     this.filterPane = new FilterPane( this );
     this.filterPane.init();
   },
-  search: function( query ) {
+  addMoreResults: function() {
+    if( this.startCount <= this.resultCount-1 )
+      this.search( this.query, this.startCount, 10 )
+  },
+  search: function( query, startCount, maxResults ) {
     var _this = this;
-    $('#searchinfo').css('display', 'none' );
-    $('#searchresults').empty();
+    if( ! startCount ) {
+      _this.startCount = 0;
+      _this.searched = 0;
+      _this.resultCount = 0;
+      $('#searchinfo').css('display', 'none' );
+      $('#searchresults').empty();
+    }
     
     query = $.trim( query );
     if( query.length == 0 ) {
       return;
     }
+    _this.fetching = true;
     this.query = query;
     var queryData = this.filterPane.getValue();
-    queryData.instrument = query
-    
+    queryData.instrument = query;
+    queryData.firstResult = _this.startCount;
+    queryData.maxResult = 10;
     var c = new Date();
     $.ajax( {
       url: 'rest/school/search',
@@ -187,21 +209,28 @@ SearchPane.prototype = {
       dataType: "json",
       context: _this,
       data: JSON.stringify( queryData ),
-      success: function( response, textStatus, jqXHR ){
-        var d = new Date()
-        var timeTaken = d.getTime() - c.getTime();
-        var timeInfo = timeTaken + " milliseconds";
-        if( timeTaken > 1000 ) {
-          timeInfo = ( timeTaken/1000 ) + " seconds";
+      success: function( response, textStatus, jqXHR ) {
+        if( ! _this.searched ) {
+          _this.searched = true;
+          _this.resultCount = response.resultCount;
+          var d = new Date()
+          var timeTaken = d.getTime() - c.getTime();
+          var timeInfo = timeTaken + " milliseconds";
+          if( timeTaken > 1000 ) {
+            timeInfo = ( timeTaken/1000 ) + " seconds";
+          }
+          $('#searchinfo').css('display', 'table-cell').html( "<span class='resultcount'>" + _this.resultCount + "</span> schools found in " + timeInfo + "." );
         }
-        $('#searchinfo').css('display', 'table-cell').html( "<span class='resultcount'>" + response.schools.length + "</span> schools found in " + timeInfo + "." );
         for( var i in response.schools ) {
           var result = new SearchResult( response.schools[i], query );
           result.init();
+          _this.startCount++;
         }
+        _this.fetching = false;
       },
       error : function( jqXHR, textStatus, errorThrown ) {
         console.log( errorThrown )
+        _this.fetching = false;
       }
     } );
   }
