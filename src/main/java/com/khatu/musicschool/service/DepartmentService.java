@@ -44,7 +44,7 @@ public class DepartmentService {
     	
     	MusicSearchResponse response = new MusicSearchResponse();
     	response.setSchools(responseMusic);
-    	response.setResultCount(dept.size());
+    	response.setResultCount(departmentDao.getResultCount(searchCriteria));
     	
     	return response;
     }
