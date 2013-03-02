@@ -18,64 +18,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset=utf-8>
-    <meta name="description" content="schoolmusica will provide simple way for musicians to search music schools. It will simplify schools admission process by recommending matching students and allowing schools
-	          to search for the students.">
-   <meta name="keywords" content="music school, music school search, top music school, music schools, music school ranking, school of music, music college, music institute, conservatory of music, music conservatory, 
-	    top music conservatory, music conservatory ranking, music conservatory search">
-    <title>Instrument based music school search |SchoolMusica</title>
-    <link rel="stylesheet" href="css/reset.min.css" type='text/css'>    
-    <link rel="stylesheet" href="css/jquery-ui-1.8.21.custom.css" type='text/css'>
-    <link rel="stylesheet" href="css/bootstrap.min.css" type='text/css'>
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type='text/css'>
-    <link rel="stylesheet" href="css/gradients.css" type='text/css'>
-    <link rel="stylesheet" href="css/common.css" type='text/css'>  
-    <link rel="stylesheet" href="css/header.css" type='text/css'>    
+    <jsp:include page="includes/common_html_head.jsp" />  
     <link rel="stylesheet" href="css/search.css" type='text/css'>   
-    
-    <script type="text/javascript">
-
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-36105553-1']);
-	  _gaq.push(['_trackPageview']);
-	
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	
-	</script>
   </head>
   <body>
-    <div class="hd blue-gradient navbar navbar-fixed-top">
-      <div class="logo">
-        <a href="index.jsp">
-          <img src="img/logo2.png" alt="Logo"></img>
-        </a>
-      </div>
-      <div class="searchfield">
-        <input type="text" id="searchinput" placeholder="Search by instrument"></input>
-        <div id="searchbutton"><button></button></div>
-      </div>
-      <div class="options">
-      <% if( edit != true ) { %>
-        <div class='login'>
-          <div class='title'> 
-            <a href="rest/openid?op=google">Manage Your School</a>
-          </div>
-        </div>
-        <% }else{ %>
-        <div class='signout'>
-          <div class='title'><a href='https://www.google.com/accounts/Logout '>Sign Out</a></div>
-        </div>
-        <%}%>     
-        <div class='spacer'>|</div>
-        <div class='about-us'>
-          <div class='title'><a href='about.html'>About Us</a></div>
-        </div>
-      </div>
-    </div>
+    <jsp:include page="includes/header.jsp">
+      <jsp:param name="edit" value="<%=edit%>" />
+      <jsp:param name="search" value="true" />
+    </jsp:include>
     <div class="bd container-fluid gray-gradient">
       <div class="row-fluid ">
         <div id="filters" class="span2">
@@ -148,12 +98,8 @@
       </div>
     </div>
     <div class="ft"></div>
-    <script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery/jquery-ui-1.8.21.custom.min.js"></script>
+    <jsp:include page="includes/common_js.jsp" />
     <script type="text/javascript" src="js/jquery/jquery.tmpl.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/constants.js"></script>
-    <script type="text/javascript" src="js/header.js"></script>
     <script type="text/javascript" src="js/search.js"></script>
     <script id="searchResultSchoolTemplate" type="text/x-jquery-tmpl"> 
       <div class='searchresult' id=${domId} >
@@ -201,6 +147,7 @@
         search.init();
       });
     </script>
+    <jsp:include page="includes/analytics.jsp" />
   </body>
 </html>
 

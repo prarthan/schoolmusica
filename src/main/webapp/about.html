@@ -1,11 +1,11 @@
+<%@ page isELIgnored="true" %>
+<%@ page import = " java.util.* " %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset=utf-8>
-    <meta name="description" content="schoolmusica will provide simple way for musicians to search music schools. It will simplify schools admission process by recommending matching students and allowing schools
-	          to search for the students.">
-	<meta name="keywords" content="music school, music school search, top music school, music schools, music school ranking, school of music, music college, music institute, conservatory of music, music conservatory, 
-	    top music conservatory, music conservatory ranking, music conservatory search">          
+    <meta name="description" content="schoolmusica will provide simple way for musicians to search music schools. It will simplify schools admission process by recommending matching students and allowing schools to search for the students.">
+	  <meta name="keywords" content="music school, music school search, top music school, music schools, music school ranking, school of music, music college, music institute, conservatory of music, music conservatory, top music conservatory, music conservatory ranking, music conservatory search">          
     <title>School Musica</title>
     <link rel="stylesheet" href="css/reset.min.css" type='text/css'>    
     <link rel="stylesheet" href="css/jquery-ui-1.8.21.custom.css" type='text/css'>
@@ -17,77 +17,71 @@
     <link rel="stylesheet" href="css/about.css" type='text/css'>   
   </head>
   <body>
-    <div class="hd blue-gradient navbar navbar-fixed-top">
-      <div class="logo">
-        <a href="index.jsp">
-          <img src="img/logo2.png" alt="Logo"></img>
-        </a>
-      </div>
-      <div class="options">
-        <div class='login'>
-          <div class='title'> 
-            <a href="rest/openid?op=google">Manage Your School</a>
-          </div>
-        </div>
-        <div class='spacer'>|</div>
-        <div class='Sign Out'>
-          <div class='title'><a href='rest/openid/logout'>Sign Out</a></div>
-        </div>
-        <div class='spacer'>|</div>
-        <div class='about-us'>
-          <div class='title'><a href=''>About Us</a> </div>      
-        </div>
-      </div>
-    </div>
+    
       <div class='bd'>
-  	  	<ul class="nav nav-pills nav-stacked" id="navbar">
-  	  		<li class='active'><a href="#about">About</a></li>
-  	  		<li><a href="#product">Product</a></li>
-  	  		<li><a href="#questions">Questions</a></li>
-  	  		<li><a href="#contact">Contact</a></li>
-  	  	</ul>
-  	   <div class="container">
+  	    <div class="container">
           <div id="about">
-  		  	  <a name="about"><h1>About</h1></a>
+  		  	  <a name="about">
+              <h1>About</h1>
+            </a>
             <div class="information">
-               <h1>schoolmusica provides way to connect musicians with music school.</h1>
-	          <p>schoolmusica will enable musicians to search music schools and courses based on instruments, styles and methods. It will enable schools to manage profiles and
-	          	  reach out to students.  
-	          </p>
-	          <h2>Our Values</h2>
-	          <h3>Simple</h3>
-	          <p>schoolmusica will provide simple way for musicians to search music schools. It will simplify schools admission process by recommending matching students and allowing schools
-	          to search for the students. </p>
-	          <h3>Quality</h3>
-	          <p>schoolmusica will provide quality results using inputs from our expert panel of music professionals and teachers. Music Professionals and teachers have approved and ranked music schools.</p>
-	          <h3>Specific</h3>
-	          <p>schoolmusica is designed only for musicians and music schools.</p>
-	          <h3>Smart</h3>
-	          <p>schoolmusica will provide recommendation to schools and students based on their preferences and will provide matrices to improve their visibility and reach.</p>
+              <h1>Schoolmusica provides way to connect musicians with music school.</h1>
+	            <p>
+                Schoolmusica will enable musicians to search music schools and courses based on instruments, styles and methods. It will enable schools to manage profiles and reach out to students.  
+	            </p>
+	            <h2>Our Values</h2>
+	            <h3>Simple</h3>
+	            <p>
+                Schoolmusica will provide simple way for musicians to search music schools. It will simplify a school's admission process by recommending matching students and allowing schools to search for the students.
+              </p>
+	            <h3>Quality</h3>
+	            <p>
+                Schoolmusica will provide quality results using inputs from our expert panel of music professionals and teachers. Music Professionals and teachers have approved and ranked music schools.
+              </p>
+	            <h3>Specific</h3>
+	            <p>
+                Schoolmusica is designed only for musicians and music schools.
+              </p>
+	            <h3>Smart</h3>
+	            <p>
+                Schoolmusica will provide recommendation to schools and students based on their preferences and will provide matrices to improve their visibility and reach.
+              </p>
             </div>
           </div>
           <div id="product" style="display:none;">
-            <a name="product"><h1>Product</h1></a>
+            <a name="product">
+              <h1>Product</h1>
+            </a>
             <div class="information">
             	<h2>Our Product</h2>
-	          <h3>Search School</h3>
-	          <p>Search music school by instrument, your score(s) and location. Filter them by scholarships,graduate program or music minor provided.</p>
-
-	          <h3>Manage School</h3>
-	          <p>Manage music school profiles. Manage departments(department is define as contact point for learning similar instruments.)</p>
+	            <h3>Search School</h3>
+	            <p>
+                Search music school by instrument, your score(s) and location. Filter them by scholarships,graduate program or music minor provided.
+              </p>
+	            <h3>Manage School</h3>
+	            <p>
+                Manage music school profiles. Manage departments<i>(Department is defined as the contact point for learning similar instruments.)</i>
+              </p>
             </div>
           </div>
           <div id="questions" style="display:none;">
-            <a name="questions"><h1>Questions</h1></a>
+            <a name="questions">
+              <h1>Questions</h1>
+            </a>
             <div class="information"></div>
           </div>
           <div id="contact" style="display:none;">
-            <a name="contact"><h1>Contact Us</h1></a>
+            <a name="contact">
+              <h1>Contact Us</h1>
+            </a>
             <div class="information">
-            	<p>Email : <a href="mailto:contact@scoolmusica.com">contact@scoolmusica.com</a>
-			</p></div>
+            	<p>
+                Email : <a href="mailto:contact@scoolmusica.com">contact@scoolmusica.com</a>
+			        </p>
+            </div>
           </div>
-  	  </div>
+  	    </div>
+      </div>
     </div>
     <script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/jquery/jquery-ui-1.8.21.custom.min.js"></script>
