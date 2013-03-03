@@ -25,8 +25,76 @@
 	        <plugin>
 	          <groupId>org.apache.tomcat.maven</groupId>
 	          <artifactId>tomcat6-maven-plugin</artifactId>
-	          <version>2.0-SNAPSHOT</version>
+            <configuration>
+              <warSourceDirectory>${project.build.directory}</warSourceDirectory> 
+            </configuration>
 	        </plugin>
+
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>yuicompressor-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compress</goal>
+            </goals>
+          </execution>
+        </executions>        
+        <configuration>
+            <gzip>true</gzip>
+            <nosuffix>true</nosuffix>
+            <includes>
+              <include>**/*.jsp</include>
+              <include>**/*.js</include>
+              <include>**/*.css</include>
+            </includes>
+          <aggregations>
+            <aggregation>
+              <insertNewLine>true</insertNewLine>
+              <output>${project.build.directory}/${project.build.finalName}/js/common-all.js</output>
+              <includes>
+                <include>jquery/*.js</include>
+                <include>bootstrap/*.js</include>
+                <include>common/*.js</include>
+              </includes>
+            </aggregation>
+            <aggregation>
+              <insertNewLine>true</insertNewLine>
+              <output>${project.build.directory}/${project.build.finalName}/css/common-all.css</output>
+              <includes>
+                <include>../css/lib/reset.min.css</include>
+                <include>../css/lib/jquery/jquery-ui-1.8.21.custom.css</include>
+                <include>../css/lib/jquery/jquery.tagedit.css</include>
+                <include>../css/lib/bootstrap/bootstrap.min.css</include>
+                <include>../css/lib/bootstrap/bootstrap-responsive.min.css</include>
+                <include>../css/common/common.css</include>
+                <include>../css/common/gradients.css</include>
+                <include>../css/common/header.css</include>
+              </includes>
+            </aggregation>
+          </aggregations>
+        </configuration>
+      </plugin>
+
+      <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-war-plugin</artifactId>
+         <version>2.0.2</version>
+         <configuration>
+           <webResources>
+             <resource>
+               <filtering>true</filtering>
+               <directory>src/main/webapp</directory>
+               <includes>
+                 <include>**/*.jsp</include>
+                 <!-- include any other file types you want to filter -->
+               </includes>
+             </resource>
+           </webResources>
+         </configuration>
+      </plugin>
+
 	      </plugins>
         
         <resources>
@@ -41,6 +109,7 @@
                 </includes>
             </resource>
         </resources>
+
         <testResources>
             <testResource>
                 <directory>src/test/resources</directory>
@@ -127,6 +196,11 @@
             </releases>
             <snapshots>
             </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+          <name>oss.sonatype.org</name>
+          <id>oss.sonatype.org</id>
+          <url>http://oss.sonatype.org/content/groups/public</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -372,6 +446,10 @@
     <profiles>
         <profile>
             <id>integration-test</id>
+            <properties>
+              <compress>true</compress>
+            </properties>
+
             <activation>
                 <property>
                     <name>!skipTests</name>
@@ -403,6 +481,13 @@
                     
                 </plugins>
             </build>
+        </profile>
+
+        <profile>
+            <id>production</id>
+            <properties>
+              <compress>true</compress>
+            </properties>
         </profile>
     </profiles>
 

@@ -40,9 +40,6 @@
     </div>
     <div class="ft"></div>
     <jsp:include page="includes/common_js.jsp" />
-    <script type="text/javascript" src="js/jquery/jquery.tmpl.min.js"></script>
-    <script type="text/javascript" src="js/jquery/jquery.tagedit.js"></script>
-    <script type="text/javascript" src="js/header.js"></script>
     <% if( edit == true ) { %>
       <script type="text/javascript" src="js/school-edit.js"></script>
     <% } else { %>

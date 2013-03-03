@@ -99,7 +99,6 @@
     </div>
     <div class="ft"></div>
     <jsp:include page="includes/common_js.jsp" />
-    <script type="text/javascript" src="js/jquery/jquery.tmpl.min.js"></script>
     <script type="text/javascript" src="js/search.js"></script>
     <script id="searchResultSchoolTemplate" type="text/x-jquery-tmpl"> 
       <div class='searchresult' id=${domId} >
