@@ -57,6 +57,7 @@ SchoolInformation.prototype = {
   },
   setData : function( data ) {
     this.data = data;
+    this.data.schoolName = data.name;
     this.$el.find(".data").html( this.template.tmpl( this.data ) );
     for( var i in data.department ) {
       var department = data.department[i];

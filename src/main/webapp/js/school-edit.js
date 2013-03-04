@@ -75,6 +75,7 @@ SchoolForm.prototype = {
   },
   setData : function( data, skipDepartment ) {
     this.data = data;
+    this.data.schoolName = data.name;
     this.$el.find(".data").html( this.template.tmpl( this.data ) );
     if( ! skipDepartment ) {
       for( var i in data.department ) {

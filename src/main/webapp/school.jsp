@@ -60,7 +60,7 @@
     </script>
     <script id="schoolInformationTemplate" type="text/x-jquery-tmpl">
       <div class='name'>
-        <h2>${name}</h2>
+        <h2>${schoolName}</h2>
       </div>
       <div class='address'>
         ${address} ${city} ${state}-${zip} ${country}
@@ -143,7 +143,7 @@
           <div class="alert alert-error" style="display:none">Please fix the fields shown in red below</div>
           <div class='name'>
             <label>School Name</label>
-            <input required type="text" id="schoolName" value="${name}" required ></input>
+            <input required type="text" id="schoolName" value="${schoolName}" required ></input>
           </div>
           <div class='address_information'>
             <label>Street Address</label>
