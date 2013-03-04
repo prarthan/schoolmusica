@@ -245,6 +245,7 @@ SearchResult.prototype = {
   init : function() {
     var school = this.resultData;
     school.domId = "school_" + school.musicSchoolId;
+    school.schoolName = school.name;
     school.searchQuery = this.query.replace(" ", "_-_");
     $("#searchResultSchoolTemplate").tmpl( school ).appendTo( "#searchresults")
     for( var j in school.department ) {

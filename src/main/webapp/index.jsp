@@ -102,7 +102,7 @@
     <script type="text/javascript" src="js/search.js"></script>
     <script id="searchResultSchoolTemplate" type="text/x-jquery-tmpl"> 
       <div class='searchresult' id=${domId} >
-        <h2><a href="school.jsp?id=${musicSchoolId}&search=${searchQuery}" target="_blank">${name}</a></h2>
+        <h2><a href="school.jsp?id=${musicSchoolId}&search=${searchQuery}" target="_blank">${schoolName}</a></h2>
         <div class='address'>
           ${address} ${city} ${state}-${zip}
         </div>
