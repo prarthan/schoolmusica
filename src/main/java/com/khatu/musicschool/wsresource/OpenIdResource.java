@@ -141,7 +141,7 @@ public void validatetest(HttpServletRequest request,HttpServletResponse response
 			openIdServicemanager.logout();
 			request.getSession().setAttribute("email",null);
 			request.getSession().setAttribute("canedit", null);
-			response.sendRedirect("http://www.schoolmusica.com/");
+			response.sendRedirect("https://www.google.com/accounts/Logout");
 		} catch (IOException e) {
 			logger.error("can not logout user.",e.getStackTrace());
 		}
