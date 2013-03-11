@@ -12,6 +12,18 @@
 	overflowToDisk="true"
 	 />
 	 
+	 
+   <cache
+	name="searchCache"
+	maxEntriesLocalHeap="500"
+	eternal="false"
+	timeToIdleSeconds="300"
+	timeToLiveSeconds="600"
+	overflowToDisk="true"
+	 />
+	
+	
+	 
 	<cache
 	name="query.programmeall"
 	maxEntriesLocalHeap="1000"

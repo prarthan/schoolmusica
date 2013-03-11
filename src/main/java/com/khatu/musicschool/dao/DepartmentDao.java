@@ -12,6 +12,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -38,6 +39,7 @@ public class DepartmentDao {
 	 * @return
 	 */
 	
+	@Cacheable("searchCache")
 	public List<Department> searchDepartment(DepartmentSearchCriteria departmentSearchCriteria){
 		
 		List<Department> departments= null;

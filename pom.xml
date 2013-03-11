@@ -363,8 +363,6 @@
 		   <version>2.6.0</version>
 		</dependency>
 		
-
-        
         <!-- Testing Dependencies -->
         <dependency>
             <groupId>org.jmock</groupId>
