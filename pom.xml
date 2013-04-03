@@ -330,6 +330,12 @@
 	    	<groupId>org.hibernate</groupId>
 	    	<artifactId>hibernate</artifactId>
 	    	<version>3.2.6.ga</version>
+	    	<exclusions>
+				<exclusion>
+					<groupId>commons-collections</groupId>
+					<artifactId>commons-collections</artifactId>
+				</exclusion>	
+		 	</exclusions>
 	    </dependency>
 	    
 	    <dependency>
@@ -438,7 +444,14 @@
     		 <type>jar</type> 
     		 <optional>false</optional> 
 		</dependency> 
-
+        
+        <dependency>
+	     <groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>1.14</version>
+	
+		</dependency>  
+   
     </dependencies>
 
     <profiles>

@@ -20,7 +20,8 @@
 <html lang="en">
   <head>
     <jsp:include page="includes/common_html_head.jsp" />  
-    <link rel="stylesheet" href="css/school.css" type='text/css'>   
+    <link rel="stylesheet" href="css/school.css" type='text/css'>
+	<meta name="fragment" content="!">
   </head>
   <body>
     <jsp:include page="includes/header.jsp">
