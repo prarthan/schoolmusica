@@ -26,7 +26,7 @@
       </ul>
       <div class="container">
         <div id="about">
-          <a name="about">
+          <a name="about" class="anchor">
             <h1>About</h1>
           </a>
           <div class="information">
@@ -54,7 +54,7 @@
           </div>
         </div>
         <div id="product" style="display:none;">
-          <a name="product">
+          <a name="product" class="anchor">
             <h1>Product</h1>
           </a>
           <div class="information">
@@ -70,13 +70,13 @@
           </div>
         </div>
         <div id="questions" style="display:none;">
-          <a name="questions">
+          <a name="questions" class="anchor">
             <h1>Questions</h1>
           </a>
           <div class="information"></div>
         </div>
         <div id="contact" style="display:none;">
-          <a name="contact">
+          <a name="contact" class="anchor">
             <h1>Contact Us</h1>
           </a>
           <div class="information">
