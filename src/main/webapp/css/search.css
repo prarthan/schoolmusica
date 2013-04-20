@@ -9,42 +9,58 @@
   height: auto;
 }
 
-.bd.container-fluid {
+.bd {
   padding-left: 0;
   padding-right: 0;
+  min-height: 392px;
+  overflow: hidden;
+}
+
+.ft .copyright {
+  margin: 5px;
+  font-size: 10px;
+  text-align: right;
+  font-style: italic;
 }
 
 #searchinfo {
-  color: #999;
+  background: #E3E3E3;
   font-size: 13px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  height: 57px;
+  height: 37px;
   border-bottom: 1px solid #DEDEDE;
   display: table-cell;
   vertical-align: middle;
   width: 600px;
   display: none;
+  padding: 10px;
+  font-weight: bold;
+  display: none;
 }
 
 #searchlist {
   padding: 10px;
-  position: relative;
-  overflow: hidden;
-  float: right;
+  overflow: auto;
+  height: 100%;
+  padding-left: 30px;
+  width: 600px;
 }
 
 #searchresults {
   margin-top: 10px;
   height: 100%;
-  overflow: auto;
+  list-style: none;
+  margin: 0px;
 }
 
 #searchlist .searchresult {
-  margin-left: 10px;
-  width: 600px;
-  position: relative;
+  margin-left: 0px;
+  background: #ECECEC;
+  padding: 10px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
 }
 
 #searchlist .searchresult h3 {
@@ -59,12 +75,26 @@
 
 #searchlist .searchresult .resultitem {
   clear: both;
-  margin-bottom: 5px;
+  margin: 5px 0px;
+  height: 20px;
+}
+
+#searchlist .searchresult .resultitem.scores div{
+  float: left;
+}
+
+#searchlist .searchresult .resultitem.scores .resultiteminfo{
+  margin-left: 20px;
 }
 
 #searchlist .searchresult .resultitem h4 {
   line-height: 15px;
   margin: 5px 0px;
+}
+
+.searchresult .department_header {
+  clear: both;
+  margin-top: 10px;
 }
 
 #searchlist h1, h5   {
@@ -73,29 +103,21 @@
 
 #searchlist .searchresult .address,
 #searchlist .searchresult .info {
-  font-size: 10px;
+  font-size: 12px;
   font-style: italic;
 }
 
 .searchresult .resultiteminfo {
-  margin-left: 10px;
+  
 }
 
 .searchresult .faculty {
   margin-bottom: 8px;
 }
 
-#searchlist .searchresult .scores {
-  height: 65px;
-  width: 600px;
-  clear: both;
+#searchlist .resultiteminfo span {
+  margin-right: 20px;
 }
-
-#searchlist .searchresult .scores .title {
-  font-size: 11px;
-  font-weight: bold;
-}
-
 #searchlist hr {
   width: 600px;
   border-top-color: #CCC;
@@ -112,10 +134,9 @@
   margin-left: 3px;
 }
 
-#searchlist .searchresult .score .exam {
-  background: black;
-  color: white;
-  font-weight: bold;
+.department_list {
+  margin-left: 10px;
+  list-style: none;
 }
 
 .searchresult .faculty .title {
@@ -124,9 +145,10 @@
 }
 
 #filters {
-  padding: 5px;
-  position: absolute;
+  padding: 0px;
   width: 205px;
+  margin: 0px;
+  float: left;
 }
 
 #filters .filter {
@@ -155,6 +177,7 @@
 
 #filters .filter .bd {
   padding: 5px;
+  min-height: 10px;
 }
 
 #filters .filter .bd .label {

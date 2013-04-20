@@ -12,6 +12,16 @@ body > .hd {
 
 body > .bd {
   margin-top: 107px;
+  margin-bottom: 15px;
+}
+
+
+body > .ft {
+  position: fixed;
+  bottom: 0px;
+  height: 20px;
+  text-align: right;
+  width: 100%;
 }
 
 .popover {

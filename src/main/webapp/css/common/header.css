@@ -24,11 +24,11 @@
 }
 
 .hd .searchfield input {
-  width: 340px;
+  width: 366px;
   position: relative;
   top: 15px;
   height: 27px;
-  padding-left: 36px;
+  padding-left: 10px;
   background-size: 32px 32px;
   background-repeat: no-repeat;
   background-position: 2px center;
