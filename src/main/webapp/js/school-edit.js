@@ -12,8 +12,10 @@ SchoolEdit.prototype = {
     this.header = new Header();
     this.header.init();
     this.$el = $("#school");
+    this.$el.hide();
     this.school = new SchoolForm();
     this.school.init(  this.$el.find(".information") );
+    this.$el.addClass("school_edit");
     this.getProgramList(
       this.fetchData
     );
@@ -43,16 +45,17 @@ SchoolEdit.prototype = {
     }
     var _this = this;
     $.getJSON( "rest/school/" + this.id, {}, function( response, textStatus, jqXHR ) {
-        if( response == null ) {
-          $("#school h3").html( "Add New School" );
-          _this.newSchool = true;
-          _this.school.setNew()
-          _this.school.updateTemplate();
-          return;
-        }
-        $("#school h3").html( "Edit School Information" );
-        _this.data = response;
-        _this.school.setData( response )
+      if( response == null ) {
+        $("#school h3").html( "Add New School" );
+        _this.newSchool = true;
+        _this.school.setNew()
+        _this.school.updateTemplate();
+        return;
+      }
+      $("#school h3").html( "Edit School Information" );
+      _this.data = response;
+      _this.school.setData( response );
+      _this.$el.show();
     } );
   }
 }

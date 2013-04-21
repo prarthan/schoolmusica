@@ -60,28 +60,24 @@
       </div>
     </script>
     <script id="schoolInformationTemplate" type="text/x-jquery-tmpl">
-      <div class='name'>
+      <div class='name school_name'>
         <h2>${schoolName}</h2>
       </div>
-      <div class='address'>
-        ${address} ${city} ${state}-${zip} ${country}
-      </div>
-      <div class="resultitem scores">
-         <b>Minimum Scores Required</b>
-         <div class='resultiteminfo'>
-           <div class="score">
-             <div class="exam">SAT</div>
-             <div class="min">${satMin}</div>
+      <div class="school_data">
+        <div class='address resultitem'>
+           <div><b><u>Address</u></b></div>
+          <div class='resultiteminfo'>
+            ${address} ${city} ${state}-${zip} ${country}
+          </div>
+        </div>
+        <div class="resultitem scores">
+           <div><b><u>Minimum Scores Required</u></b></div>
+           <div class='resultiteminfo'>
+              <span><b>SAT:</b> ${satMin} </span>
+              <span><b>ACT:</b> ${actMin} </span>
+              <span><b>GRE:</b> ${greMin} </span>
            </div>
-           <div class="score">
-             <div class="exam">GRE</div>
-             <div class="min">${greMin}</div>
-           </div>
-           <div class="score">
-             <div class="exam">ACT</div>
-             <div class="min">${actMin}</div>
-           </div>
-         </div>
+        </div>
       </div>
     </script>
     <script id="departmentInformationTemplate" type="text/x-jquery-tmpl">
@@ -89,22 +85,30 @@
         <a class="accordion-toggle" data-toggle="collapse" data-parent=".department_list" href="#collapse_dept_${departmentId}"><div class='name'>${departmentName}</div></a>
         <div id="collapse_dept_${departmentId}" class="accordion-body collapse ${inClass}">
           <div class='accordian-inner'>
-            <div class='keywords'>
-              <b>Instruments: </b>
-              <span>${keyword}</span>
+            <div class='resultitem keywords'>
+              <div><b><u>Instruments</u></b></div>
+              <div class='resultiteminfo'>
+                ${keyword}
+              </div>
             </div>
-            <div class='departmentUrl'>
-              <a target="_blank" href="rest/track/department?schoolId=${musicSchoolId}&departmentUrl=${departmentUrl}">${departmentUrl}</a>
+            <div class='resultitem'>
+              <div><b><u>Website</u></b></div>
+              <div class='resultiteminfo departmentUrl'>
+                <a target="_blank" href="rest/track/department?schoolId=${musicSchoolId}&departmentUrl=${departmentUrl}">${departmentUrl}</a>
+              </div>
             </div>
-            <div class='email'>
-              ${email}
+            <div class='resultitem email'>
+              <div><b><u>Email</u></b></div>
+              <div class='resultiteminfo'>
+                ${email}
+              </div>
             </div>
             <div class="resultitem">
-              <b>Other Information</b>
+              <div><b><u>Other Information</u></b></div>
               <div class='resultiteminfo'>
-                <div><u>Music Minor Available:</u> {{if musicMinorAvailable}}Yes{{else}}No{{/if}}</div>
-                <div><u>Graduate Program Available:</u> {{if graduateProgramAvailable}}Yes{{else}}No{{/if}}</div>
-                <div><u>Scholarship Available:</u> {{if scholarshipsAvailable}}Yes{{else}}No{{/if}}</div>
+                <span><u>Music Minor Available:</u> {{if musicMinorAvailable}}Yes{{else}}No{{/if}}</span>
+                <span><u>Graduate Program Available:</u> {{if graduateProgramAvailable}}Yes{{else}}No{{/if}}</span>
+                <span><u>Scholarship Available:</u> {{if scholarshipsAvailable}}Yes{{else}}No{{/if}}</span>
               </div>
             </div>
             <div class="sublist">
@@ -121,16 +125,23 @@
         <div id="collapse_faculty_${facultyId}" class="accordion-body collapse ${inClass}">
           <div class='accordian-inner'>      
             <div class='faculty'>
-              <div class='keywords'>
-                <b>Instruments: </b>
-                <span>${keyword}</span>
+              <div class='resultitem keywords'>
+                <div><b><u>Instruments</u></b></div>
+                <div class='resultiteminfo'>
+                  ${keyword}
+                </div>
               </div>
-              <div class='keywords'>
-                <b>Styles: </b>
-                <span>${styles}</span>
+              <div class='resultitem keywords styles'>
+                <div><b><u>Styles</u></b></div>
+                <div class='resultiteminfo'>
+                  ${styles}
+                </div>
               </div>
-              <div class='url'>
-                <a href="${facultyUrl}" target="_blank">${facultyUrl}</a>
+              <div class='resultitem'>
+                <div><b><u>Website</u></b></div>
+                <div class='resultiteminfo facultyUrl'>
+                   <a href="${facultyUrl}" target="_blank">${facultyUrl}</a>
+                </div>
               </div>
             </div>
           </div>

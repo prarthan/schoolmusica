@@ -19,6 +19,7 @@ School.prototype = {
     this.fetchData();
   },
   fetchData : function() {
+    this.$el.hide();
     if( this.id == null || this.id == -1 ) {
       window.location.href = "/musicschool/index.jsp"
       return;
@@ -30,7 +31,8 @@ School.prototype = {
         return;
       }
       _this.data = response;
-      _this.school.setData( response )
+      _this.school.setData( response );
+      _this.$el.show();
     } );
   }
 }

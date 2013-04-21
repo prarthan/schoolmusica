@@ -3,48 +3,56 @@ body {
   width: 100%;
 }
 
+.information {
+  background: #FFF;
+  padding: 5px;
+}
+
 #school {
   width: 800px;
-  margin-bottom: 20px;
+  margin: 20px auto;
 }
 
-#school .form h3 {
-  margin: 10px;
+#school .name {
+  background-color: #E3E3E3;
 }
 
-#edit {
-  float: right;
+#school .school_name {
+  height: 65px;
 }
 
-#school .form  {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin: 10px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  width: 768px;
+#school .school_name h2 {
+  line-height: 65px;
+  margin-left: 20px;
 }
 
-.school .sublist {
-  border: 1px solid #E5E5E5;
-  border-radius: 5px;
-}
-
-.school .sublist_title {
+.sublist_title {
   background: black;
   color: white;
-  border-top-right-radius: 6px;
-  border-top-left-radius: 6px;
   height: 20px;
   padding: 5px;
 }
 
+.address.resultitem div:first-child {
+  width: 161px;
+}
+
+.accordian {
+  border: 1px solid #E5E5E5;
+}
+
+.accordian > div {
+  border-bottom: 2px solid #fff;
+}
+
+.accordian > div:last-child {
+  border-bottom: 0px solid #fff;
+}
 
 .department > .accordion-toggle > .name {
   height: 16px;
   width: 750px;
-  padding: 10px;
+  padding: 9px;
   line-height: 120%;
   font-size: 18px;
   padding-left: 30px;
@@ -103,22 +111,18 @@ body {
   margin-top: 15px;
 }
 
-.department .accordian-inner {
-  padding: 10px;
-}
-
 .faculty {
   width: 698px;
 }
 
 .faculty .accordion-toggle .name {
-  width: 641px;
+  width: 670px;
   height: 10px;
   font-size: 14px;
 }
 
 .accordion-group {
-  border-width: 0px 0px 1px 0px ;
+  border-width: 0px 0px 0px 0px ;
   margin-bottom: 0px;
 }
 
@@ -150,44 +154,59 @@ label {
   transition: border linear .2s,box-shadow linear .2s;
 }
 
-.school .sublist {
-  width: 810px;
-}
-
-.department .sublist {
-  width: 700px;
-}
-
-.school .scores {
-  height: 65px;
-  width: 600px;
-  clear: both;
-}
-
-.school  .scores .title {
-  font-size: 11px;
-  font-weight: bold;
-}
-
-.school  .score {
-  height: 40px;
-  width: 40px;
-  border: 1px solid black;
-  text-align: center;
-  border-radius: 5px;
-  float: left;
-  margin-left: 3px;
-}
-
-.school .score .exam {
-  background: black;
-  color: white;
-  font-weight: bold;
-}
-
 .faculty .title {
   font-size: 10px;
   font-style: italic;
+}
+
+/* Form Styling */
+
+.school_edit .department .sublist {
+  width: auto;
+  margin: 15px;
+}
+
+.school_edit .department .faculty {
+  width: auto;
+}
+
+.school_edit .department .faculty .accordion-toggle .name {
+  width: auto;
+}
+
+
+.form {
+  margin-top: 5px;
+}
+
+.form b {
+  text-decoration: underline;
+}
+
+#school .form .name {
+  height: 20px;
+}
+
+.form > .name {
+  background-color: transparent !important;
+  height: auto !important;
+}
+
+
+.form .form_title {
+  border-top: 2px solid white;
+  background: #E3E3E3;
+  height: 28px;
+  line-height: 28px;
+  padding-left: 15px;
+}
+
+#school .form h3 {
+  margin: 10px;
+}
+
+#edit {
+  float: right;
 }
 
 .btn.active {
@@ -205,10 +224,6 @@ label {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-.form b {
-  text-decoration: underline;
-}
-
 .input_score {
   clear: both;
 }
@@ -217,19 +232,19 @@ label {
   float: left;
 }
 
-.other label {
-  width: 205px;
-  position: relative;
-  top: 2px;
-}
-
 .other  {
   margin-bottom: 20px;
   clear: both;
 }
 
-.faculty_form {
-  width: 650px;
+.other b {
+  margin-left: 20px;
+}
+
+.other label {
+  width: 205px;
+  position: relative;
+  top: 2px;
 }
 
 .faculty_form .name input {

@@ -11,10 +11,9 @@ body > .hd {
 }
 
 body > .bd {
-  margin-top: 107px;
+  margin-top: 70px;
   margin-bottom: 15px;
 }
-
 
 body > .ft {
   position: fixed;
@@ -34,4 +33,29 @@ body > .ft {
 
 .popover img {
   height: 30px;
+}
+
+
+.resultitem {
+  clear: both;
+  margin: 5px 0px;
+  height: 20px;
+}
+
+ .resultitem div {
+  float: left;
+}
+
+.resultitem div:first-child {
+  min-width: 108px;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.resultitem .resultiteminfo{
+  margin-left: 20px;
+}
+
+.resultitem .resultiteminfo span{
+  margin-right: 10px;
 }

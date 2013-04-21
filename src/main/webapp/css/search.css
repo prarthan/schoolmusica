@@ -73,20 +73,6 @@
   margin-top: 2px;
 }
 
-#searchlist .searchresult .resultitem {
-  clear: both;
-  margin: 5px 0px;
-  height: 20px;
-}
-
-#searchlist .searchresult .resultitem.scores div{
-  float: left;
-}
-
-#searchlist .searchresult .resultitem.scores .resultiteminfo{
-  margin-left: 20px;
-}
-
 #searchlist .searchresult .resultitem h4 {
   line-height: 15px;
   margin: 5px 0px;

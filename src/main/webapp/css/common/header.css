@@ -1,6 +1,6 @@
 .hd {
   width: 100%;
-  height: 100px;
+  height: 65px;
   padding: 3px;
   display:inline-block; 
   vertical-align:middle;
@@ -9,11 +9,11 @@
 }
 
 .hd .logo {
-  margin-left: 20px;
+  margin-left: 5px;
+  margin-top: 5px;
 }
 
 .hd .logo, .hd .searchfield {
-  margin-top: 20px;
   float: left;
 }
 
