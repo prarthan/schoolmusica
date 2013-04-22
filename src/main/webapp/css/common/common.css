@@ -12,7 +12,7 @@ body > .hd {
 
 body > .bd {
   margin-top: 70px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 body > .ft {
@@ -21,6 +21,44 @@ body > .ft {
   height: 20px;
   text-align: right;
   width: 100%;
+}
+
+.loading:before {
+  background: transparent;
+  content: url("../img/ajax-loader.gif");
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  min-width: 100px;
+  min-height: 100px;
+  margin: auto;
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.loading:after {
+  background: transparent;
+  content: 'Loading...';
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  min-width: 100px;
+  min-height: 100px;
+  margin: auto;
+  text-align: center;
+  position: absolute;
+  top: 70px;
+  left: 6px;
+  font-weight: lighter;
+  font-size: 17px;
+}
+
+.loading {
+  position: relative;
+  min-height: 100px;
+  min-width: 200px;
 }
 
 .popover {
@@ -50,6 +88,11 @@ body > .ft {
   min-width: 108px;
   text-align: left;
   padding-left: 15px;
+}
+
+.resultitem div:first-child.resultiteminfo {
+  margin: 0px;
+  padding-left: 0px;
 }
 
 .resultitem .resultiteminfo{

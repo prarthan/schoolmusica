@@ -6,6 +6,7 @@ body {
 .information {
   background: #FFF;
   padding: 5px;
+  border: 1px solid #ccc;
 }
 
 #school {
@@ -51,7 +52,6 @@ body {
 
 .department > .accordion-toggle > .name {
   height: 16px;
-  width: 750px;
   padding: 9px;
   line-height: 120%;
   font-size: 18px;
@@ -106,17 +106,7 @@ body {
   background: transparent url("../img/arrow-down-small.png") 5px 15px no-repeat;
 }
 
-.department .sublist {
-  width: 730px;
-  margin-top: 15px;
-}
-
-.faculty {
-  width: 698px;
-}
-
 .faculty .accordion-toggle .name {
-  width: 670px;
   height: 10px;
   font-size: 14px;
 }
@@ -159,12 +149,12 @@ label {
   font-style: italic;
 }
 
-/* Form Styling */
-
-.school_edit .department .sublist {
+.sublist {
   width: auto;
-  margin: 15px;
+  margin: 15px 10px;
 }
+
+/* Form Styling */
 
 .school_edit .department .faculty {
   width: auto;

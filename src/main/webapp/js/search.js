@@ -1,30 +1,14 @@
 
-
-var Search = function() {};
-
-Search.prototype = Header.prototype;
-
-Search.prototype.initUI = function() {
-  this.initResultsPane()
-  this.initSearchButton();
-  this.initSearchAutoComplete();
-  this.initLoginButton();
-}
-
-Search.prototype = $.extend( {
-  initLoginButton: function() {
-    $(".login .title").popover({
-       "animate" : true,
-       "trigger" : "hover",
-       "html" : "true",
-       "content": "We use <img src='img/google-logo.png'></img> for login.",
-       "delay" : 100,
-       "placement": "bottom"
-    });
+var Search =  Header.extend({
+  initUI: function() {
+    this._super();
+    this.initResultsPane();
+    this.initSearchButton();
+    this.initSearchAutoComplete();
   },
   initResultsPane : function() {
     this.searchPane = new SearchPane();
-    this.searchPane.init();
+    this.searchPane.initialize();
   },
   validate : function( name ) {
     if( name.length == 0 ) {
@@ -80,7 +64,7 @@ Search.prototype = $.extend( {
       };
     });
   }
-}, Search.prototype )
+});
 
 var FilterPane = function( searchPane ) {
   this.state = null; 
@@ -88,7 +72,7 @@ var FilterPane = function( searchPane ) {
 }
 
 FilterPane.prototype = {
-  init : function() {
+  initialize: function() {
     var _this = this;
     this.$el = $( "#filters" );
     this.$el.find('#stateAC').autocomplete({
@@ -112,6 +96,7 @@ FilterPane.prototype = {
     } ); 
 
     this.$el.find( ".btn" ).click( function( event ) {
+      console.log("clicked");
       if( $(this).hasClass('active') ) {
         $(this).removeClass('active');
       }
@@ -124,7 +109,7 @@ FilterPane.prototype = {
     });
   },
   refreshSearch : function() {
-    this.searchPane.search( this.searchPane.query, this.searchPane.startCount, 10 );
+    this.searchPane.search( this.searchPane.query, null, 10 );
   },
   getValue: function() {
     var data =  this.$el.find( "form input.filterInput" ).serializeArray();
@@ -160,7 +145,7 @@ var SearchPane = function() {
 };
 
 SearchPane.prototype = {
-  init : function() {
+  initialize : function() {
     this.initFilters();
     this.initInfiniteScroller();
   },
@@ -174,7 +159,7 @@ SearchPane.prototype = {
   },
   initFilters : function() {
     this.filterPane = new FilterPane( this );
-    this.filterPane.init();
+    this.filterPane.initialize();
   },
   addMoreResults: function() {
     if( this.startCount <= this.resultCount-1 )
@@ -184,10 +169,11 @@ SearchPane.prototype = {
     var _this = this;
     if( ! startCount ) {
       _this.startCount = 0;
-      _this.searched = 0;
+      _this.searched = false;
       _this.resultCount = 0;
-      $('#searchinfo').css('display', 'none' );
-      $('#searchresults').empty();
+      $('#searchinfo').addClass("hidden");
+      $('#searchresults').addClass("hidden").empty();
+      $('#searchlist').removeClass("hidden").addClass('loading');
     }
     
     query = $.trim( query );
@@ -219,17 +205,20 @@ SearchPane.prototype = {
           if( timeTaken > 1000 ) {
             timeInfo = ( timeTaken/1000 ) + " seconds";
           }
-          $('#searchinfo').css('display', 'table-cell').html( "<span class='resultcount'>" + _this.resultCount + "</span> schools found in " + timeInfo + "." );
+          $('#searchlist').removeClass('loading');
+          $('#searchinfo').removeClass('hidden').css('display', 'table-cell').html( "<span class='resultcount'>" + _this.resultCount + "</span> schools found in " + timeInfo + "." );
+          $('#searchresults').removeClass("hidden");        
         }
         for( var i in response.schools ) {
           var result = new SearchResult( response.schools[i], query );
-          result.init();
+          result.initialize();
           _this.startCount++;
         }
         _this.fetching = false;
       },
       error : function( jqXHR, textStatus, errorThrown ) {
-        console.log( errorThrown )
+        console.log( errorThrown );
+        $('#searchlist').removeClass('loading').addClass("hidden");
         _this.fetching = false;
       }
     } );
@@ -242,7 +231,7 @@ var SearchResult = function( resultData, query ) {
 }
 
 SearchResult.prototype = {
-  init : function() {
+  initialize : function() {
     var school = this.resultData;
     school.domId = "school_" + school.musicSchoolId;
     school.schoolName = school.name;

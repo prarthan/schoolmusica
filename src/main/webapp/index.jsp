@@ -87,7 +87,7 @@
           </div>
         </div>
       </div>
-      <div id="searchlist">
+      <div id="searchlist" class="hidden">
          <div id="searchinfo"></div>
          <ul id="searchresults"></ul>
       </div>
@@ -130,7 +130,7 @@
     <script type="text/javascript">
       $(document).ready( function() {
         var search = new Search();
-        search.init();
+        search.initialize();
       });
     </script>
     <jsp:include page="includes/analytics.jsp" />

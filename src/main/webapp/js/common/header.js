@@ -1,10 +1,6 @@
 
-var Header = function() {
-
-};
-
-Header.prototype = {
-  init : function() {
+var Header = Class.extend({
+  initialize : function() {
     this.initUI();
   },
   initUI : function() {
@@ -20,4 +16,4 @@ Header.prototype = {
        "placement": "bottom"
     });
   }
-};
+});

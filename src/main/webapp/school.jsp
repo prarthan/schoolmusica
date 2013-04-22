@@ -11,6 +11,7 @@
     if( edit == null ) {
       edit = new Boolean(false);
     }
+    //edit = new Boolean(true);
     
     if (request.getParameter("search") != null ) {
       searchQuery = request.getParameter("search");
@@ -50,7 +51,7 @@
       <div class='school' id="school_${musicSchoolId}">
         <div class='school_information'>
         </div>
-        <div class='sublist'>
+        <div class='sublist hidden'>
           <div class='sublist_title'>
             Departments
           </div>
@@ -297,16 +298,12 @@
     <% } %>
     <script type="text/javascript">
        $(document).ready( function() {
-        $(".row-fluid").height( $(window).height() - 109 );
-        $(window).on( "resize", function() {
-          $(".row-fluid").height( $(window).height() - 109 );
-        });
         <% if( edit == true ) { %>
           var school = new SchoolEdit(<%= id %> );
         <% } else { %>
           var school = new School(<%= id %>, "<%= searchQuery %>" );
         <% } %>
-        school.init();
+        school.initialize();
        });
     </script>
     <jsp:include page="includes/analytics.jsp" />

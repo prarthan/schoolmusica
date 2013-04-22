@@ -38,6 +38,8 @@
   padding: 10px;
   font-weight: bold;
   display: none;
+  border: 1px solid #CCC;
+  border-bottom-width: 0px;
 }
 
 #searchlist {
@@ -53,6 +55,8 @@
   height: 100%;
   list-style: none;
   margin: 0px;
+  border: 1px solid #CCC;
+  border-top-width: 0px;
 }
 
 #searchlist .searchresult {
@@ -190,9 +194,9 @@
 
 #footer {
 	text-align: center;
-    position: fixed;
-    bottom: 0;
-    left:0
+  position: fixed;
+  bottom: 0;
+  left:0
 }
 
 .label {
@@ -224,4 +228,8 @@
 #others .btn-grp {
   position: relative;
     top: -1px;
+}
+
+.resultitem.scores div:first-child {
+  padding-left: 0px;
 }

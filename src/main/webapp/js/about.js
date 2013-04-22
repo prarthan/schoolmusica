@@ -3,9 +3,9 @@ var About = function() {
 } 
 
 About.prototype = {
-  init: function() {
+  initialize: function() {
     var header = new Header();
-    header.init();
+    header.initialize();
     this.initTabView();
     this.checkActive();
   },

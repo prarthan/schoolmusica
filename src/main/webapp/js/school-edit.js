@@ -8,13 +8,13 @@ var SchoolEdit = function( id ) {
 };
 
 SchoolEdit.prototype = {
-  init: function() {
+  initialize: function() {
     this.header = new Header();
-    this.header.init();
+    this.header.initialize();
     this.$el = $("#school");
-    this.$el.hide();
+    this.$el.find(".information").addClass('loading');
     this.school = new SchoolForm();
-    this.school.init(  this.$el.find(".information") );
+    this.school.initialize(  this.$el.find(".information") );
     this.$el.addClass("school_edit");
     this.getProgramList(
       this.fetchData
@@ -41,6 +41,7 @@ SchoolEdit.prototype = {
       this.newSchool = true;
       this.school.setNew();
       this.school.updateTemplate();
+      this.$el.find(".information").removeClass('loading');
       return;
     }
     var _this = this;
@@ -55,7 +56,7 @@ SchoolEdit.prototype = {
       $("#school h3").html( "Edit School Information" );
       _this.data = response;
       _this.school.setData( response );
-      _this.$el.show();
+      _this.$el.find(".information").removeClass('loading');
     } );
   }
 }
@@ -71,7 +72,7 @@ SchoolForm = function( id ) {
 }
 
 SchoolForm.prototype = {
-  init: function( $el ) {
+  initialize: function( $el ) {
     this.$el = $el;
     this.$el.find(".data").html( this.template.tmpl( {} ) );
     this.initEventListeners();
@@ -80,6 +81,7 @@ SchoolForm.prototype = {
     this.data = data;
     this.data.schoolName = data.name;
     this.$el.find(".data").html( this.template.tmpl( this.data ) );
+    this.$el.find(".sublist").removeClass("hidden");
     if( ! skipDepartment ) {
       for( var i in data.department ) {
         var department = data.department[i];

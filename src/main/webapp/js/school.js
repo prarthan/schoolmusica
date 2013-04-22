@@ -10,16 +10,16 @@ var School = function( id, searchQuery ) {
 };
 
 School.prototype = {
-  init: function() {
+  initialize: function() {
     this.header = new Header();
-    this.header.init();
+    this.header.initialize();
     this.$el = $("#school");
     this.school = new SchoolInformation();
-    this.school.init(  this.$el.find(".information"), this.searchQuery );
+    this.school.initialize(  this.$el.find(".information"), this.searchQuery );
     this.fetchData();
   },
   fetchData : function() {
-    this.$el.hide();
+    this.$el.find(".information").addClass('loading');
     if( this.id == null || this.id == -1 ) {
       window.location.href = "/musicschool/index.jsp"
       return;
@@ -32,7 +32,7 @@ School.prototype = {
       }
       _this.data = response;
       _this.school.setData( response );
-      _this.$el.show();
+      _this.$el.find(".information").removeClass('loading');
     } );
   }
 }
@@ -46,7 +46,7 @@ SchoolInformation = function( id, searchQuery ) {
 }
 
 SchoolInformation.prototype = {
-  init: function( $el, searchQuery ) {
+  initialize: function( $el, searchQuery ) {
     this.$el = $el;
     this.searchQuery = ( searchQuery && searchQuery.length > 0 ) ? searchQuery : null;
     this.$el.find(".data").html( this.template.tmpl( {} ) );
@@ -61,6 +61,7 @@ SchoolInformation.prototype = {
     this.data = data;
     this.data.schoolName = data.name;
     this.$el.find(".data").html( this.template.tmpl( this.data ) );
+    this.$el.find(".sublist").removeClass("hidden");
     for( var i in data.department ) {
       var department = data.department[i];
       if( !this.searchQuery ) {

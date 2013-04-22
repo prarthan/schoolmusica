@@ -1,11 +1,5 @@
 <%@ page isELIgnored="true" %>
 <%@ page import = " java.util.* " %>
-<%
-    Boolean edit = (Boolean)session.getAttribute("canedit");
-    if( edit == null ) {
-      edit = new Boolean(false);
-    }
-%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -92,7 +86,7 @@
     <script type="text/javascript">
       $(document).ready( function() {
         var about = new About();
-        about.init();
+        about.initialize();
       });
     </script>
     <jsp:include page="includes/analytics.jsp" />
