@@ -1,5 +1,11 @@
 <%@ page isELIgnored="true" %>
 <%@ page import = " java.util.* " %>
+<%
+    Boolean edit = (Boolean)session.getAttribute("canedit");
+    if( edit == null ) {
+      edit = new Boolean(false);
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
