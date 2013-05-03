@@ -167,6 +167,10 @@ SearchPane.prototype = {
   },
   search: function( query, startCount, maxResults ) {
     var _this = this;
+    query = $.trim( query );
+    if( query.length == 0 ) {
+      return;
+    }
     if( ! startCount ) {
       _this.startCount = 0;
       _this.searched = false;
@@ -174,11 +178,6 @@ SearchPane.prototype = {
       $('#searchinfo').addClass("hidden");
       $('#searchresults').addClass("hidden").empty();
       $('#searchlist').removeClass("hidden").addClass('loading');
-    }
-    
-    query = $.trim( query );
-    if( query.length == 0 ) {
-      return;
     }
     _this.fetching = true;
     this.query = query;
@@ -206,7 +205,13 @@ SearchPane.prototype = {
             timeInfo = ( timeTaken/1000 ) + " seconds";
           }
           $('#searchlist').removeClass('loading');
-          $('#searchinfo').removeClass('hidden').css('display', 'table-cell').html( "<span class='resultcount'>" + _this.resultCount + "</span> schools found in " + timeInfo + "." );
+          $('#searchinfo').removeClass('hidden').css('display', 'table-cell');
+          if( response.resultCount === 0 ) {
+            $('#searchinfo').html( "<span class='no_results'>Sorry, no results found. Please try changing the filters and search again." ); 
+          }
+          else {
+            $('#searchinfo').html( "<span class='resultcount'>" + _this.resultCount + "</span> schools found in " + timeInfo + "." );
+          }
           $('#searchresults').removeClass("hidden");        
         }
         for( var i in response.schools ) {
