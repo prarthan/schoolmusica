@@ -251,7 +251,7 @@ public class Department {
 	}
 	
 	@NotEmpty(message="You must provide zip.")
-	@Column(length=8)
+	@Column(length=20)
 	@Index(name = "deptzipindex")
 	public String getZip() {
 		return zip;

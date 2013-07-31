@@ -263,6 +263,7 @@ SchoolForm.prototype = {
           _this.newSchool = false;
           _this.$el.find(".department_list").parent().show();
           _this.addDepartmentButton();
+          _this.$el.find(".department_list").parent().removeClass("hidden");
         }
       }, 
       error: function( response, jqXHR, textStatus ) {

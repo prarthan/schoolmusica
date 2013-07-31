@@ -447,10 +447,9 @@
         
         <dependency>
 	     <groupId>net.sourceforge.htmlunit</groupId>
-			<artifactId>htmlunit</artifactId>
-			<version>2.12</version>
-	
-		</dependency>  
+	     <artifactId>htmlunit</artifactId>
+	     <version>2.12</version>
+	</dependency>  
    
     </dependencies>
 
@@ -498,6 +497,12 @@
             <id>production</id>
             <properties>
               <compress>true</compress>
+            </properties>
+        </profile>
+        <profile>
+        	<id>dev</id>
+            <properties>
+              <compress>false</compress>
             </properties>
         </profile>
     </profiles>
